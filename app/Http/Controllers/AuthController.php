@@ -27,7 +27,6 @@ class AuthController extends Controller
             return redirect()->route("dashboard")->with("user", $user);
             // return view("dashboard")->with("user", $user);
         }
-        dd("error");
 
 
         return redirect()->back()->withErrors(['email' => 'Correo o contraseña incorrectos']);
