@@ -28,12 +28,6 @@
             </div>
         </div>
 
-        <div class="separator" data-aos="fade-up" data-aos-duration="700">
-            <p>
-                No tienes una cuenta? <a href="{{ url('/register') }}">Regístrate</a>
-            </p>
-        </div>
-
         <button type="submit" data-aos="fade-up" data-aos-duration="700">Iniciar Sesión</button>
     </form>
 @endsection
