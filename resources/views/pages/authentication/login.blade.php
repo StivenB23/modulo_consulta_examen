@@ -4,11 +4,19 @@
 
 @section('content')
     <form action="">
+        @if($errors->has('email'))
+            <div class="error_message" data-aos="fade-left" data-aos-duration="700">
+                {{ $errors->first('email') }}
+            </div>
+        @endif
+
+        @csrf
         <h1 data-aos="fade-down" data-aos-duration="700">Iniciar Sesión</h1>
 
         <div class="form_group" data-aos="fade-right" data-aos-duration="700">
             <label for="email">Correo Electrónico</label>
             <input type="email" id="email" name="email" required placeholder="Ingrese su Correo">
+            <p class="error">{{ $errors->first('email') }}</p>
         </div>
 
         <div class="form_group" data-aos="fade-left" data-aos-duration="700">
