@@ -23,6 +23,12 @@
     left: 1rem;
 }
 
+@media screen and (max-width: 800px) {
+    .container_auth .header {
+        display: none;
+    }
+}
+
 .container_auth .container_form {
     width: 100%;
     max-width: 400px;
@@ -31,12 +37,12 @@
 
 form h1 {
     text-align: center;
-    margin: 1rem 0 2rem 0;
+    margin: .5rem 0 1rem 0;
     color: var(--primary-color);
 }
 
 form .form_group {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
 form .form_group label {
@@ -47,6 +53,23 @@ form .form_group label {
 
 form .form_group input {
     width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+form .form_group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+form .form_group select option {
     padding: 0.8rem;
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
@@ -105,4 +128,44 @@ form button[type="submit"] {
     font-size: 1rem;
     cursor: pointer;
     margin-top: 10px;
+}
+
+/* TABS FORMS */
+.form_tab {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.client_form {
+    padding: 0 0 20px 0;
+    overflow-y: auto;
+}
+
+.form_tab.active {
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 8px;
+}
+
+.tab_button {
+    padding: 8px 20px;
+    border: none;
+    background-color: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 50%;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab_button.active {
+    border-bottom: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
 }

@@ -11,3 +11,9 @@ html, body {
     background-color: #fff;
     font-family: 'Raleway', sans-serif;
 }
+
+.error {
+    color: rgb(253, 83, 83);
+    font-size: 0.8rem;
+    margin-top: 5px;
+}

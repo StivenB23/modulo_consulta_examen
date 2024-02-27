@@ -8,6 +8,7 @@
     <title>@yield('title', 'Genetica')</title>
     {{-- CDN --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/auth.css') }}">
@@ -19,6 +20,8 @@
                 src="{{ asset('img/logo-citogen.png') }}"
                 alt="Logo de Citogen"
                 class="logo"
+                data-aos="zoom-in"
+                data-aos-duration="700"
             >
         </div>
 
@@ -27,7 +30,14 @@
         </div>
     </main>
     <!-- JAVASCRIPT -->
-
     <script src="{{ asset('js/password.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    {{-- AOS.JS --}}
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>
