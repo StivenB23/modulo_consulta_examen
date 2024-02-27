@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Migración de tabla usuarios en la base de datos
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('tipo_documento');
+            $table->string('documento')->unique();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('rol');
+            $table->boolean('estado')->default(true);
             $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
