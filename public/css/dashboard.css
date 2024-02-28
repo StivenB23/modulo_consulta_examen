@@ -1,0 +1,223 @@
+@import url('./auth.css');
+
+.container_dashboard {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 100%;
+    height: 100vh;
+    background-color: rgb(186, 234, 234);
+    width: 100%;
+}
+
+.sidebar {
+    background-color: rgb(186, 234, 234);
+    padding: 2rem 1rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar img {
+    width: 180px;
+    margin-bottom: 1rem;
+}
+
+.sidebar .items {
+    margin-top: 1px solid #ccc;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 12px;
+    gap: 10px;
+    transition: 0.3s;
+    margin-bottom: 1rem;
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.item.active {
+    background-color: var(--light-blue);
+}
+
+.logout_container {
+    display: flex;
+    width: 100%;
+}
+
+.logout_container form {
+    width: 100%;
+}
+
+.container {
+    background-color: #f6f6f6;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--light);
+}
+
+.header .name {
+    color: var(--dark);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.name span {
+    color: var(--primary-color);
+    font-weight: normal;
+}
+
+.content {
+    padding: 1rem;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.card {
+    background-color: var(--light);
+    padding: 1rem;
+    border-radius: 10px;
+    height: auto;
+    overflow-y: scroll;
+    margin-top: 1rem 0;
+}
+
+.actions {
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 20px 0 20px;
+    background-color: var(--action);
+    color: var(--light);
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    width: fit-content;
+    text-decoration: none;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table {
+    background: #fff;
+    border-radius: 3px;
+    border-collapse: collapse;
+    margin: auto;
+    padding: 5px;
+    width: 100%;
+    animation: float 5s infinite;
+}
+
+th {
+    color: var(--primary-color);
+    background: var(--light);
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    font-size: .9rem;
+    font-weight: 100;
+    padding: 5px 10px;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    vertical-align: middle;
+}
+
+th:first-child {
+    border-top-left-radius: 3px;
+}
+
+th:last-child {
+    border-top-right-radius: 3px;
+    border-right: none;
+}
+
+tr {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: var(--text);
+    font-size: .8rem;
+    font-weight: normal;
+    text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+tr:first-child {
+    border-top: none;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 3px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 3px;
+    border-right: none;
+}
+
+tr td:last-child {
+    border-right: none;
+}
+
+td {
+    padding: 10px 15px;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: .8rem;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #ccc;
+}
+
+.dataTable-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.dataTable-input:focus {
+    outline: none;
+}
+
+.dataTable-selector {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    color: #666;
+    font-size: 14px;
+}
