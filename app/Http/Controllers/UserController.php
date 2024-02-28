@@ -130,12 +130,12 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Desactivar usuario
      */
-    public function destroy(string $id)
+    public function deactivate(string $id)
     {
-        $affected = DB::table('users')
-              ->where('id', 1)
-              ->update(['votes' => 1]);
+        $userDeactivated = DB::table('users')
+              ->where('id', $id)
+              ->update(['status' => 0]);
     }
 }

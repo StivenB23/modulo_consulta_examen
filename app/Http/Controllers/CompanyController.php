@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use function PHPUnit\Framework\isNull;
 
 class CompanyController extends Controller
@@ -83,10 +83,12 @@ class CompanyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Desactivar empresa Compañia
      */
-    public function destroy(Company $company)
+    public function deactivate(string $id)
     {
-        //
+        $companyDeactivated = DB::table('companies')
+        ->where('id', $id)
+        ->update(['status' => 0]);
     }
 }
