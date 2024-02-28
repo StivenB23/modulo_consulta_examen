@@ -274,3 +274,22 @@ td {
     outline: none;
     border: none;
 }
+
+.actions_table {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--light);
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}

@@ -52,7 +52,7 @@
                             <div class="inactive">Inactivo</div>
                             @endif
                         </td>
-                        <td>
+                        <td class="actions_table">
                             @if ($user->status == 1)
                                 <form id="deactivateForm" action="{{ route('deactivateUser', ['id' => $user->id, 'origin' => 'specialists']) }}" method="post">
                                     @method("PUT")
@@ -60,9 +60,9 @@
                                     <button type="button" class="deactivate_button" onclick="confirmDeactivationSpecialist()">Desactivar</button>
                                 </form>
                             @endif
-                            {{-- <a href="{{ route('dashboard.specialists.edit', $user->id) }}">
+                            <a href="{{ route('dashboard.specialists.edit', $user->id) }}" class="edit-btn">
                                 Editar
-                            </a> --}}
+                            </a>
                         </td>
                     </tr>
                 @endforeach

@@ -37,10 +37,13 @@ Route::get("/dashboard/specialists", [UserController::class, "index"])
     ->name("dashboard.specialists")
     ->middleware("auth");
 
-
 Route::get('/dashboard/specialists/create', function () {
     return view('pages.dashboard.specialists.create-specialist');
 })->name("dashboard.specialists.create")->middleware("auth");
+
+Route::get('/dashboard/specialists/edit/{id}', [UserController::class, "edit"])
+    ->name("dashboard.specialists.edit")
+    ->middleware("auth");
 
 // COMPANIES
 Route::get('/dashboard/companies', function () {
@@ -63,7 +66,7 @@ Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 Route::post("/registerUser", [UserController::class, "store"])->name("registerUser");
 Route::post("/registerUserSpecialist", [UserController::class, "storeSpecialist"])->name("registerUserSpecialist");
 
-Route::put("/updateUser/{id}", [UserController::class, "update"])->name("updateUser");
+Route::put("/updateUser/{id}/origin/{origin}", [UserController::class, "update"])->name("updateUser");
 Route::put("/deactivateUser/{id}/origin/{origin}", [UserController::class, "deactivate"])->name("deactivateUser");
 
 // Rutas Empresa (Compañia)

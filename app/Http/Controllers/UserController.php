@@ -96,13 +96,15 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('pages.dashboard.specialists.edit-specialist', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id, string $origin)
     {
         // Validar la solicitud entrante
         // $request->validate([
@@ -121,10 +123,14 @@ class UserController extends Controller
             // Asignar dinámicamente los valores de la solicitud al recurso
             $recurso->fill($datos);
 
+            $recurso['sex'] = $request->sex;
+
             // Guardar los cambios en la base de datos
             $recurso->save();
-            dd($recurso);
-            dd("actualizado");
+
+            if ($origin == "specialists") {
+                return redirect()->route("dashboard.specialists");
+            }
         } catch (Exception $th) {
             dd($th->getMessage());
         }

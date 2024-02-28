@@ -2,12 +2,6 @@
 
 @section('title', 'Dashboard | Especialistas')
 
-@section('user')
-<h3 class="name">
-    John Gualteros <span>(Especialista)</span>
-</h3>
-@endsection
-
 @section('content')
 <a href="{{ route('dashboard.specialists') }}" class="back">
     volver
@@ -57,8 +51,8 @@
     <div class="form_group" >
         <label for="sex">Sexo</label>
         <select name="sex" id="sex" required value="{{ old('sex') }}">
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
         </select>
     </div>
 
