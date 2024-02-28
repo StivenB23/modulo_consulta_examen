@@ -6,6 +6,8 @@
     --text: #2F2105;
     --gray: #b1aca1;
     --action: #485BFF;
+    --success: #00D68F;
+    --danger: #FF5E57;
 }
 
 .container_auth {

@@ -28,29 +28,24 @@
             >
 
             {{-- ADMIN --}}
-            <div class="items">
-                <a href="{{ route('dashboard.specialists') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/specialists') ? 'active item' : 'item' }}">
-                    <i class="bi bi-person-arms-up"></i>
-                    <p>
-                        Especialistas
-                    </p>
-                </a>
+            @if (Auth::user()->role == 'administrador')
+                <div class="items">
+                    <a href="{{ route('dashboard.specialists') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/specialists') ? 'active item' : 'item' }}">
+                        <i class="bi bi-person-arms-up"></i>
+                        <p>
+                            Especialistas
+                        </p>
+                    </a>
 
-                <a href="{{ route('dashboard.companies') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/companies') ? 'active item' : 'item' }}">
-                    <i class="bi bi-building"></i>
+                    <a href="{{ route('dashboard.companies') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/companies') ? 'active item' : 'item' }}">
+                        <i class="bi bi-building"></i>
 
-                    <p>
-                        Entidades
-                    </p>
-                </a>
-
-                {{-- <div href="{{ route('dashboard.companies') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/companies') ? 'active item' : 'item' }}">
-                    <i class="bi bi-building"></i>
-                    <p>
-                        Entidades
-                    </p>
-                </div> --}}
-            </div>
+                        <p>
+                            Entidades
+                        </p>
+                    </a>
+                </div>
+            @endif
             {{-- SPECIALIST --}}
 
             {{-- USER --}}
@@ -68,9 +63,9 @@
 
         <div class="container">
             <div class="header">
-                <h2>
-                    @yield('user')
-                </h2>
+                <h3 class="name">
+                    {{ Auth::user()->name }} <span>({{ Auth::user()->role }})</span>
+                </h3>
             </div>
 
             <div class="content">

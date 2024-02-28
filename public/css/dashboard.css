@@ -52,10 +52,26 @@
     margin-bottom: 1rem;
     color: var(--dark);
     text-decoration: none;
+    font-size: 1rem;
+    font-weight: 100;
 }
 
-.item.active {
-    background-color: var(--light-blue);
+.sidebar .items .item.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 12px;
+    gap: 10px;
+    transition: 0.3s;
+    margin-bottom: 1rem;
+    color: var(--light);
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 100;
 }
 
 .logout_container {
@@ -75,7 +91,7 @@
 
 .container .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 1rem;
     background-color: var(--light);
@@ -93,9 +109,9 @@
 }
 
 .content {
-    padding: 1rem;
-    overflow-y: auto;
-    height: 100%;
+    padding: 1rem 1rem 3rem 1rem;
+    overflow-y: scroll;
+    height: auto;
 }
 
 .card {
@@ -220,4 +236,28 @@ td {
     background: #fff;
     color: #666;
     font-size: 14px;
+}
+
+.active, .inactive {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--light);
+}
+
+.active {
+    background-color: var(--success);
+}
+
+.inactive {
+    background-color: var(--danger);
+}
+
+.back {
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
 }

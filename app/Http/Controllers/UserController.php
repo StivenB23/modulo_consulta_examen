@@ -23,9 +23,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
         $users = User::all();
-        // Retornar vista con información
+        return view('pages.dashboard.specialists.list-specialists', compact('users'));
     }
 
     /**
@@ -77,7 +76,8 @@ class UserController extends Controller
             $user->role = "especialista";
             $user->password = $passwordEncrypt;
             $user->save();
-            dd("Registrado de forma exitosa");
+
+            return redirect()->route("dashboard.specialists");
         } catch (Exception $th) {
             dd($th->getMessage());
         }

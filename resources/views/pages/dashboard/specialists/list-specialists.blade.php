@@ -18,31 +18,55 @@
 </div>
 
 <div class="table">
-    <table>
+    <table id="datat">
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Tipo Doc</th>
                 <th>Documento</th>
-                <th>N Documento</th>
-                <th>Género</th>
+                <th>Edad</th>
+                <th>Sexo</th>
                 <th>Correo</th>
-                <th>Tipo</th>
+                <th>Cargo</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>John</td>
-                <td>Gualteros</td>
-                <td>Cédula de Ciudadanía</td>
-                <td>123456789</td>
-                <td>Masculino</td>
-                <td>john@etst.com</td>
-                <td>no se</td>
-            </tr>
-        </tbody>
+            @if(count($users) > 0)
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->lastname }}</td>
+                        <td>{{ $user->type_document }}</td>
+                        <td>{{ $user->document }}</td>
+                        <td>{{ $user->age }}</td>
+                        <td>{{ $user->sex }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>
+                            @if ($user->status == 1)
+                            <div class="active">Activo</div>
+                            @else
+                            <div class="inactive">Inactivo</div>
+                            @endif
+                        </td>
+                        <td>
+                            <form action="{{ route('deactivateUser', $user->id) }}" method="post">
+                                @method("PUT")
+                                @csrf
+                                <button>Desactivar</button>
+                            </form>
+                            {{-- <a href="{{ route('dashboard.specialists.edit', $user->id) }}">
+                                Editar
+                            </a> --}}
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <p>No hay especialistas registrados.</p>
+            @endif
     </table>
 </div>
 @endsection

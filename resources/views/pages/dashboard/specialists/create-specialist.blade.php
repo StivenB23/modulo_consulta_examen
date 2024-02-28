@@ -9,14 +9,17 @@
 @endsection
 
 @section('content')
+<a href="{{ route('dashboard.specialists') }}" class="back">
+    volver
+</a>
 <h2>Crear especialista</h2>
 
-<form action="" method="post">
+<form action="{{ route('registerUserSpecialist') }}" method="POST">
     @csrf
 
     <div class="form_group">
         <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" required placeholder="Ingrese su Nombre" value="{{ old('name') }}">
+        <input type="text" id="name" name="name" required placeholder="Ingrese Nombre" value="{{ old('name') }}">
         <p class="error">{{ $errors->first('name') }}</p>
     </div>
 
@@ -30,7 +33,7 @@
     <div class="form_group" >
         <label for="type_document">Tipo de Documento</label>
         <select name="type_document" id="type_document" required value="{{ old('type_document') }}">
-            <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+            <option value="C.C">Cédula de Ciudadanía</option>
             <option value="Cédula de Extranjeria">Cédula de Extranjería</option>
             <option value="Pasaporte">Pasaporte</option>
         </select>
@@ -40,13 +43,13 @@
     {{-- document number --}}
     <div class="form_group">
         <label for="document">Número de Documento</label>
-        <input type="text" id="document" name="document" required placeholder="Ingrese su Número de Documento" value="{{ old('document') }}">
+        <input type="text" id="document" name="document" required placeholder="Ingrese Número de Documento" value="{{ old('document') }}">
         <p class="error">{{ $errors->first('document') }}</p>
     </div>
 
     <div class="form_group">
         <label for="age">Edad</label>
-        <input type="number" id="age" name="age" required placeholder="Ingrese su Edad" value="{{ old('age') }}">
+        <input type="number" id="age" name="age" required placeholder="Ingrese Edad" value="{{ old('age') }}">
         <p class="error">{{ $errors->first('age') }}</p>
     </div>
 
@@ -56,13 +59,12 @@
         <select name="sex" id="sex" required value="{{ old('sex') }}">
             <option value="masculino">Masculino</option>
             <option value="femenino">Femenino</option>
-            <option value="otro">Otro</option>
         </select>
     </div>
 
     <div class="form_group">
         <label for="email">Correo Electrónico</label>
-        <input type="email" id="email" name="email" required placeholder="Ingrese su Correo" value="{{ old('email') }}">
+        <input type="email" id="email" name="email" required placeholder="Ingrese Correo" value="{{ old('email') }}">
         <p class="error">{{ $errors->first('email') }}</p>
     </div>
 
