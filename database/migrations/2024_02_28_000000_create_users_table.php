@@ -14,15 +14,19 @@ return new class extends Migration
         // Migración de tabla usuarios en la base de datos
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('tipo_documento');
-            $table->string('documento')->unique();
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('type_document');
+            $table->string('document')->unique();
+            $table->string('age');
+            $table->string('sex');
             $table->string('email')->unique();
-            $table->string('rol');
-            $table->boolean('estado')->default(true);
+            $table->string('role');
+            $table->boolean('status')->default(true);
             $table->string('password');
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->timestamps();
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

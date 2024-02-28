@@ -14,8 +14,12 @@ return new class extends Migration
         // Creación de tabla Compañias en la base de datos
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string("nit");
-            $table->string("nombre");
+            $table->string("nit")->nullable();
+            $table->string("name");
+            $table->string("email")->nullable();
+            $table->string("alternative_email")->nullable();
+            $table->boolean('confirm_company_status')->default(false);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
