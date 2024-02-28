@@ -76,10 +76,15 @@
         </div>
     </main>
     <!-- JAVASCRIPT -->
+    <script src="{{ asset('js/confirmations.js') }}"></script>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    {{-- SWEET ALERT --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
 
     {{-- AOS.JS --}}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         AOS.init();
     </script>

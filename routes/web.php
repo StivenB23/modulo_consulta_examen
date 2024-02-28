@@ -64,7 +64,7 @@ Route::post("/registerUser", [UserController::class, "store"])->name("registerUs
 Route::post("/registerUserSpecialist", [UserController::class, "storeSpecialist"])->name("registerUserSpecialist");
 
 Route::put("/updateUser/{id}", [UserController::class, "update"])->name("updateUser");
-Route::put("/deactivateUser/{id}", [UserController::class, "deactivate"])->name("deactivateUser");
+Route::put("/deactivateUser/{id}/origin/{origin}", [UserController::class, "deactivate"])->name("deactivateUser");
 
 // Rutas Empresa (Compañia)
 Route::get("/companies", [CompanyController::class, "index"])->name("listCompanies");

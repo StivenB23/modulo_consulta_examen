@@ -53,11 +53,13 @@
                             @endif
                         </td>
                         <td>
-                            <form action="{{ route('deactivateUser', $user->id) }}" method="post">
-                                @method("PUT")
-                                @csrf
-                                <button>Desactivar</button>
-                            </form>
+                            @if ($user->status == 1)
+                                <form id="deactivateForm" action="{{ route('deactivateUser', ['id' => $user->id, 'origin' => 'specialists']) }}" method="post">
+                                    @method("PUT")
+                                    @csrf
+                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationSpecialist()">Desactivar</button>
+                                </form>
+                            @endif
                             {{-- <a href="{{ route('dashboard.specialists.edit', $user->id) }}">
                                 Editar
                             </a> --}}

@@ -133,10 +133,13 @@ class UserController extends Controller
     /**
      * Desactivar usuario
      */
-    public function deactivate(string $id)
+    public function deactivate(string $id, string $origin)
     {
         $userDeactivated = DB::table('users')
               ->where('id', $id)
               ->update(['status' => 0]);
+        if ($origin == "specialists") {
+            return redirect()->route("dashboard.specialists");
+        }
     }
 }

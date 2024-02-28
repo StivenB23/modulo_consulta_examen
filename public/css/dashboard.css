@@ -261,3 +261,16 @@ td {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.deactivate_button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--light);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
