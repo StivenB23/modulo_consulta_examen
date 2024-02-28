@@ -31,6 +31,7 @@ Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 
 // Rutas Usuario
+Route::get("/users", [UserController::class, "index"])->name("listUsers");
 Route::post("/registerUser", [UserController::class, "store"])->name("registerUser");
 Route::post("/registerUserSpecialist", [UserController::class, "storeSpecialist"])->name("registerUserSpecialist");
 
@@ -38,6 +39,7 @@ Route::put("/updateUser/{id}", [UserController::class, "update"])->name("updateU
 Route::put("/deactivateUser/{id}", [UserController::class, "deactivate"])->name("deactivateUser");
 
 // Rutas Empresa (Compañia)
+Route::get("/companies", [CompanyController::class, "index"])->name("listCompanies");
 Route::post("/registerCompany", [CompanyController::class, "store"])->name("registerCompany");
 Route::put("/updateCompany/{id}", [CompanyController::class, "update"])->name("updateCompany");
 Route::put("/deactivateCompany/{id}", [CompanyController::class, "deactivate"])->name("deactivateCompany");

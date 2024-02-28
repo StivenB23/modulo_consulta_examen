@@ -25,6 +25,7 @@ class UserController extends Controller
     {
         //
         $users = User::all();
+        // Retornar vista con información
     }
 
     /**
