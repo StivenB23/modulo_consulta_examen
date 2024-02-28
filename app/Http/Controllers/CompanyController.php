@@ -17,8 +17,8 @@ class CompanyController extends Controller
     {
         //
         $companies = Company::all();
-        // Retornar vista con información
 
+        return view('pages.dashboard.companies.list-companies', compact('companies'));
     }
 
     /**
@@ -41,6 +41,8 @@ class CompanyController extends Controller
             $company->email = is_null($data['email']) ? null : $data['email'];
             $company->alternative_email = is_null($data['alternative_email']) ? null : $data['alternative_email'];
             $company->save();
+
+            return redirect()->route('dashboard.companies');
         } catch (Exception $th) {
             dd($th->getMessage());
         }
@@ -57,9 +59,10 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Company $company)
+    public function edit(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('pages.dashboard.companies.edit-company', compact('company'));
     }
 
     /**
@@ -78,8 +81,8 @@ class CompanyController extends Controller
 
             // Guardar los cambios en la base de datos
             $recurso->save();
-            dd($recurso);
-            dd("actualizado");
+
+            return redirect()->route('dashboard.companies');
         } catch (Exception $th) {
             dd($th->getMessage());
         }
@@ -93,5 +96,7 @@ class CompanyController extends Controller
         $companyDeactivated = DB::table('companies')
         ->where('id', $id)
         ->update(['status' => 0]);
+
+        return redirect()->route("dashboard.companies");
     }
 }

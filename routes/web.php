@@ -46,13 +46,17 @@ Route::get('/dashboard/specialists/edit/{id}', [UserController::class, "edit"])
     ->middleware("auth");
 
 // COMPANIES
-Route::get('/dashboard/companies', function () {
-    return view('pages.dashboard.companies.list-companies');
-})->name("dashboard.companies")->middleware("auth");
+Route::get('/dashboard/companies', [CompanyController::class, "index"])
+    ->name("dashboard.companies")
+    ->middleware("auth");
 
 Route::get('/dashboard/companies/create', function () {
     return view('pages.dashboard.companies.create-company');
 })->name("dashboard.companies.create")->middleware("auth");
+
+Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
+    ->name("dashboard.companies.edit")
+    ->middleware("auth");
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -70,7 +74,6 @@ Route::put("/updateUser/{id}/origin/{origin}", [UserController::class, "update"]
 Route::put("/deactivateUser/{id}/origin/{origin}", [UserController::class, "deactivate"])->name("deactivateUser");
 
 // Rutas Empresa (Compañia)
-Route::get("/companies", [CompanyController::class, "index"])->name("listCompanies");
 Route::post("/registerCompany", [CompanyController::class, "store"])->name("registerCompany");
 Route::put("/updateCompany/{id}", [CompanyController::class, "update"])->name("updateCompany");
 Route::put("/deactivateCompany/{id}", [CompanyController::class, "deactivate"])->name("deactivateCompany");

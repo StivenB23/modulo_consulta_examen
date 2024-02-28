@@ -30,25 +30,37 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>123456789</td>
-                <td>Citogen</td>
-                <td>cito@test.com</td>
-                <td></td>
-                <td>Activo</td>
-                <td>
-                    {{-- action="{{ route('deactivateCompany', "5") }}" --}}
-                    <form  method="post">
-                        @method("PUT")
-                        @csrf
-                        <button>Desactivar</button>
-                    </form>
-
-                    <button>
-                        Editar
-                    </button>
-                </td>
-            </tr>
+            @if(count($companies) > 0)
+                @foreach($companies as $company)
+                    <tr>
+                        <td>{{ $company->nit }}</td>
+                        <td>{{ $company->name }}</td>
+                        <td>{{ $company->email }}</td>
+                        <td>{{ $company->alternative_email }}</td>
+                        <td class="status">
+                            @if ($company->status == 1)
+                                <div class="active">Activo</div>
+                            @else
+                                <div class="inactive">Inactivo</div>
+                            @endif
+                        </td>
+                        <td class="actions_table">
+                            @if ($company->status == 1)
+                                <form id="deactiveFormCompany" action="{{ route('deactivateCompany', ['id' => $company->id]) }}" method="post">
+                                    @method("PUT")
+                                    @csrf
+                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationCompany()">Desactivar</button>
+                                </form>
+                            @endif
+                            <a href="{{ route('dashboard.companies.edit', $company->id) }}" class="edit-btn">
+                                Editar
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <p>No hay compaňias registrados.</p>
+            @endif
         </tbody>
     </table>
 </div>

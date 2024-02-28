@@ -45,7 +45,7 @@
                         <td>{{ $user->sex }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
-                        <td>
+                        <td class="status">
                             @if ($user->status == 1)
                             <div class="active">Activo</div>
                             @else

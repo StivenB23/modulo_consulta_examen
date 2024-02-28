@@ -110,8 +110,9 @@
 
 .content {
     padding: 1rem 1rem 3rem 1rem;
-    overflow-y: scroll;
+    overflow: scroll;
     height: auto;
+    max-height: 100vh;
 }
 
 .card {
@@ -119,8 +120,8 @@
     padding: 1rem;
     border-radius: 10px;
     height: auto;
-    overflow-y: scroll;
     margin-top: 1rem 0;
+    overflow-x: scroll;
 }
 
 .actions {
@@ -238,7 +239,7 @@ td {
     font-size: 14px;
 }
 
-.active, .inactive {
+.status .active, .status .inactive {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.8rem;
@@ -247,11 +248,11 @@ td {
     color: var(--light);
 }
 
-.active {
+.status .active {
     background-color: var(--success);
 }
 
-.inactive {
+.status .inactive {
     background-color: var(--danger);
 }
 
@@ -292,4 +293,12 @@ td {
     outline: none;
     border: none;
     text-decoration: none;
+}
+
+li.active {
+    background-color: transparent;
+}
+
+li.active a {
+    border-radius: 10px;
 }
