@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nit', 'name','email','confirm_company_status','status'];
 }

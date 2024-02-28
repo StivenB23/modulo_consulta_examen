@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,14 @@ Route::get('/dashboard', function () {
 
 Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");
+
+// Rutas Usuario
+Route::post("/registerUser", [UserController::class, "store"])->name("registerUser");
+Route::post("/registerUserSpecialist", [UserController::class, "storeSpecialist"])->name("registerUserSpecialist");
+
+Route::put("/updateUser/{id}", [UserController::class, "update"])->name("updateUser");
+
+// Rutas Empresa (Compañia)
+Route::post("/registerCompany", [UserController::class, "store"])->name("registerCompany");
+
+Route::put("/updateCompany/{id}", [UserController::class, "update"])->name("updateCompany");
