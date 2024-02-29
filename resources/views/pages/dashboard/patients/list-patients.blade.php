@@ -41,7 +41,12 @@
                 <td>Procedencia de muestra</td>
                 <td>Dias de toma</td>
                 <td>
-                    <button>Ver examenes de este paciente</button>
+                    <a 
+                        href="{{ route('dashboard.exams.patient', 1) }}" 
+                        class="btn-basic"
+                    >
+                        Ver examenes de este paciente
+                    </a>
                     <button>Agregar examen a paciente</button>
                 </td>
             </tr>
@@ -50,17 +55,3 @@
 </div>
 @endsection
 
-@section('datatable')
-<script>
-    var datat=document.querySelector("#datat"); 
-    var dataTable=new DataTable("#datat",{ 
-      perPage:20,
-      labels: {
-          placeholder: "Busca por un campo...",
-          perPage: "{select} registros por página",
-          noRows: "No se encontraron registros",
-          info: "Mostrando {start} a {end} de {rows} registros",
-      }
-    } ) ;
-  </script>
-@endsection

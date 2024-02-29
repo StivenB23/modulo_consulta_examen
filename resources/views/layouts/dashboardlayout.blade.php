@@ -124,6 +124,17 @@
         AOS.init();
     </script>
 
-    @yield('datatable')
+    <script>
+        var datat=document.querySelector("#datat"); 
+        var dataTable=new DataTable("#datat",{ 
+          perPage:20,
+          labels: {
+              placeholder: "Busca por un campo...",
+              perPage: "{select} registros por página",
+              noRows: "No se encontraron registros",
+              info: "Mostrando {start} a {end} de {rows} registros",
+          }
+        } ) ;
+    </script>
 </body>
 </html>

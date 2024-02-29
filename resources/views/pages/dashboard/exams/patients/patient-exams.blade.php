@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Mis examenes')
 
 @section('content')
-<h2>Mis Examenes</h2>
+<h2>Examenes para el paciente John</h2>
 
 <div class="table">
     <table id="datat">

@@ -80,6 +80,12 @@ Route::get('/dashboard/exams/create', function () {
     return view('pages.dashboard.exams.create-exam');
 })->name("dashboard.exams.create")->middleware("auth");
 
+Route::get('/dashboard/exams/patient/{id}', function () {
+    return view('pages.dashboard.exams.patients.patient-exams');
+})->name("dashboard.exams.patient")->middleware("auth");
+
+// AUTH
+
 Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 
