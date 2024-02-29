@@ -30,3 +30,43 @@ html, body {
     z-index: 100;
     font-size: .9rem;
 }
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+form .form_group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.form_group input::placeholder {
+    color: var(--gray);
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+#patientOptions {
+    list-style: none;
+    padding: 5px;
+    margin: 5px 0 0 0;
+    display: none;
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: rgb(255, 255, 255);
+}
+
+#patientOptions li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#patientOptions li:hover {
+    background-color: #f4f4f4;
+}

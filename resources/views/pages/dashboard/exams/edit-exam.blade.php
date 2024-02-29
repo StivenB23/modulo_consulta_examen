@@ -3,29 +3,15 @@
 @section('title', 'Dashboard | Examenes')
 
 @section('content')
-<h2>Crear Examen</h2>
+<h2>Editar Examen</h2>
 
 <form action="{{ route('registerCompany') }}" method="post" enctype="multipart/form-data">
     @csrf
 
-    {{-- PATIENT --}}
-    <div class="form_group">
-        <label for="patient">Paciente</label>
-        <div class="custom-select">
-            <input type="text" id="searchInput" name="selectedPatient" placeholder="Buscar...">
-            <ul id="patientOptions">
-                <li data-value="h">Hot Dog, Fries and a Soda</li>
-                <li data-value="m">Burger, Shake and a Smile</li>
-                <li data-value="f">Sugar, Spice and all things nice</li>
-            </ul>
-            <input type="hidden" id="selectedPatient" name="selectedPatient" value="">
-        </div>
-    </div>
-
     {{-- EXTERN CODE --}}
     <div class="form_group">
         <label for="extern_code">Codigo Externo</label>
-        <input type="text" id="extern_code" name="extern_code" placeholder="Codigo Externo" value="{{ old('extern_code') }}">
+        <input type="text" id="extern_code" name="extern_code" placeholder="Codigo Externo" value="{{ $exam->extern_code }}">
         <p class="error">{{ $errors->first('extern_code') }}</p>
     </div>
 

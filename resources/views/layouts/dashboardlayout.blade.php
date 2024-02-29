@@ -15,6 +15,7 @@
     {{-- DATATABLES --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+    {{-- SELECT --}}
 </head>
 <body>
     <main class="container_dashboard">
@@ -112,6 +113,7 @@
     <!-- JAVASCRIPT -->
     <script src="{{ asset('js/confirmations.js') }}"></script>
     <script src="{{ asset('js/tabs.js') }}"></script>
+    <script src="{{ asset('js/searcher.js') }}"></script>
 
     {{-- SWEET ALERT --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

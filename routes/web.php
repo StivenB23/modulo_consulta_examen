@@ -71,6 +71,10 @@ Route::get('/dashboard/patients/create', function () {
     return view('pages.dashboard.patients.create-patient');
 })->name("dashboard.patients.create")->middleware("auth");
 
+Route::get('/dashboard/patients/edit/{id}', function () {
+    return view('pages.dashboard.patients.edit-patient');
+})->name("dashboard.patients.edit")->middleware("auth");
+
 Route::get('/dashboard/patients/exams', function () {
     return view('pages.dashboard.patients.exams.my-exams');
 })->name("dashboard.patients.my-exams")->middleware("auth");
@@ -87,6 +91,10 @@ Route::get('/dashboard/exams/create', function () {
 Route::get('/dashboard/exams/patient/{id}', function () {
     return view('pages.dashboard.exams.patients.patient-exams');
 })->name("dashboard.exams.patient")->middleware("auth");
+
+Route::get('/dashboard/exams/edit/{id}', function () {
+    return view('pages.dashboard.exams.edit-exam');
+})->name("dashboard.exams.edit")->middleware("auth");
 
 // AUTH
 
