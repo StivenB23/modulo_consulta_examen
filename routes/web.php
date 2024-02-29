@@ -74,6 +74,7 @@ Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 
 Route::post("/registerUser", [UserController::class, "store"])->name("registerUser");
 Route::post("/registerUserSpecialist", [UserController::class, "storeSpecialist"])->name("registerUserSpecialist");
+Route::post("/registerUserPacient", [UserController::class, "storePacient"])->name("registerUserPacient");
 
 Route::put("/updateUser/{id}/origin/{origin}", [UserController::class, "update"])->name("updateUser");
 Route::put("/deactivateUser/{id}/origin/{origin}", [UserController::class, "deactivate"])->name("deactivateUser");

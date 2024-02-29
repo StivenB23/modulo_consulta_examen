@@ -86,6 +86,31 @@ class UserController extends Controller
         }
     }
 
+    public function storePacient(Request $request)
+    {
+        try {
+            $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email");
+            $passwordEncrypt = $this->randomKeyService->generateKey(12);
+            $user = new User();
+            $user->name = $data["name"];
+            $user->lastname = $data["lastname"];
+            $user->type_document = $data["type_document"];
+            $user->document = $data["document"];
+            $user->age = $data["age"];
+            $user->sex = $data["sex"];
+            $user->email = $data["email"];
+            $user->role = "paciente";
+            $user->password = $passwordEncrypt;
+            $user->save();
+
+            return redirect()->route("dashboard.specialists");
+        } catch (Exception $th) {
+            dd($th->getMessage());
+        }
+    }
+
+    
+
     /**
      * Display the specified resource.
      */
