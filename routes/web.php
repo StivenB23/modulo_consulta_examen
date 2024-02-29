@@ -58,9 +58,23 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
     ->name("dashboard.companies.edit")
     ->middleware("auth");
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->name("dashboard")->middleware("auth");
+// PATIENTS
+Route::get('/dashboard/patients', function () {
+    return view('pages.dashboard.patients.list-patients');
+})->name("dashboard.patients")->middleware("auth");
+
+Route::get('/dashboard/patients/create', function () {
+    return view('pages.dashboard.patients.create-patient');
+})->name("dashboard.patients.create")->middleware("auth");
+
+// EXAMS
+Route::get('/dashboard/exams', function () {
+    return view('pages.dashboard.exams.list-exams');
+})->name("dashboard.exams")->middleware("auth");
+
+Route::get('/dashboard/exams/create', function () {
+    return view('pages.dashboard.exams.create-exam');
+})->name("dashboard.exams.create")->middleware("auth");
 
 Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");

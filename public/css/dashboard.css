@@ -110,7 +110,7 @@
 
 .content {
     padding: 1rem 1rem 3rem 1rem;
-    overflow: scroll;
+    overflow-y: scroll;
     height: auto;
     max-height: 100vh;
 }
@@ -121,7 +121,7 @@
     border-radius: 10px;
     height: auto;
     margin-top: 1rem 0;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .actions {

@@ -2,12 +2,6 @@
 
 @section('title', 'Dashboard | Especialistas')
 
-@section('user')
-<h3 class="name">
-    John Gualteros <span>(Especialista)</span>
-</h3>
-@endsection
-
 @section('content')
 <h2>Lista de especialistas</h2>
 

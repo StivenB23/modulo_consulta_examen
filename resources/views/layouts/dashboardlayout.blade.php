@@ -47,6 +47,23 @@
                 </div>
             @endif
             {{-- SPECIALIST --}}
+            @if (Auth::user()->role == 'especialista')
+                <div class="items">
+                    <a href="{{ route('dashboard.patients') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/patients') ? 'active item' : 'item' }}">
+                        <i class="bi bi-bandaid"></i>
+                        <p>
+                            Pacientes
+                        </p>
+                    </a>
+                    
+                    <a href="{{ route('dashboard.exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
+                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                        <p>
+                            Examenes
+                        </p>
+                    </a>
+                </div>
+            @endif
 
             {{-- USER --}}
 
@@ -77,6 +94,7 @@
     </main>
     <!-- JAVASCRIPT -->
     <script src="{{ asset('js/confirmations.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
 
     {{-- SWEET ALERT --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
