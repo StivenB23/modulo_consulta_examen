@@ -134,6 +134,13 @@
         <p class="error">{{ $errors->first('sampling_days') }}</p>
     </div>
 
+    {{-- File --}}
+    <div class="form_group">
+        <label for="file">Archivo</label>
+        <input type="file" id="file" name="file" placeholder="Archivo" value="{{ old('file') }}">
+        <p class="error">{{ $errors->first('file') }}</p>
+    </div>
+
     <button type="submit">Guardar</button>
 </form>
 @endsection
