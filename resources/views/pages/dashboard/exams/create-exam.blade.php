@@ -5,7 +5,7 @@
 @section('content')
 <h2>Crear Examen</h2>
 
-<form action="{{ route('registerCompany') }}" method="post">
+<form action="{{ route('registerCompany') }}" method="post" enctype="multipart/form-data">
     @csrf
 
     {{-- EXTERN CODE --}}

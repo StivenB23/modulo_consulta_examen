@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/email', function () {
+    return view('emails.main-template');
+});
+
 Route::get('/', function () {
     return view('pages.authentication.login');
 });

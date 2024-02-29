@@ -1,0 +1,29 @@
+@import url('./auth.css');
+
+
+.mail {
+    padding: 1rem;
+}
+
+.mail h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text);
+}
+
+.mail p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text);
+}
+
+.footer-mail {
+    margin-top: 1rem;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--light);
+    padding: 10px;
+    font-weight: 100;
+}

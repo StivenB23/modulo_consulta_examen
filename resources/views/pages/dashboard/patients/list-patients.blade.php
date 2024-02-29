@@ -53,5 +53,19 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal">
+    <div class="modal-content">
+        <div class="close-container">
+            <i class="bi bi-x-lg" id="close"></i>
+        </div>
+        <h2>Asignar Examen Al Paciente <span id="patient-name-modal">John</span></h2>
+
+        <input type="text" placeholder="buscar examen" id="search-exam">
+
+        <div class="list">
+        </div>
+    </div>
+</div>
 @endsection
 
