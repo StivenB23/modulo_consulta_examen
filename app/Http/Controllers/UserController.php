@@ -89,12 +89,13 @@ class UserController extends Controller
     public function storePacient(Request $request)
     {
         try {
-            $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email");
+            $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email", "company_id");
             $passwordEncrypt = $this->randomKeyService->generateKey(12);
             $user = new User();
             $user->name = $data["name"];
             $user->lastname = $data["lastname"];
             $user->type_document = $data["type_document"];
+            $user->company_id = $data["company_id"];
             $user->document = $data["document"];
             $user->age = $data["age"];
             $user->sex = $data["sex"];
