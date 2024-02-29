@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['name', 'lastname','type_document','document','age', 'email', 'password', 'role','status'];
+    protected $fillable = ['name', 'lastname', 'type_document', 'document', 'age', 'email', 'password', 'role', 'status'];
 
+
+    public function patients()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

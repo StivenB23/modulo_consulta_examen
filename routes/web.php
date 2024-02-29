@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("/",[UserController::class, "testUser"]);
+
 Route::get('/', function () {
     return view('pages.authentication.login');
 });

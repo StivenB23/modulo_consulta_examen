@@ -12,12 +12,15 @@ class UserController extends Controller
 {
 
     protected $randomKeyService;
-
+    
     public function __construct(RandomKeyService $randomKeyService)
     {
         $this->randomKeyService = $randomKeyService;
     }
+    
+    public function testUser (){
 
+    }
     /**
      * Display a listing of the resource.
      */
