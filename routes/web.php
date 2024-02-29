@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ExamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/email', function () {
     return view('emails.main-template');
 });
+Route::get("/",[UserController::class, "testUser"]);
 
 Route::get('/', function () {
     return view('pages.authentication.login');
@@ -98,6 +100,8 @@ Route::get('/dashboard/exams/edit/{id}', function () {
 
 // AUTH
 
+Route::post("/guardar_datos", [ExamController::class, "store"])->name("guardar_datos");
+
 Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 
@@ -105,6 +109,7 @@ Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 
 Route::post("/registerUser", [UserController::class, "store"])->name("registerUser");
 Route::post("/registerUserSpecialist", [UserController::class, "storeSpecialist"])->name("registerUserSpecialist");
+Route::post("/registerUserPacient", [UserController::class, "storePacient"])->name("registerUserPacient");
 
 Route::put("/updateUser/{id}/origin/{origin}", [UserController::class, "update"])->name("updateUser");
 Route::put("/deactivateUser/{id}/origin/{origin}", [UserController::class, "deactivate"])->name("deactivateUser");
