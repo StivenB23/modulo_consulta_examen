@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ExamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,6 +64,8 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->name("dashboard")->middleware("auth");
+
+Route::post("/guardar_datos", [ExamController::class, "store"])->name("guardar_datos");
 
 Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");

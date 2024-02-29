@@ -15,8 +15,9 @@ class User extends Authenticatable
     protected $fillable = ['name', 'lastname', 'type_document', 'document', 'age', 'email', 'password', 'role', 'status'];
 
 
-    public function patients()
+    
+    public function exams()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Exam::class);
     }
 }

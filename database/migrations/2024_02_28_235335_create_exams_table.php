@@ -21,7 +21,6 @@ return new class extends Migration
             $table->date("sample_receipt_date");
             $table->time("sample_receipt_hour");
             $table->string("patient_temperature");
-            $table->string("name");
             $table->text("diagnostic");
             $table->text("deliver_date");
             $table->date("birth_date");
