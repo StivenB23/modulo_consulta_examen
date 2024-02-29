@@ -67,6 +67,10 @@ Route::get('/dashboard/patients/create', function () {
     return view('pages.dashboard.patients.create-patient');
 })->name("dashboard.patients.create")->middleware("auth");
 
+Route::get('/dashboard/patients/exams', function () {
+    return view('pages.dashboard.patients.exams.my-exams');
+})->name("dashboard.patients.my-exams")->middleware("auth");
+
 // EXAMS
 Route::get('/dashboard/exams', function () {
     return view('pages.dashboard.exams.list-exams');

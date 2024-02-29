@@ -302,3 +302,19 @@ li.active {
 li.active a {
     border-radius: 10px;
 }
+
+.info {
+    margin-top: 10px;
+}
+
+.info p {
+    font-size: 1rem;
+    font-weight: 100;
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.info p span {
+    font-weight: bold;
+    color: var(--primary-color);
+}

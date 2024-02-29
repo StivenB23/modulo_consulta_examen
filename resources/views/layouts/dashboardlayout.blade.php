@@ -65,7 +65,24 @@
                 </div>
             @endif
 
-            {{-- USER --}}
+            {{-- Patient --}}
+            @if (Auth::user()->role == 'cliente')
+                <div class="items">
+                    <a href="{{ route('dashboard') }}" class="{{ request()->path() === 'dashboard' ? 'active item' : 'item' }}">
+                        <i class="bi bi-clipboard2-data"></i>
+                        <p>
+                            Mi Información
+                        </p>
+                    </a>
+                    <a href="{{ route('dashboard.patients.my-exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/patients/exams') ? 'active item' : 'item' }}">
+                        <i class="bi bi-activity"></i>
+                        <p>
+                            Mis Examenes
+                        </p>
+                    </a>
+                </div>
+            @endif
+
 
             {{-- LOGOUT --}}
             <div class="logout_container">
