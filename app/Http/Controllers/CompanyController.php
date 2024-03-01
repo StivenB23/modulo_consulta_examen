@@ -79,6 +79,10 @@ class CompanyController extends Controller
             // Asignar dinámicamente los valores de la solicitud al recurso
             $recurso->fill($datos);
 
+            if($request->has('alternative_email')){
+                $recurso->alternative_email = $request->alternative_email;
+            }
+
             // Guardar los cambios en la base de datos
             $recurso->save();
 
