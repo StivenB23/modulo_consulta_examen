@@ -162,7 +162,7 @@ th {
     background: var(--light);
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 100;
     padding: 5px 10px;
     text-align: left;
@@ -214,7 +214,7 @@ td {
     text-align: left;
     vertical-align: middle;
     font-weight: 300;
-    font-size: .8rem;
+    font-size: .7rem !important;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
     border-right: 1px solid #ccc;
 }
@@ -360,4 +360,31 @@ li.active a {
     border: 1px solid #ccc;
     border-radius: 3px;
     margin: 10px 0;
+}
+
+.table.small td {
+    padding: 5px 10px;
+    font-size: 0.8rem !important;
+}
+
+.document_actions {
+    display: flex;
+    gap: 10px;
+}
+
+.small-btn {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-align: center;
+    color: var(--light);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.secondary {
+    background-color: var(--action);
 }

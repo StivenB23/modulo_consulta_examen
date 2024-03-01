@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
-    const selectedPatientInput = document.getElementById('selectedPatient');
+    const selectedPatientInput = document.getElementById('id_user');
     const patientOptions = document.getElementById('patientOptions');
 
     searchInput.addEventListener('focus', function () {

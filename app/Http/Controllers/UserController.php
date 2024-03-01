@@ -30,6 +30,12 @@ class UserController extends Controller
         return view('pages.dashboard.specialists.list-specialists', compact('users'));
     }
 
+    public function indexPatients()
+    {
+        $users = User::where('role', 'cliente')->get();
+        return view('pages.dashboard.patients.list-patients', compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -130,6 +136,13 @@ class UserController extends Controller
         return view('pages.dashboard.specialists.edit-specialist', compact('user'));
     }
 
+    public function editPatient(string $id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('pages.dashboard.patients.edit-patient', compact('user'));
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -160,6 +173,9 @@ class UserController extends Controller
             if ($origin == "specialists") {
                 return redirect()->route("dashboard.specialists");
             }
+            if ($origin == "patients") {
+                return redirect()->route("dashboard.patients");
+            }
         } catch (Exception $th) {
             dd($th->getMessage());
         }
@@ -175,6 +191,9 @@ class UserController extends Controller
               ->update(['status' => 0]);
         if ($origin == "specialists") {
             return redirect()->route("dashboard.specialists");
+        } 
+        if ($origin == "patients") {
+            return redirect()->route("dashboard.patients");
         }
     }
 }

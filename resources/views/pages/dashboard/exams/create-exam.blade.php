@@ -5,7 +5,7 @@
 @section('content')
 <h2>Crear Examen</h2>
 
-<form action="{{ route('registerCompany') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('saveExam') }}" method="post" enctype="multipart/form-data">
     @csrf
 
     {{-- PATIENT --}}
@@ -14,34 +14,25 @@
         <div class="custom-select">
             <input type="text" id="searchInput" name="selectedPatient" placeholder="Buscar...">
             <ul id="patientOptions">
-                <li data-value="h">Hot Dog, Fries and a Soda</li>
-                <li data-value="m">Burger, Shake and a Smile</li>
-                <li data-value="f">Sugar, Spice and all things nice</li>
+                @foreach($patients as $patient)
+                    <li data-value="{{ $patient->id }}">{{ $patient->name }} {{ $patient->lastname }}</li>
+                @endforeach
             </ul>
-            <input type="hidden" id="selectedPatient" name="selectedPatient" value="">
+            <input type="hidden" id="id_user" name="id_user" value="">
         </div>
     </div>
 
     {{-- EXTERN CODE --}}
     <div class="form_group">
-        <label for="extern_code">Codigo Externo</label>
-        <input type="text" id="extern_code" name="extern_code" placeholder="Codigo Externo" value="{{ old('extern_code') }}">
-        <p class="error">{{ $errors->first('extern_code') }}</p>
-    </div>
-
-    {{-- ENTITY --}}
-    <div class="form_group" >
-        <label for="entity">Entidad</label>
-        <select name="entity" id="entity">
-            <option value="RC">Relacion list entities</option>
-        </select>
-        <p class="error">{{ $errors->first('entity') }}</p>
+        <label for="external_code">Codigo Externo</label>
+        <input type="text" id="external_code" name="external_code" placeholder="Codigo Externo" value="{{ old('external_code') }}">
+        <p class="error">{{ $errors->first('external_code') }}</p>
     </div>
 
     {{-- TYPE EXAM --}}
     <div class="form_group" >
-        <label for="exam_type">Tipo de Examen</label>
-        <select name="exam_type" id="exam_type">
+        <label for="type_exam">Tipo de Examen</label>
+        <select name="type_exam" id="type_exam">
             <option value="Cario-Fish">Cario-Fish</option>
             <option value="CBG: Cariotipo Bandeo G">CBG: Cariotipo Bandeo G</option>
             <option value="CBC: Cariotipo Bandeo C">CBC: Cariotipo Bandeo C</option>
@@ -77,82 +68,96 @@
             <option value="Paternidad">Paternidad</option>
             <option value="PCR TOXOPLASMA GONDII">PCR TOXOPLASMA GONDII</option>
         </select>
-        <p class="error">{{ $errors->first('exam_type') }}</p>
+        <p class="error">{{ $errors->first('type_exam') }}</p>
     </div>
 
     {{-- Tipo de muestra --}}
     <div class="form_group" >
-        <label for="tipe_sample">Tipo De Muestra</label>
-        <select name="tipe_sample" id="tipe_sample">
+        <label for="sample_type">Tipo De Muestra</label>
+        <select name="sample_type" id="sample_type">
             <option value="SP">SP</option>
             <option value="MO">MO</option>
             <option value="SALIVA">SALIVA</option>
             <option value="LA">LA</option>
         </select>
-        <p class="error">{{ $errors->first('tipe_sample') }}</p>
+        <p class="error">{{ $errors->first('sample_type') }}</p>
     </div>
 
     {{-- Date of Sampling  --}}
     <div class="form_group">
-        <label for="sampling_date">Fecha de toma de la muestra</label>
-        <input type="date" id="sampling_date" name="sampling_date" placeholder="Fecha toma de la muestra" value="{{ old('sampling_date') }}">
-        <p class="error">{{ $errors->first('sampling_date') }}</p>
+        <label for="exam_date">Fecha de toma de la muestra</label>
+        <input type="date" id="exam_date" name="exam_date" placeholder="Fecha toma de la muestra" value="{{ old('exam_date') }}">
+        <p class="error">{{ $errors->first('exam_date') }}</p>
     </div>
 
     {{-- Hour of Sampling  --}}
     <div class="form_group">
-        <label for="sampling_hour">Hora de toma de la muestra</label>
-        <input type="time" id="sampling_hour" name="sampling_hour" placeholder="Hora toma de la muestra" value="{{ old('sampling_hour') }}">
-        <p class="error">{{ $errors->first('sampling_hour') }}</p>
+        <label for="exam_hour">Hora de toma de la muestra</label>
+        <input type="time" id="exam_hour" name="exam_hour" placeholder="Hora toma de la muestra" value="{{ old('exam_hour') }}">
+        <p class="error">{{ $errors->first('exam_hour') }}</p>
     </div>
 
     {{-- SAMPLE RECEIPT DATE  --}}
     <div class="form_group">
-        <label for="sampling_receipt_date">Fecha de recepción de la muestra</label>
-        <input type="date" id="sampling_receipt_date" name="sampling_receipt_date" placeholder="Fecha recepción de la muestra" value="{{ old('sampling_receipt_date') }}">
-        <p class="error">{{ $errors->first('sampling_receipt_date') }}</p>
+        <label for="sample_receipt_date">Fecha de recepción de la muestra</label>
+        <input type="date" id="sample_receipt_date" name="sample_receipt_date" placeholder="Fecha recepción de la muestra" value="{{ old('sample_receipt_date') }}">
+        <p class="error">{{ $errors->first('sample_receipt_date') }}</p>
     </div>
 
     {{-- Hour of Receipt  --}}
     <div class="form_group">
-        <label for="receipt_hour">Hora de recepción</label>
-        <input type="time" id="receipt_hour" name="receipt_hour" placeholder="Hora de recepción" value="{{ old('receipt_hour') }}">
-        <p class="error">{{ $errors->first('receipt_hour') }}</p>
+        <label for="sample_receipt_hour">Hora de recepción</label>
+        <input type="time" id="sample_receipt_hour" name="sample_receipt_hour" placeholder="Hora de recepción" value="{{ old('sample_receipt_hour') }}">
+        <p class="error">{{ $errors->first('sample_receipt_hour') }}</p>
     </div>
 
     {{-- Entry Temp  --}}
     <div class="form_group">
-        <label for="entry_temp">Temperatura de ingreso</label>
-        <input type="text" id="entry_temp" name="entry_temp" placeholder="Temperatura de ingreso" value="{{ old('entry_temp') }}">
-        <p class="error">{{ $errors->first('entry_temp') }}</p>
+        <label for="patient_temperature">Temperatura de ingreso</label>
+        <input type="text" id="patient_temperature" name="patient_temperature" placeholder="Temperatura de ingreso" value="{{ old('patient_temperature') }}">
+        <p class="error">{{ $errors->first('patient_temperature') }}</p>
+    </div>
+
+    {{-- Diagnostic --}}
+    <div class="form_group">
+        <label for="diagnostic">Diagnostico</label>
+        <input type="text" id="diagnostic" name="diagnostic" placeholder="Diagnostico" value="{{ old('diagnostic') }}">
+        <p class="error">{{ $errors->first('diagnostic') }}</p>
     </div>
 
     {{-- Delivery Date  --}}
     <div class="form_group">
-        <label for="delivery_date">Fecha de entrega</label>
-        <input type="date" id="delivery_date" name="delivery_date" placeholder="Fecha de entrega" value="{{ old('delivery_date') }}">
-        <p class="error">{{ $errors->first('delivery_date') }}</p>
+        <label for="deliver_date">Fecha de entrega</label>
+        <input type="date" id="deliver_date" name="deliver_date" placeholder="Fecha de entrega" value="{{ old('deliver_date') }}">
+        <p class="error">{{ $errors->first('deliver_date') }}</p>
+    </div>
+
+    {{-- DATE BIRTH --}}
+    <div class="form_group">
+        <label for="birth_date">Fecha de nacimiento</label>
+        <input type="date" id="birth_date" name="birth_date" placeholder="Fecha de nacimiento" value="{{ old('birth_date') }}">
+        <p class="error">{{ $errors->first('birth_date') }}</p>
     </div>
 
     {{-- Sample Provenance  --}}
     <div class="form_group">
-        <label for="sample_provenance">Procedencia de la muestra</label>
-        <input type="text" id="sample_provenance" name="sample_provenance" placeholder="Procedencia de la muestra" value="{{ old('sample_provenance') }}">
-        <p class="error">{{ $errors->first('sample_provenance') }}</p>
+        <label for="origin_sample">Procedencia de la muestra</label>
+        <input type="text" id="origin_sample" name="origin_sample" placeholder="Procedencia de la muestra" value="{{ old('origin_sample') }}">
+        <p class="error">{{ $errors->first('origin_sample') }}</p>
     </div>
 
     {{-- Days of Sampling  --}}
     <div class="form_group">
-        <label for="sampling_days">Dias de toma</label>
-        <input type="text" id="sampling_days" name="sampling_days" placeholder="Dias de toma" value="{{ old('sampling_days') }}">
-        <p class="error">{{ $errors->first('sampling_days') }}</p>
+        <label for="taking_days">Dias de toma</label>
+        <input type="text" id="taking_days" name="taking_days" placeholder="Dias de toma" value="{{ old('taking_days') }}">
+        <p class="error">{{ $errors->first('taking_days') }}</p>
     </div>
 
     {{-- File --}}
     <div class="form_group">
-        <label for="file">Archivo</label>
-        <input type="file" id="file" name="file" placeholder="Archivo" value="{{ old('file') }}">
-        <p class="error">{{ $errors->first('file') }}</p>
+        <label for="document">Archivo</label>
+        <input type="file" id="document" name="document" placeholder="Archivo" value="{{ old('document') }}">
+        <p class="error">{{ $errors->first('document') }}</p>
     </div>
 
     <button type="submit">Guardar</button>

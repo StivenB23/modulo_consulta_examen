@@ -66,11 +66,7 @@
         </div>
 
         {{-- BIRTH DATE --}}
-        <div class="form_group">
-            <label for="birth_date">Fecha de nacimiento</label>
-            <input type="date" id="birth_date" name="birth_date" placeholder="Fecha de nacimiento" value="{{ old('birth_date') }}">
-            <p class="error">{{ $errors->first('birth_date') }}</p>
-        </div>
+        
 
         <button type="submit">Registrar</button>
     </form>

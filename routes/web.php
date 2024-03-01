@@ -65,42 +65,47 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
     ->middleware("auth");
 
 // PATIENTS
-Route::get('/dashboard/patients', function () {
-    return view('pages.dashboard.patients.list-patients');
-})->name("dashboard.patients")->middleware("auth");
+// Route::get('/dashboard/patients', function () {
+//     return view('pages.dashboard.patients.list-patients');
+// })->name("dashboard.patients")->middleware("auth");
+
+Route::get('/dashboard/patients', [UserController::class, "indexPatients"])
+    ->name("dashboard.patients")
+    ->middleware("auth");
 
 Route::get('/dashboard/patients/create', function () {
     return view('pages.dashboard.patients.create-patient');
 })->name("dashboard.patients.create")->middleware("auth");
 
-Route::get('/dashboard/patients/edit/{id}', function () {
-    return view('pages.dashboard.patients.edit-patient');
-})->name("dashboard.patients.edit")->middleware("auth");
+Route::get('/dashboard/patients/edit/{id}', [UserController::class, "editPatient"])
+    ->name("dashboard.patients.edit")
+    ->middleware("auth");
 
 Route::get('/dashboard/patients/exams', function () {
     return view('pages.dashboard.patients.exams.my-exams');
 })->name("dashboard.patients.my-exams")->middleware("auth");
 
 // EXAMS
-Route::get('/dashboard/exams', function () {
-    return view('pages.dashboard.exams.list-exams');
-})->name("dashboard.exams")->middleware("auth");
 
-Route::get('/dashboard/exams/create', function () {
-    return view('pages.dashboard.exams.create-exam');
-})->name("dashboard.exams.create")->middleware("auth");
+Route::get('/dashboard/exams', [ExamController::class, "index"])
+    ->name("dashboard.exams")
+    ->middleware("auth");
+
+Route::get('/dashboard/exams/create', [ExamController::class, "create"])
+    ->name("dashboard.exams.create")
+    ->middleware("auth");
 
 Route::get('/dashboard/exams/patient/{id}', function () {
     return view('pages.dashboard.exams.patients.patient-exams');
 })->name("dashboard.exams.patient")->middleware("auth");
 
-Route::get('/dashboard/exams/edit/{id}', function () {
-    return view('pages.dashboard.exams.edit-exam');
-})->name("dashboard.exams.edit")->middleware("auth");
+// Route::get('/dashboard/exams/edit/{id}', function () {
+//     return view('pages.dashboard.exams.edit-exam');
+// })->name("dashboard.exams.edit")->middleware("auth");
 
 // AUTH
 
-Route::post("/guardar_datos", [ExamController::class, "store"])->name("guardar_datos");
+Route::post("/exam/create", [ExamController::class, "store"])->name("saveExam");
 
 Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");

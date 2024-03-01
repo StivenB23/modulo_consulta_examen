@@ -14,7 +14,8 @@ class ExamController extends Controller
      */
     public function index()
     {
-        //
+        $exams = Exam::all();
+        return view('pages.dashboard.exams.list-exams', compact('exams'));
     }
 
     /**
@@ -22,7 +23,9 @@ class ExamController extends Controller
      */
     public function create()
     {
-        //
+        $patients = User::where('role', 'cliente')->get();
+
+        return view('pages.dashboard.exams.create-exam', compact('patients'));
     }
 
     /**
@@ -52,7 +55,6 @@ class ExamController extends Controller
             // Guardar el archivo con el nuevo nombre
             $request->file('document')->storeAs('public/', $newName);
             $user = User::find($data["id_user"]);
-
 
             $exam = Exam::create([
                 'external_code' => $data["external_code"],
@@ -88,6 +90,8 @@ class ExamController extends Controller
             // $user->document = $data["document"];
             // $user->taking_days = $data["taking_days"];
             // $user->save();
+
+            return redirect()->route("dashboard.exams");
         } catch (Exception $th) {
             dd($th->getMessage());
         }

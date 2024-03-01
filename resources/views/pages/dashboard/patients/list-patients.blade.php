@@ -15,41 +15,54 @@
     <table id="datat">
         <thead>
             <tr>
-                <th>OR</th>
-                <th>Identificación</th>
-                <th>Sexo</th>
-                <th>Edad</th>
-                <th>Hora de recepción</th>
-                <th>Temp de ingreso</th>
                 <th>Nombre</th>
-                <th>Diagnostico</th>
-                <th>Fecha de entrega</th>
-                <th>Fecha de nacimiento</th>
+                <th>Apellido</th>
+                <th>Tipo Doc</th>
+                <th>Documento</th>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>Correo</th>
+                <th>Cargo</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>123456</td>
-                <td>M</td>
-                <td>25</td>
-                <td>123456</td>
-                <td>Fecha de toma de muestra</td>
-                <td>Fecha de entrega</td>
-                <td>Fecha de nacimiento</td>
-                <td>Procedencia de muestra</td>
-                <td>Dias de toma</td>
-                <td>
-                    <a 
-                        href="{{ route('dashboard.exams.patient', 1) }}" 
-                        class="btn-basic"
-                    >
-                        Ver examenes de este paciente
-                    </a>
-                    <button>Agregar examen a paciente</button>
-                </td>
-            </tr>
+            @if(count($users) > 0)
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->lastname }}</td>
+                        <td>{{ $user->type_document }}</td>
+                        <td>{{ $user->document }}</td>
+                        <td>{{ $user->age }}</td>
+                        <td>{{ $user->sex }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td class="status">
+                            @if ($user->status == 1)
+                            <div class="active">Activo</div>
+                            @else
+                            <div class="inactive">Inactivo</div>
+                            @endif
+                        </td>
+                        <td class="actions_table">
+                            @if ($user->status == 1)
+                                <form id="deactivateForm" action="{{ route('deactivateUser', ['id' => $user->id, 'origin' => 'patients']) }}" method="post">
+                                    @method("PUT")
+                                    @csrf
+                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationSpecialist()">Desactivar</button>
+                                </form>
+                            @endif
+                            <a href="{{ route('dashboard.patients.edit', $user->id) }}" class="edit-btn">
+                                Editar
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <p>No hay especialistas registrados.</p>
+            @endif
         </tbody>
     </table>
 </div>
