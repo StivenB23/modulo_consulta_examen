@@ -12,10 +12,28 @@
             <span>Nombre:</span> {{ Auth::user()->name }}
         </p>
         <p>
-            <span>Correo:</span> {{ Auth::user()->email }}
+            <span>Apellido:</span> {{ Auth::user()->lastname }}
+        </p>
+        @if (Auth::user()->company)
+            <p>
+                <span>Entidad:</span> {{ Auth::user()->company->name }}
+            </p>
+            
+        @endif
+        <p>
+            <span>Tipo de documento:</span> {{ Auth::user()->type_document }}
+        </p>
+        <p>
+            <span>Documento:</span> {{ Auth::user()->document }}
+        </p>
+        <p>
+            <span>Edad:</span> {{ Auth::user()->age }}
         </p>
         <p>
             <span>Sex:</span> {{ Auth::user()->sex }}
+        </p>
+        <p>
+            <span>Correo:</span> {{ Auth::user()->email }}
         </p>
     </div>
 @else
