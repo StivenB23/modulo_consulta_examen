@@ -38,7 +38,7 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $request->only("external_code","anticoagulant", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
+            $data = $request->only("external_code", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
             // $name = $request->file("document")->getClientOriginalName();
             // $request->file('document')->storeAs('public/',$name);
             // Generar un nombre único para el archivo
@@ -61,7 +61,7 @@ class ExamController extends Controller
             $exam = Exam::create([
                 'external_code' => $data["external_code"],
                 'type_exam' => $data["type_exam"],
-                'anticoagulant' => $data["anticoagulant"],
+                'anticoagulant' => $data["anticoagulant"] ?? "HEP",
                 'or' => $data["or"],
                 'sample_type' => $data["sample_type"],
                 'exam_date' => $data["exam_date"],

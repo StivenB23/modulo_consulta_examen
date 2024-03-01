@@ -36,11 +36,11 @@
     </div>
 
     {{-- anticoagulant --}}
-    <div class="form_group">
+    {{-- <div class="form_group">
         <label for="exam_date">Anticoagulante</label>
         <input type="text" id="anticoagulant" name="anticoagulant" placeholder="Codigo Externo" value="{{ old('anticoagulant') }}">
         <p class="error">{{ $errors->first('anticoagulant') }}</p>
-    </div>
+    </div> --}}
     {{-- TYPE EXAM --}}
     <div class="form_group" >
         <label for="type_exam">Tipo de Examen</label>
