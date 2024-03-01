@@ -65,17 +65,19 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
     ->middleware("auth");
 
 // PATIENTS
-// Route::get('/dashboard/patients', function () {
-//     return view('pages.dashboard.patients.list-patients');
-// })->name("dashboard.patients")->middleware("auth");
 
 Route::get('/dashboard/patients', [UserController::class, "indexPatients"])
     ->name("dashboard.patients")
     ->middleware("auth");
 
-Route::get('/dashboard/patients/create', function () {
-    return view('pages.dashboard.patients.create-patient');
-})->name("dashboard.patients.create")->middleware("auth");
+// Route::get('/dashboard/patients/create', function () {
+//     return view('pages.dashboard.patients.create-patient');
+// })->name("dashboard.patients.create")->middleware("auth");
+
+
+Route::get('/dashboard/patients/create', [UserController::class, "createPatient"])
+    ->name("dashboard.patients.create")
+    ->middleware("auth");
 
 Route::get('/dashboard/patients/edit/{id}', [UserController::class, "editPatient"])
     ->name("dashboard.patients.edit")

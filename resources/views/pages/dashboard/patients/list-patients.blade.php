@@ -17,6 +17,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Entidad</th>
                 <th>Tipo Doc</th>
                 <th>Documento</th>
                 <th>Edad</th>
@@ -33,6 +34,7 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->lastname }}</td>
+                        <td>{{ $user->company->name ?? '' }}</td>
                         <td>{{ $user->type_document }}</td>
                         <td>{{ $user->document }}</td>
                         <td>{{ $user->age }}</td>
@@ -48,15 +50,18 @@
                         </td>
                         <td class="actions_table">
                             @if ($user->status == 1)
-                                <form id="deactivateForm" action="{{ route('deactivateUser', ['id' => $user->id, 'origin' => 'patients']) }}" method="post">
+                                <p>{{ $user->id }}</p>
+                                <form id="deactivateFormPatient" action="{{ route('deactivateUser', ['id' => $user->id, 'origin' => 'patients']) }}" method="POST">
                                     @method("PUT")
                                     @csrf
-                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationSpecialist()">Desactivar</button>
+                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationPatient()">Desactivar</button>
                                 </form>
                             @endif
                             <a href="{{ route('dashboard.patients.edit', $user->id) }}" class="edit-btn">
                                 Editar
                             </a>
+
+                            <a href=""></a>
                         </td>
                     </tr>
                 @endforeach

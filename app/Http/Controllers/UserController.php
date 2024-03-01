@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\User;
 use App\Services\RandomKeyService;
 use Exception;
@@ -41,6 +42,12 @@ class UserController extends Controller
      */
     public function create()
     {
+    }
+
+    public function createPatient()
+    {
+        $companies = Company::all();
+        return view('pages.dashboard.patients.create-patient', compact('companies'));
     }
 
     /**
@@ -101,16 +108,16 @@ class UserController extends Controller
             $user->name = $data["name"];
             $user->lastname = $data["lastname"];
             $user->type_document = $data["type_document"];
-            $user->company_id = $data["company_id"];
+            $user->company_id = $data["company_id"] ?? null;
             $user->document = $data["document"];
             $user->age = $data["age"];
             $user->sex = $data["sex"];
             $user->email = $data["email"];
-            $user->role = "paciente";
+            $user->role = "cliente";
             $user->password = $passwordEncrypt;
             $user->save();
 
-            return redirect()->route("dashboard.specialists");
+            return redirect()->route("dashboard.patients");
         } catch (Exception $th) {
             dd($th->getMessage());
         }
@@ -189,6 +196,7 @@ class UserController extends Controller
         $userDeactivated = DB::table('users')
               ->where('id', $id)
               ->update(['status' => 0]);
+
         if ($origin == "specialists") {
             return redirect()->route("dashboard.specialists");
         } 
