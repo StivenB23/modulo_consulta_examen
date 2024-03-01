@@ -9,7 +9,11 @@ class RandomKeyService
 {
     public function generateKey($length = 10)
     {
-        return Hash::make(Str::random($length));
+        return Str::random($length);
+    }
+    public function encryptText($text)
+    {
+        return Hash::make($text);
     }
 }
 

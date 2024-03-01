@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageWelcome;
 use App\Models\User;
 use App\Services\RandomKeyService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -45,7 +47,8 @@ class UserController extends Controller
     {
         try {
             $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email", "role");
-            $passwordEncrypt = $this->randomKeyService->generateKey(12);
+            $password = $this->randomKeyService->generateKey(12);
+            $passwordEncrypt = $this->randomKeyService->encryptText($password);
             $user = new User();
             $user->name = $data["name"];
             $user->lastname = $data["lastname"];
@@ -57,6 +60,7 @@ class UserController extends Controller
             $user->role = $data["role"];
             $user->password = $passwordEncrypt;
             $user->save();
+            Mail::to($data["email"])->send(new MessageWelcome($data["name"],$data["email"],$password));
             dd("Registrado de forma exitosa");
         } catch (Exception $th) {
             dd($th->getMessage());
@@ -67,7 +71,8 @@ class UserController extends Controller
     {
         try {
             $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email", "role");
-            $passwordEncrypt = $this->randomKeyService->generateKey(12);
+            $password = $this->randomKeyService->generateKey(12);
+            $passwordEncrypt = $this->randomKeyService->encryptText($password);
             $user = new User();
             $user->name = $data["name"];
             $user->lastname = $data["lastname"];
@@ -79,7 +84,7 @@ class UserController extends Controller
             $user->role = "especialista";
             $user->password = $passwordEncrypt;
             $user->save();
-
+            Mail::to($data["email"])->send(new MessageWelcome($data["name"],$data["email"],$password));
             return redirect()->route("dashboard.specialists");
         } catch (Exception $th) {
             dd($th->getMessage());
@@ -90,7 +95,8 @@ class UserController extends Controller
     {
         try {
             $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email", "company_id");
-            $passwordEncrypt = $this->randomKeyService->generateKey(12);
+            $password = $this->randomKeyService->generateKey(12);
+            $passwordEncrypt = $this->randomKeyService->encryptText($password);
             $user = new User();
             $user->name = $data["name"];
             $user->lastname = $data["lastname"];
@@ -103,7 +109,8 @@ class UserController extends Controller
             $user->role = "paciente";
             $user->password = $passwordEncrypt;
             $user->save();
-
+            
+            Mail::to($data["email"])->send(new MessageWelcome($data["name"],$data["email"],$password));
             return redirect()->route("dashboard.specialists");
         } catch (Exception $th) {
             dd($th->getMessage());

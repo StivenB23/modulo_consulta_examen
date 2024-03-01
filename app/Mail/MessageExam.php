@@ -9,20 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class MessageWelcome extends Mailable
+class MessageExam extends Mailable
 {
     use Queueable, SerializesModels;
     public $name;
-    public $email;
-    public $password;
     /**
      * Create a new message instance.
      */
-    public function __construct($name, $email,$password)
+    public function __construct($name)
     {
+        //
         $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
     }
 
     /**
@@ -31,7 +28,7 @@ class MessageWelcome extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Bienvenido a Citogen ',
+            subject: 'Un nuevo examen ha sido cargado',
         );
     }
 
@@ -41,11 +38,9 @@ class MessageWelcome extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.main-template',
+            view: 'emails.mail-template-exam.blade',
             with:[
-                'name' => $this->name,
-                'email' => $this->email,
-                'password' => $this->password
+                "name"=>$this->name
             ]
         );
     }
