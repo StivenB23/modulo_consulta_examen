@@ -15,7 +15,7 @@ function confirmDeactivationSpecialist() {
     });
 }
 
-function confirmDeactivationPatient() {
+function confirmDeactivationPatient(userId) {
     Swal.fire({
         title: '¿Estás seguro?',
         text: 'Esta acción desactivará al paciente. ¿Deseas continuar?',
@@ -27,7 +27,11 @@ function confirmDeactivationPatient() {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('deactivateFormPatient').submit();
+            var form = document.getElementById('deactivateFormPatient');
+            var newAction = form.action.split('/');
+            newAction[newAction.length - 3] = userId;
+            form.action = newAction.join('/');
+            form.submit();
         }
     });
 
