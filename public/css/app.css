@@ -16,6 +16,8 @@ html, body {
     color: rgb(253, 83, 83);
     font-size: 0.8rem;
     margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .error_message {

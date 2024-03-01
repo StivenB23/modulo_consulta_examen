@@ -83,9 +83,13 @@ Route::get('/dashboard/patients/edit/{id}', [UserController::class, "editPatient
     ->name("dashboard.patients.edit")
     ->middleware("auth");
 
-Route::get('/dashboard/patients/exams', function () {
-    return view('pages.dashboard.patients.exams.my-exams');
-})->name("dashboard.patients.my-exams")->middleware("auth");
+// Route::get('/dashboard/patients/exams', function () {
+//     return view('pages.dashboard.patients.exams.my-exams');
+// })->name("dashboard.patients.my-exams")->middleware("auth");
+
+Route::get('/dashboard/patients/exams', [ExamController::class, "getMyExams"])
+->name("dashboard.patients.my-exams")
+->middleware("auth");
 
 // EXAMS
 
@@ -125,3 +129,5 @@ Route::put("/deactivateUser/{id}/origin/{origin}", [UserController::class, "deac
 Route::post("/registerCompany", [CompanyController::class, "store"])->name("registerCompany");
 Route::put("/updateCompany/{id}", [CompanyController::class, "update"])->name("updateCompany");
 Route::put("/deactivateCompany/{id}", [CompanyController::class, "deactivate"])->name("deactivateCompany");
+
+Route::get("/getExamsUser/{id}", [ExamController::class, "getExamUser"])->name("getExamsUser");

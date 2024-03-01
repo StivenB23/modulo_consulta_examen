@@ -16,7 +16,6 @@
         <div class="form_group" data-aos="fade-right" data-aos-duration="700">
             <label for="email">Correo Electrónico</label>
             <input type="email" id="email" name="email" required placeholder="Ingrese su Correo">
-            <p class="error">{{ $errors->first('email') }}</p>
         </div>
 
         <div class="form_group" data-aos="fade-left" data-aos-duration="700">
@@ -27,6 +26,7 @@
                 </i>
             </div>
         </div>
+        <p class="error">{{ $errors->first('email') }}</p>
 
         <button type="submit" data-aos="fade-up" data-aos-duration="700">Iniciar Sesión</button>
     </form>

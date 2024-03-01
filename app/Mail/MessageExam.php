@@ -38,7 +38,7 @@ class MessageExam extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.mail-template-exam.blade',
+            view: 'emails.mail-template-exam',
             with:[
                 "name"=>$this->name
             ]

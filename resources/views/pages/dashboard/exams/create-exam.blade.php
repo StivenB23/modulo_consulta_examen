@@ -28,7 +28,19 @@
         <input type="text" id="external_code" name="external_code" placeholder="Codigo Externo" value="{{ old('external_code') }}">
         <p class="error">{{ $errors->first('external_code') }}</p>
     </div>
+    {{-- OR --}}
+    <div class="form_group">
+        <label for="exam_date">Consecutivo Or</label>
+        <input type="text" id="or" name="or" placeholder="Codigo Externo" value="{{ old('or') }}">
+        <p class="error">{{ $errors->first('or') }}</p>
+    </div>
 
+    {{-- anticoagulant --}}
+    <div class="form_group">
+        <label for="exam_date">Anticoagulante</label>
+        <input type="text" id="anticoagulant" name="anticoagulant" placeholder="Codigo Externo" value="{{ old('anticoagulant') }}">
+        <p class="error">{{ $errors->first('anticoagulant') }}</p>
+    </div>
     {{-- TYPE EXAM --}}
     <div class="form_group" >
         <label for="type_exam">Tipo de Examen</label>

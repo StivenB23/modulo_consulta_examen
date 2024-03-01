@@ -9,19 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     protected $randomKeyService;
-    
+
     public function __construct(RandomKeyService $randomKeyService)
     {
         $this->randomKeyService = $randomKeyService;
     }
-    
+
 
 
     public function login(Request $request)
     {
         // Credenciales de acceso
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt(["email" => $credentials['email'], "password" => $credentials['password']])) {
+        if (Auth::attempt(["email" => $credentials['email'], "password" => $credentials['password'], "status" => 1])) {
             // Generación de identificador de sesión
             $request->session()->regenerate();
             $user = Auth::user();
