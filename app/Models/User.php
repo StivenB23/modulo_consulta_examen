@@ -15,6 +15,10 @@ class User extends Authenticatable
     protected $fillable = ['name', 'lastname', 'company_id','type_document', 'document', 'age', 'email', 'password', 'role', 'status'];
 
 
+    public function company()  {
+        return $this->belongsTo(Company::class);
+    }
+
     
     public function exams()
     {

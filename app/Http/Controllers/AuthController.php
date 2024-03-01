@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\RandomKeyService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class AuthController extends Controller
 {
-
+    protected $randomKeyService;
+    
+    public function __construct(RandomKeyService $randomKeyService)
+    {
+        $this->randomKeyService = $randomKeyService;
+    }
+    
 
 
     public function login(Request $request)
