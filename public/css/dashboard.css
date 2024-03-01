@@ -342,7 +342,17 @@ li.active a {
     border: 1px solid #888;
     width: 50%;
     border-radius: 10px;
-    height: 60%;
+    height: auto;
+}
+
+.user {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%;
+    }
 }
 
 .modal-content .close-container {
@@ -350,11 +360,8 @@ li.active a {
     justify-content: flex-end;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+#close {
+    cursor: pointer;
 }
 
 .modal-content input {
@@ -404,4 +411,8 @@ li.active a {
     border: none;
     padding: 5px 10px;
     text-decoration: none;
+}
+
+.user-link {
+    color: var(--action);
 }

@@ -114,6 +114,7 @@
     <script src="{{ asset('js/confirmations.js') }}"></script>
     <script src="{{ asset('js/tabs.js') }}"></script>
     <script src="{{ asset('js/searcher.js') }}"></script>
+    <script src="{{ asset('js/exams.js') }}"></script>
 
     {{-- SWEET ALERT --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

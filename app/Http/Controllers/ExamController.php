@@ -98,6 +98,11 @@ class ExamController extends Controller
         return view('pages.dashboard.exams.patients.patient-exams', compact('exams', 'user'));
     }
 
+    public function getPatientDetails(string $id) {
+        $user = User::find($id);
+        return response()->json($user);
+    }
+
     /**
      * Display the specified resource.
      */

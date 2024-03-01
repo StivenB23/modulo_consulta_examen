@@ -31,6 +31,7 @@
                 <th>Procedencia Muestra</th>
                 <th>Dias Toma</th>
                 <th>Archivo</th>
+                <th>Paciente</th>
             </tr>
         </thead>
         <tbody>
@@ -65,6 +66,16 @@
                                 </button>
                             </a>
                         </td>
+                        <td>
+                            @foreach($exam->patients as $patient)
+                                <a href="#" class="user-link" data-user-id="{{ $patient->id }}" data-user-name="{{ $patient->name }} {{ $patient->last_name }}">
+                                    {{ $patient->name }} {{ $patient->last_name }}
+                                </a>
+                                @if(!$loop->last)
+                                    <br>
+                                @endif
+                            @endforeach
+                        </td>
                     </tr>
                 @endforeach
             @else
@@ -72,5 +83,18 @@
             @endif
         </tbody>
     </table>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="close-container">
+            <i class="bi bi-x-lg" id="close"></i>
+        </div>
+        <h2>Datos del Paciente <span id="patient-name-modal"></span></h2>
+
+        <div id="content-modal">
+
+        </div>
+    </div>
 </div>
 @endsection
