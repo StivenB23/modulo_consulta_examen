@@ -65,9 +65,6 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
     ->middleware("auth");
 
 // PATIENTS
-// Route::get('/dashboard/patients', function () {
-//     return view('pages.dashboard.patients.list-patients');
-// })->name("dashboard.patients")->middleware("auth");
 
 Route::get('/dashboard/patients', [UserController::class, "indexPatients"])
     ->name("dashboard.patients")

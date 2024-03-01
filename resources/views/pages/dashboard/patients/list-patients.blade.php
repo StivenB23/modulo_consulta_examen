@@ -59,6 +59,8 @@
                             <a href="{{ route('dashboard.patients.edit', $user->id) }}" class="edit-btn">
                                 Editar
                             </a>
+
+                            <a href=""></a>
                         </td>
                     </tr>
                 @endforeach
