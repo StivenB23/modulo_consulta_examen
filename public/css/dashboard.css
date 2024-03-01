@@ -388,3 +388,17 @@ li.active a {
 .secondary {
     background-color: var(--action);
 }
+
+.show-exams {
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--light);
+    background-color: var(--action);
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+}

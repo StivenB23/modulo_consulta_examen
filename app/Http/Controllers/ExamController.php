@@ -95,7 +95,7 @@ class ExamController extends Controller
     public function getExamUser(string $id) {
         $user = User::find($id);
         $exams = $user->exams;
-        return response()->json($exams);
+        return view('pages.dashboard.exams.patients.patient-exams', compact('exams', 'user'));
     }
 
     /**

@@ -60,7 +60,9 @@
                                 Editar
                             </a>
 
-                            <a href=""></a>
+                            <a href="{{ route('dashboard.exams.patient', $user->id )}}" class="show-exams">
+                                Examenes
+                            </a>
                         </td>
                     </tr>
                 @endforeach

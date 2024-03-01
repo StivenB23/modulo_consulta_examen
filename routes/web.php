@@ -101,9 +101,9 @@ Route::get('/dashboard/exams/create', [ExamController::class, "create"])
     ->name("dashboard.exams.create")
     ->middleware("auth");
 
-Route::get('/dashboard/exams/patient/{id}', function () {
-    return view('pages.dashboard.exams.patients.patient-exams');
-})->name("dashboard.exams.patient")->middleware("auth");
+Route::get('/dashboard/exams/patient/{id}', [ExamController::class, "getExamUser"])
+    ->name("dashboard.exams.patient")
+    ->middleware("auth");
 
 // Route::get('/dashboard/exams/edit/{id}', function () {
 //     return view('pages.dashboard.exams.edit-exam');

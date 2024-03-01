@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Mis examenes')
 
 @section('content')
-<h2>Examenes para el paciente John</h2>
+<h2>Examenes del paciente {{ $user->name }}</h2>
 
 <div class="table">
     <table id="datat">
@@ -25,26 +25,43 @@
                 <th>Dias de toma</th>
                 <th>Acciones</th>
             </tr>
-        </thead> 
+        </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>EDTA</td>
-                <td>123456</td>
-                <td>Entidad</td>
-                <td>Examen</td>
-                <td>Tipo de muestra</td>
-                <td>Fecha de toma de muestra</td>
-                <td>Hora de toma de muestra</td>
-                <td>Fecha de recepción</td>
-                <td>Hora de recepción</td>
-                <td>Temp de ingreso</td>
-                <td>Fecha de entrega</td>
-                <td>Procedencia de muestra</td>
-                <td>Dias de toma</td>
-                <td>
-                </td>
-            </tr>
+            @if(count($exams) > 0)
+                @foreach($exams as $exam)
+                    <tr>
+                        <td>{{ $exam->external_code }}</td>
+                        <td>HEP</td>
+                        <td>{{ $exam->type_exam }}</td>
+                        <td>{{ $exam->sample_type }}</td>
+                        <td>{{ $exam->exam_date }}</td>
+                        <td>{{ $exam->exam_hour }}</td>
+                        <td>{{ $exam->sample_receipt_date }}</td>
+                        <td>{{ $exam->sample_receipt_hour }}</td>
+                        <td>{{ $exam->patient_temperature }}</td>
+                        <td>{{ $exam->diagnostic }}</td>
+                        <td>{{ $exam->deliver_date }}</td>
+                        <td>{{ $exam->birth_date }}</td>
+                        <td>{{ $exam->origin_sample }}</td>
+                        <td>{{ $exam->taking_days }}</td>
+                        <td class="document_actions">
+                            <a href="{{ asset('storage/' . $exam->document) }}" target="_blank">
+                                <button class="small-btn">
+                                    Abrir Archivo
+                                </button>
+                            </a>
+
+                            <a href="{{ asset('storage/' . $exam->document) }}" download>
+                                <button class="small-btn secondary">
+                                    Descargar Archivo
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <p>No hay examenes registrados.</p>
+            @endif
         </tbody>
     </table>
 </div>
