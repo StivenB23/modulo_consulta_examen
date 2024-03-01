@@ -15,6 +15,7 @@
     <table id="datat">
         <thead>
             <tr>
+                <th>OR</th>
                 <th>Codigo Externo</th>
                 <th>Anticoagulante</th>
                 <th>Tipo Examen</th>
@@ -36,8 +37,9 @@
             @if(count($exams) > 0)
                 @foreach($exams as $exam)
                     <tr>
+                        <td>{{ $exam->or }}</td>
                         <td>{{ $exam->external_code }}</td>
-                        <td>HEP</td>
+                        <td>{{ $exam->anticoagulant }}</td>
                         <td>{{ $exam->type_exam }}</td>
                         <td>{{ $exam->sample_type }}</td>
                         <td>{{ $exam->exam_date }}</td>

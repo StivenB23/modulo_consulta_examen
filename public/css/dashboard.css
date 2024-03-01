@@ -245,15 +245,18 @@ td {
     font-size: 0.8rem;
     font-weight: bold;
     text-align: center;
-    color: var(--light);
 }
 
 .status .active {
-    background-color: var(--success);
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success);
 }
 
 .status .inactive {
-    background-color: var(--danger);
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    border: 1px solid var(--danger);
 }
 
 .back {
