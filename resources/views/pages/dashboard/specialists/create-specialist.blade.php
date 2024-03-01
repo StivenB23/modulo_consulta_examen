@@ -28,6 +28,7 @@
         <label for="type_document">Tipo de Documento</label>
         <select name="type_document" id="type_document" required value="{{ old('type_document') }}">
             <option value="C.C">Cédula de Ciudadanía</option>
+            <option value="R.C">Cédula de Ciudadanía</option>
             <option value="Cédula de Extranjeria">Cédula de Extranjería</option>
             <option value="Pasaporte">Pasaporte</option>
         </select>

@@ -22,6 +22,8 @@ class Exam extends Model
         'birth_date',
         'origin_sample',
         'document',
+        'or',
+        'anticoagulant',
         'taking_days',
     ];
     public function patients()

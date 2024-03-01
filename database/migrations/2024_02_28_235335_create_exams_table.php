@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string("external_code");
             $table->string("type_exam");
+            $table->string("anticoagulant");
+            $table->string("or");
             $table->string("sample_type");
             $table->date("exam_date");
             $table->time("exam_hour");
