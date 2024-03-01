@@ -50,11 +50,10 @@
                         </td>
                         <td class="actions_table">
                             @if ($user->status == 1)
-                                <p>{{ $user->id }}</p>
                                 <form id="deactivateFormPatient" action="{{ route('deactivateUser', ['id' => $user->id, 'origin' => 'patients']) }}" method="POST">
                                     @method("PUT")
                                     @csrf
-                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationPatient()">Desactivar</button>
+                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationPatient({{ $user->id }})">Desactivar</button>
                                 </form>
                             @endif
                             <a href="{{ route('dashboard.patients.edit', $user->id) }}" class="edit-btn">
