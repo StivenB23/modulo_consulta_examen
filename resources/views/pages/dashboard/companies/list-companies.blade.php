@@ -49,7 +49,7 @@
                                 <form id="deactiveFormCompany" action="{{ route('deactivateCompany', ['id' => $company->id]) }}" method="post">
                                     @method("PUT")
                                     @csrf
-                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationCompany()">Desactivar</button>
+                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationCompany({{ $company->id }})">Desactivar</button>
                                 </form>
                             @endif
                             <a href="{{ route('dashboard.companies.edit', $company->id) }}" class="edit-btn">

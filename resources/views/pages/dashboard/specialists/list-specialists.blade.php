@@ -51,7 +51,7 @@
                                 <form id="deactivateForm" action="{{ route('deactivateUser', ['id' => $user->id, 'origin' => 'specialists']) }}" method="post">
                                     @method("PUT")
                                     @csrf
-                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationSpecialist()">Desactivar</button>
+                                    <button type="button" class="deactivate_button" onclick="confirmDeactivationSpecialist({{ $user->id }})">Desactivar</button>
                                 </form>
                             @endif
                             <a href="{{ route('dashboard.specialists.edit', $user->id) }}" class="edit-btn">

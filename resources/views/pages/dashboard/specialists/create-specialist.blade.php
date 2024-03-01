@@ -25,12 +25,14 @@
 
     {{-- type of document --}}
     <div class="form_group" >
-        <label for="type_document">Tipo de Documento</label>
-        <select name="type_document" id="type_document" required value="{{ old('type_document') }}">
+        <label for="type">Tipo</label>
+        <select name="type_document" id="type_document">
+            <option value="RC">Registro Civil</option>
+            <option value="TI">Tarjeta de identidad.</option>
             <option value="CC">Cédula de Ciudadanía</option>
-            <option value="CE">Cédula de Extranjería</option>
+            <option value="CE">Cédula de extranjería</option>
             <option value="PT">Permiso por Protección Temporal</option>
-            <option value="Pasaporte">Pasaporte</option>
+            <option value="CN">Certificado de nacido</option>
         </select>
         <p class="error">{{ $errors->first('type_document') }}</p>
     </div>
@@ -51,10 +53,11 @@
     {{-- gender --}}
     <div class="form_group" >
         <label for="sex">Sexo</label>
-        <select name="sex" id="sex" required value="{{ old('sex') }}">
-            <option value="Hombre">Hombre</option>
-            <option value="Mujer">Mujer</option>
+        <select name="sex" id="sex">
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
         </select>
+        <p class="error">{{ $errors->first('sex') }}</p>
     </div>
 
     <div class="form_group">

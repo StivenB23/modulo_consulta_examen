@@ -1,4 +1,4 @@
-function confirmDeactivationSpecialist() {
+function confirmDeactivationSpecialist(userId) {
     Swal.fire({
         title: '¿Estás seguro?',
         text: 'Esta acción desactivará al usuario. ¿Deseas continuar?',
@@ -10,7 +10,11 @@ function confirmDeactivationSpecialist() {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('deactivateForm').submit();
+            var form = document.getElementById('deactivateForm');
+            var newAction = form.action.split('/');
+            newAction[newAction.length - 3] = userId;
+            form.action = newAction.join('/');
+            form.submit();
         }
     });
 }
@@ -38,7 +42,7 @@ function confirmDeactivationPatient(userId) {
 }
 
 
-function confirmDeactivationCompany() {
+function confirmDeactivationCompany(companyId) {
     Swal.fire({
         title: '¿Estás seguro?',
         text: 'Esta acción desactivará a la empresa. ¿Deseas continuar?',
@@ -50,7 +54,11 @@ function confirmDeactivationCompany() {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('deactiveFormCompany').submit();
+            var form = document.getElementById('deactiveFormCompany');
+            var newAction = form.action.split('/');
+            newAction[newAction.length - 1] = companyId;
+            form.action = newAction.join('/');
+            form.submit();
         }
     });
 }

@@ -134,7 +134,7 @@
 
         {{-- SEX --}}
         <div class="form_group" >
-            <label for="sex">Tipo</label>
+            <label for="sex">Sexo</label>
             <select name="sex" id="sex">
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>

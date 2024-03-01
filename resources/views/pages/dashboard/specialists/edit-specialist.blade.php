@@ -25,12 +25,16 @@
     </div>
 
     {{-- type of document --}}
+
     <div class="form_group" >
-        <label for="type_document">Tipo de Documento</label>
-        <select name="type_document" id="type_document" required>
-            <option value="C.C" {{ $user->type_document == 'C.C' ? 'selected' : '' }}>Cédula de Ciudadanía</option>
-            <option value="Cédula de Extranjeria" {{ $user->type_document == 'Cédula de Extranjeria' ? 'selected' : '' }}>Cédula de Extranjería</option>
-            <option value="Pasaporte" {{ $user->type_document == 'Pasaporte' ? 'selected' : '' }}>Pasaporte</option>
+        <label for="type">Tipo</label>
+        <select name="type_document" id="type_document">
+            <option value="RC" {{ $user->type_document == 'RC' ? 'selected' : '' }}>Registro Civil</option>
+            <option value="TI" {{ $user->type_document == 'TI' ? 'selected' : '' }}>Tarjeta de identidad.</option>
+            <option value="CC" {{ $user->type_document == 'CC' ? 'selected' : '' }}>Cédula de Ciudadanía</option>
+            <option value="CE" {{ $user->type_document == 'CE' ? 'selected' : '' }}>Cédula de extranjería</option>
+            <option value="PT" {{ $user->type_document == 'PT' ? 'selected' : '' }}>Permiso por Protección Temporal</option>
+            <option value="CN" {{ $user->type_document == 'CN' ? 'selected' : '' }}>Certificado de nacido</option>
         </select>
         <p class="error">{{ $errors->first('type_document') }}</p>
     </div>
@@ -51,9 +55,9 @@
     {{-- gender --}}
     <div class="form_group" >
         <label for="sex">Sexo</label>
-        <select name="sex" id="sex" required>
-            <option value="Hombre" {{ $user->sex == 'Hombre' ? 'selected' : '' }}>Hombre</option>
-            <option value="Mujer" {{ $user->sex == 'Mujer' ? 'selected' : '' }}>Mujer</option>
+        <select name="sex" id="sex">
+            <option value="M" {{ $user->sex == 'M' ? 'selected' : '' }}>Masculino</option>
+            <option value="F" {{ $user->sex == 'F' ? 'selected' : '' }}>Femenino</option>
         </select>
         <p class="error">{{ $errors->first('sex') }}</p>
     </div>
