@@ -45,6 +45,13 @@
                             Entidades
                         </p>
                     </a>
+
+                    <a href="{{ route('dashboard.patients') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/patients') ? 'active item' : 'item' }}">
+                        <i class="bi bi-bandaid"></i>
+                        <p>
+                            Pacientes
+                        </p>
+                    </a>
                 </div>
             @endif
             {{-- SPECIALIST --}}
