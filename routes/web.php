@@ -70,11 +70,6 @@ Route::get('/dashboard/patients', [UserController::class, "indexPatients"])
     ->name("dashboard.patients")
     ->middleware("auth");
 
-// Route::get('/dashboard/patients/create', function () {
-//     return view('pages.dashboard.patients.create-patient');
-// })->name("dashboard.patients.create")->middleware("auth");
-
-
 Route::get('/dashboard/patients/create', [UserController::class, "createPatient"])
     ->name("dashboard.patients.create")
     ->middleware("auth");
@@ -82,10 +77,6 @@ Route::get('/dashboard/patients/create', [UserController::class, "createPatient"
 Route::get('/dashboard/patients/edit/{id}', [UserController::class, "editPatient"])
     ->name("dashboard.patients.edit")
     ->middleware("auth");
-
-// Route::get('/dashboard/patients/exams', function () {
-//     return view('pages.dashboard.patients.exams.my-exams');
-// })->name("dashboard.patients.my-exams")->middleware("auth");
 
 Route::get('/dashboard/patients/exams', [ExamController::class, "getMyExams"])
 ->name("dashboard.patients.my-exams")
@@ -105,9 +96,10 @@ Route::get('/dashboard/exams/patient/{id}', [ExamController::class, "getExamUser
     ->name("dashboard.exams.patient")
     ->middleware("auth");
 
-// Route::get('/dashboard/exams/edit/{id}', function () {
-//     return view('pages.dashboard.exams.edit-exam');
-// })->name("dashboard.exams.edit")->middleware("auth");
+// SUPPORT
+Route::get('/dashboard/support/create', function () {
+    return view('pages.dashboard.supports.create-support');
+})->name("dashboard.support-create")->middleware("auth");
 
 // AUTH
 

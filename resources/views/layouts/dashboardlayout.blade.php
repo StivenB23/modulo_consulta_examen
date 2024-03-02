@@ -64,14 +64,14 @@
             {{-- SPECIALIST --}}
             @if (Auth::user()->role == 'especialista')
                 <div class="items">
-                    {{-- <a href="{{ route('dashboard.patients') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/patients') ? 'active item' : 'item' }}">
-                        <i class="bi bi-bandaid"></i>
+                    <a href="{{ route('dashboard.support-create') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
+                        <i class="bi bi-archive"></i>
                         <p>
-                            Pacientes
+                            Soportes
                         </p>
                     </a>
                     
-                    <a href="{{ route('dashboard.exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
+                    {{-- <a href="{{ route('dashboard.exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
                         <i class="bi bi-file-earmark-spreadsheet"></i>
                         <p>
                             Examenes
