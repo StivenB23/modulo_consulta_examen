@@ -18,7 +18,7 @@
                 <th>OR</th>
                 <th>Codigo Externo</th>
                 <th>Anticoagulante</th>
-                <th>Tipo Examen</th>
+                <th>Tipos de Examen</th>
                 <th>Tipo Muestra</th>
                 <th>Fecha Toma Muestra</th>
                 <th>Hora Toma Muestra</th>
@@ -41,7 +41,17 @@
                         <td>{{ $exam->or }}</td>
                         <td>{{ $exam->external_code }}</td>
                         <td>{{ $exam->anticoagulant }}</td>
-                        <td>{{ $exam->type_exam }}</td>
+                        {{-- <td>{{ $exam->type_exam }}</td> --}}
+                        <td>
+                            <ol>
+                                {{-- @foreach($exam->type_exams as $type_exam)
+                                    <li>{{ $type_exam->name }}</li>
+                                @endforeach --}}
+                                <li> CBQ: Cariotipo Bandeo Q </li>
+                                <li> CBQ: Cariotipo Bandeo Q </li>
+                                <li> CBQ: Cariotipo Bandeo Q </li>
+                            </ol>
+                        </td>
                         <td>{{ $exam->sample_type }}</td>
                         <td>{{ $exam->exam_date }}</td>
                         <td>{{ $exam->exam_hour }}</td>
