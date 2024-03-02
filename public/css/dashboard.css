@@ -125,7 +125,10 @@
 }
 
 .actions {
-    margin: 20px 0;
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .btn {
@@ -416,3 +419,40 @@ li.active a {
 .user-link {
     color: var(--action);
 }
+
+.label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.checkbox_group {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.element {
+    display: grid;
+    grid-template-columns: 10% auto;
+    gap: 10px;
+    width: 100%;
+}
+
+.first {
+    display: flex;
+    align-items: center;
+}
+
+.second {
+    display: flex;
+    align-items: center;
+}
+
+.second label {
+    color: var(--dark);
+    font-size: 1rem;
+    margin-top: 8px;
+}
+

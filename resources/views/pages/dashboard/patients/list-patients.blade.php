@@ -9,6 +9,10 @@
     <a href="{{ route('dashboard.patients.create') }}" class="btn">
         Crear Paciente
     </a>
+
+    <a href="{{ route('dashboard.exams.create') }}" class="btn">
+        Crear Examen
+    </a>
 </div>
 
 <div class="table">

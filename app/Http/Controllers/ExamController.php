@@ -38,6 +38,9 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         try {
+            $examValues = $request->input('type_exam', []);
+            dd($examValues);
+            return;
             $data = $request->only("external_code", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
             // $name = $request->file("document")->getClientOriginalName();
             // $request->file('document')->storeAs('public/',$name);

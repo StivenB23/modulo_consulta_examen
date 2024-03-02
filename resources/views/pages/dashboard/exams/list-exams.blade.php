@@ -30,7 +30,7 @@
                 <th>Fecha Nacimiento</th>
                 <th>Procedencia Muestra</th>
                 <th>Dias Toma</th>
-                <th>Archivo</th>
+                {{-- <th>Archivo</th> --}}
                 <th>Paciente</th>
             </tr>
         </thead>
@@ -53,7 +53,7 @@
                         <td>{{ $exam->birth_date }}</td>
                         <td>{{ $exam->origin_sample }}</td>
                         <td>{{ $exam->taking_days }}</td>
-                        <td class="document_actions">
+                        {{-- <td class="document_actions">
                             <a href="{{ asset('storage/' . $exam->document) }}" target="_blank">
                                 <button class="small-btn">
                                     Abrir Archivo
@@ -65,7 +65,7 @@
                                     Descargar Archivo
                                 </button>
                             </a>
-                        </td>
+                        </td> --}}
                         <td>
                             @foreach($exam->patients as $patient)
                                 <a href="#" class="user-link" data-user-id="{{ $patient->id }}" data-user-name="{{ $patient->name }} {{ $patient->last_name }}">
