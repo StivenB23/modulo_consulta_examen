@@ -460,3 +460,29 @@ li.active a {
 ol {
     margin-left: 5px;
 }
+
+.details {
+    margin-top: 10px;
+}
+
+.details p {
+    font-size: 1rem;
+    font-weight: 100;
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.details p span {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.details ol {
+    margin-left: 20px;
+}
+
+.buttons-documents {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}

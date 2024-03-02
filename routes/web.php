@@ -101,6 +101,10 @@ Route::get('/dashboard/support/create', function () {
     return view('pages.dashboard.supports.create-support');
 })->name("dashboard.support-create")->middleware("auth");
 
+Route::get('/dashboard/supports/details/{examId}', function () {
+    return view('pages.dashboard.supports.details-support');
+})->name("dashboard.support.details")->middleware("auth");
+
 // AUTH
 
 Route::post("/exam/create", [ExamController::class, "store"])->name("saveExam");
