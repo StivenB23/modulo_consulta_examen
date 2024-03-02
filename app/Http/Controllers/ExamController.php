@@ -35,7 +35,7 @@ class ExamController extends Controller
     {
         try {
             $data = $request->only("external_code","anticoagulant", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
-
+            $data["id_user"] = 5;
 
 
             // $name = $request->file("document")->getClientOriginalName();
@@ -59,8 +59,10 @@ class ExamController extends Controller
             $exam = Exam::create([
                 'external_code' => $data["external_code"],
                 'type_exam' => $data["type_exam"],
-                'anticoagulant' => $data["anticoagulant"],
-                'or' => $data["or"],
+                // 'anticoagulant' => $data["anticoagulant"],
+                'anticoagulant' => "rr",
+                // 'or' => $data["or"],
+                'or' => "ee",
                 'sample_type' => $data["sample_type"],
                 'exam_date' => $data["exam_date"],
                 'exam_hour' => $data["exam_hour"],
