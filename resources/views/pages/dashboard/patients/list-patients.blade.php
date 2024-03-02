@@ -9,6 +9,10 @@
     <a href="{{ route('dashboard.patients.create') }}" class="btn">
         Crear Paciente
     </a>
+
+    <a href="{{ route('dashboard.exams.create') }}" class="btn">
+        Crear Examen
+    </a>
 </div>
 
 <div class="table">
@@ -60,7 +64,9 @@
                                 Editar
                             </a>
 
-                            <a href=""></a>
+                            <a href="{{ route('dashboard.exams.patient', $user->id )}}" class="show-exams">
+                                Examenes
+                            </a>
                         </td>
                     </tr>
                 @endforeach
@@ -69,20 +75,6 @@
             @endif
         </tbody>
     </table>
-</div>
-
-<div class="modal">
-    <div class="modal-content">
-        <div class="close-container">
-            <i class="bi bi-x-lg" id="close"></i>
-        </div>
-        <h2>Asignar Examen Al Paciente <span id="patient-name-modal">John</span></h2>
-
-        <input type="text" placeholder="buscar examen" id="search-exam">
-
-        <div class="list">
-        </div>
-    </div>
 </div>
 @endsection
 

@@ -6,6 +6,10 @@ use App\Models\Exam;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MessageExam;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Str;
 class ExamController extends Controller
 {
@@ -34,10 +38,10 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $request->only("external_code","anticoagulant", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
-            $data["id_user"] = 5;
-
-
+            $examValues = $request->input('type_exam', []);
+            dd($examValues);
+            return;
+            $data = $request->only("external_code", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
             // $name = $request->file("document")->getClientOriginalName();
             // $request->file('document')->storeAs('public/',$name);
             // Generar un nombre único para el archivo
@@ -54,15 +58,14 @@ class ExamController extends Controller
 
             // Guardar el archivo con el nuevo nombre
             $request->file('document')->storeAs('public/', $newName);
+            // dd($data["id_user"]);
             $user = User::find($data["id_user"]);
-
+            // dd($user);
             $exam = Exam::create([
                 'external_code' => $data["external_code"],
                 'type_exam' => $data["type_exam"],
-                // 'anticoagulant' => $data["anticoagulant"],
-                'anticoagulant' => "rr",
-                // 'or' => $data["or"],
-                'or' => "ee",
+                'anticoagulant' => $data["anticoagulant"] ?? "HEP",
+                'or' => $data["or"],
                 'sample_type' => $data["sample_type"],
                 'exam_date' => $data["exam_date"],
                 'exam_hour' => $data["exam_hour"],
@@ -77,28 +80,30 @@ class ExamController extends Controller
                 'taking_days' => $data["taking_days"],
             ]);
             $user->exams()->attach($exam);
-            // $user = new Exam();
-            // $user->external_code = $data["external_code"];
-            // $user->type_exam = $data["type_exam"];
-            // $user->sample_type = $data["sample_type"];
-            // $user->exam_date = $data["exam_date"];
-            // $user->exam_hour = $data["exam_hour"];
-            // $user->sample_receipt_date = $data["sample_receipt_date"];
-            // $user->sample_receipt_hour = $data["sample_receipt_hour"];
-            // $user->patient_temperature = $data["patient_temperature"];
-            // $user->name = $data["name"];
-            // $user->diagnostic = $data["diagnostic"];
-            // $user->deliver_date = $data["deliver_date"];
-            // $user->birth_date = $data["birth_date"];
-            // $user->origin_sample = $data["origin_sample"];
-            // $user->document = $data["document"];
-            // $user->taking_days = $data["taking_days"];
-            // $user->save();
-
+            Mail::to($user->email)->send(new MessageExam($user->name));
             return redirect()->route("dashboard.exams");
         } catch (Exception $th) {
             dd($th->getMessage());
         }
+    }
+
+    public function getMyExams() {
+       $userId = Auth::id();
+       $user = User::find($userId);
+       $exams = $user->exams;
+       return view('pages.dashboard.patients.exams.my-exams', compact('exams'));
+    }
+
+
+    public function getExamUser(string $id) {
+        $user = User::find($id);
+        $exams = $user->exams;
+        return view('pages.dashboard.exams.patients.patient-exams', compact('exams', 'user'));
+    }
+
+    public function getPatientDetails(string $id) {
+        $user = User::find($id);
+        return response()->json($user);
     }
 
     /**

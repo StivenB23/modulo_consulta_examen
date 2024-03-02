@@ -15,9 +15,10 @@
     <table id="datat">
         <thead>
             <tr>
+                <th>OR</th>
                 <th>Codigo Externo</th>
                 <th>Anticoagulante</th>
-                <th>Tipo Examen</th>
+                <th>Tipos de Examen</th>
                 <th>Tipo Muestra</th>
                 <th>Fecha Toma Muestra</th>
                 <th>Hora Toma Muestra</th>
@@ -29,16 +30,28 @@
                 <th>Fecha Nacimiento</th>
                 <th>Procedencia Muestra</th>
                 <th>Dias Toma</th>
-                <th>Archivo</th>
+                {{-- <th>Archivo</th> --}}
+                <th>Paciente</th>
             </tr>
         </thead>
         <tbody>
             @if(count($exams) > 0)
                 @foreach($exams as $exam)
                     <tr>
+                        <td>{{ $exam->or }}</td>
                         <td>{{ $exam->external_code }}</td>
-                        <td>HEP</td>
-                        <td>{{ $exam->type_exam }}</td>
+                        <td>{{ $exam->anticoagulant }}</td>
+                        {{-- <td>{{ $exam->type_exam }}</td> --}}
+                        <td>
+                            <ol>
+                                {{-- @foreach($exam->type_exams as $type_exam)
+                                    <li>{{ $type_exam->name }}</li>
+                                @endforeach --}}
+                                <li> CBQ: Cariotipo Bandeo Q </li>
+                                <li> CBQ: Cariotipo Bandeo Q </li>
+                                <li> CBQ: Cariotipo Bandeo Q </li>
+                            </ol>
+                        </td>
                         <td>{{ $exam->sample_type }}</td>
                         <td>{{ $exam->exam_date }}</td>
                         <td>{{ $exam->exam_hour }}</td>
@@ -50,7 +63,7 @@
                         <td>{{ $exam->birth_date }}</td>
                         <td>{{ $exam->origin_sample }}</td>
                         <td>{{ $exam->taking_days }}</td>
-                        <td class="document_actions">
+                        {{-- <td class="document_actions">
                             <a href="{{ asset('storage/' . $exam->document) }}" target="_blank">
                                 <button class="small-btn">
                                     Abrir Archivo
@@ -62,6 +75,16 @@
                                     Descargar Archivo
                                 </button>
                             </a>
+                        </td> --}}
+                        <td>
+                            @foreach($exam->patients as $patient)
+                                <a href="#" class="user-link" data-user-id="{{ $patient->id }}" data-user-name="{{ $patient->name }} {{ $patient->last_name }}">
+                                    {{ $patient->name }} {{ $patient->last_name }}
+                                </a>
+                                @if(!$loop->last)
+                                    <br>
+                                @endif
+                            @endforeach
                         </td>
                     </tr>
                 @endforeach
@@ -70,5 +93,18 @@
             @endif
         </tbody>
     </table>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="close-container">
+            <i class="bi bi-x-lg" id="close"></i>
+        </div>
+        <h2>Datos del Paciente <span id="patient-name-modal"></span></h2>
+
+        <div id="content-modal">
+
+        </div>
+    </div>
 </div>
 @endsection

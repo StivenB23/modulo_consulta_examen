@@ -153,8 +153,9 @@ class UserController extends Controller
     public function editPatient(string $id)
     {
         $user = User::findOrFail($id);
+        $companies = Company::all();
 
-        return view('pages.dashboard.patients.edit-patient', compact('user'));
+        return view('pages.dashboard.patients.edit-patient', compact('user', 'companies'));
     }
 
     /**

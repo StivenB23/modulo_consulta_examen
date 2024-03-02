@@ -125,7 +125,10 @@
 }
 
 .actions {
-    margin: 20px 0;
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .btn {
@@ -245,15 +248,18 @@ td {
     font-size: 0.8rem;
     font-weight: bold;
     text-align: center;
-    color: var(--light);
 }
 
 .status .active {
-    background-color: var(--success);
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success);
 }
 
 .status .inactive {
-    background-color: var(--danger);
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    border: 1px solid var(--danger);
 }
 
 .back {
@@ -339,7 +345,17 @@ li.active a {
     border: 1px solid #888;
     width: 50%;
     border-radius: 10px;
-    height: 60%;
+    height: auto;
+}
+
+.user {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%;
+    }
 }
 
 .modal-content .close-container {
@@ -347,11 +363,8 @@ li.active a {
     justify-content: flex-end;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+#close {
+    cursor: pointer;
 }
 
 .modal-content input {
@@ -387,4 +400,89 @@ li.active a {
 
 .secondary {
     background-color: var(--action);
+}
+
+.show-exams {
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--light);
+    background-color: var(--action);
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.user-link {
+    color: var(--action);
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.checkbox_group {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.element {
+    display: grid;
+    grid-template-columns: 10% auto;
+    gap: 10px;
+    width: 100%;
+}
+
+.first {
+    display: flex;
+    align-items: center;
+}
+
+.second {
+    display: flex;
+    align-items: center;
+}
+
+.second label {
+    color: var(--dark);
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+
+ol {
+    margin-left: 5px;
+}
+
+.details {
+    margin-top: 10px;
+}
+
+.details p {
+    font-size: 1rem;
+    font-weight: 100;
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.details p span {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.details ol {
+    margin-left: 20px;
+}
+
+.buttons-documents {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
 }

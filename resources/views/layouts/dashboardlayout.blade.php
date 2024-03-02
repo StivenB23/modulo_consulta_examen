@@ -45,11 +45,7 @@
                             Entidades
                         </p>
                     </a>
-                </div>
-            @endif
-            {{-- SPECIALIST --}}
-            @if (Auth::user()->role == 'especialista')
-                <div class="items">
+
                     <a href="{{ route('dashboard.patients') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/patients') ? 'active item' : 'item' }}">
                         <i class="bi bi-bandaid"></i>
                         <p>
@@ -63,6 +59,24 @@
                             Examenes
                         </p>
                     </a>
+                </div>
+            @endif
+            {{-- SPECIALIST --}}
+            @if (Auth::user()->role == 'especialista')
+                <div class="items">
+                    <a href="{{ route('dashboard.support-create') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
+                        <i class="bi bi-archive"></i>
+                        <p>
+                            Soportes
+                        </p>
+                    </a>
+                    
+                    {{-- <a href="{{ route('dashboard.exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
+                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                        <p>
+                            Examenes
+                        </p>
+                    </a> --}}
                 </div>
             @endif
 
@@ -114,6 +128,7 @@
     <script src="{{ asset('js/confirmations.js') }}"></script>
     <script src="{{ asset('js/tabs.js') }}"></script>
     <script src="{{ asset('js/searcher.js') }}"></script>
+    <script src="{{ asset('js/exams.js') }}"></script>
 
     {{-- SWEET ALERT --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

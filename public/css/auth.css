@@ -6,8 +6,14 @@
     --text: #2F2105;
     --gray: #b1aca1;
     --action: #485BFF;
-    --success: #00D68F;
-    --danger: #FF5E57;
+    
+    --success-text: #258565;
+    --success: #92f7b2;
+    --success-bg: #9df5bcb6;
+
+    --danger-text: #764242;
+    --danger: #ffa4a4;
+    --danger-bg: #ff3d3db6;
 }
 
 .container_auth {
