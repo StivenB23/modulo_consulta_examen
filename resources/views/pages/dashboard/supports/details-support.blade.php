@@ -50,7 +50,7 @@
                 @foreach ($listDocuments as $document)
                     <li>
                         <a class="small-btn" href="{{ asset('storage/' . $document) }}" target="_blank">
-                            Documento 3
+                            Documento {{ $loop->index + 1 }}
                         </a>
                     </li>
                 @endforeach
