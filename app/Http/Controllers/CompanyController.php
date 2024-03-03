@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageWelcome;
 use App\Models\Company;
 use App\Models\Exam;
 use App\Models\User;
+use App\Services\RandomKeyService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 use function PHPUnit\Framework\isNull;
 
 class CompanyController extends Controller
 {
+    protected $randomKeyService;
+
+    public function __construct(RandomKeyService $randomKeyService)
+    {
+        $this->randomKeyService = $randomKeyService;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -37,13 +47,16 @@ class CompanyController extends Controller
     {
         try {
             $data = $request->only("nit", "name", "email", "alternative_email");
+            $password = $this->randomKeyService->generateKey(12);
+            $passwordEncrypt = $this->randomKeyService->encryptText($password);
             $company = new Company();
             $company->nit = $data['nit'];
             $company->name = $data['name'];
+            $company->password = $passwordEncrypt;
             $company->email = is_null($data['email']) ? null : $data['email'];
             $company->alternative_email = is_null($data['alternative_email']) ? null : $data['alternative_email'];
             $company->save();
-
+            Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
             return redirect()->route('dashboard.companies');
         } catch (Exception $th) {
             dd($th->getMessage());
@@ -114,7 +127,8 @@ class CompanyController extends Controller
         return view('pages.dashboardCompany.exams.list-exams-company')->with("usersCompany", $usersCompany);
     }
 
-    function supportCompanyExam(string $id){
+    function supportCompanyExam(string $id)
+    {
         $exam = Exam::find($id);
         return view('pages.dashboardCompany.exams.supports.details-support', compact('exam'));
     }
