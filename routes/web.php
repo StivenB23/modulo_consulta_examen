@@ -115,6 +115,7 @@ Route::post('registerSoportPacient', [SupportController::class, 'store'])->name(
 Route::post("/exam/create", [ExamController::class, "store"])->name("saveExam");
 
 Route::post("/login", [AuthController::class, "login"])->name("login");
+Route::post("/loginCompany", [AuthController::class, "loginCompany"])->name("loginCompany");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 
 // Rutas Usuario
@@ -137,12 +138,8 @@ Route::get("/getExamsUser/{id}", [ExamController::class, "getExamUser"])->name("
 // EXAMS BY COMPANY
 Route::get("/dashboardCompany", function () {
     return view('pages.dashboardCompany.dashboard');
-})->name("dashboardCompany")->middleware("auth");
+})->name("dashboardCompany");
 
-Route::get('/dashboardCompany/exams', function () {
-    return view('pages.dashboardCompany.exams.list-exams-company');
-})->name("dashboardCompany.exams")->middleware("auth");
+Route::get('/dashboardCompany/exams', [CompanyController::class,"examsCompany"])->name("dashboardCompany.exams");
 
-Route::get('/dashboardCompany/exams/supports/{id}', function () {
-    return view('pages.dashboardCompany.exams.supports.details-support');
-})->name("dashboardCompany.exams.supports")->middleware("auth");
+Route::get('/dashboardCompany/exams/supports/{id}',[CompanyController::class,"supportCompanyExam"])->name("dashboardCompany.exams.supports")->middleware("auth");

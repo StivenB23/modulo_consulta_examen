@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Exam;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -79,7 +81,7 @@ class CompanyController extends Controller
             // Asignar dinámicamente los valores de la solicitud al recurso
             $recurso->fill($datos);
 
-            if($request->has('alternative_email')){
+            if ($request->has('alternative_email')) {
                 $recurso->alternative_email = $request->alternative_email;
             }
 
@@ -98,9 +100,22 @@ class CompanyController extends Controller
     public function deactivate(string $id)
     {
         $companyDeactivated = DB::table('companies')
-        ->where('id', $id)
-        ->update(['status' => 0]);
+            ->where('id', $id)
+            ->update(['status' => 0]);
 
         return redirect()->route("dashboard.companies");
+    }
+
+    function examsCompany()
+    {
+        // dd(session('company')->id);
+        $usersCompany = User::where('company_id', session('company')->id)->get();
+        // return response()->json($usersCompany);
+        return view('pages.dashboardCompany.exams.list-exams-company')->with("usersCompany", $usersCompany);
+    }
+
+    function supportCompanyExam(string $id){
+        $exam = Exam::find($id);
+        return view('pages.dashboardCompany.exams.supports.details-support', compact('exam'));
     }
 }

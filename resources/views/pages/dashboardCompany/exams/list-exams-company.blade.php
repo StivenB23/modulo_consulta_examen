@@ -9,6 +9,7 @@
         <table id="datat">
             <thead>
                 <tr>
+                    <th>Nombre</th>
                     <th>OR</th>
                     <th>Anticoagulante</th>
                     <th>Codigo externo</th>
@@ -28,8 +29,45 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @if (count($exams) > 0)
-                    @foreach ($exams as $exam)
+                @if (count($usersCompany) > 0)
+                    @foreach ($usersCompany as $user)
+                        <tr>
+                            <td>{{ $user->name }} {{ $user->lastname }}</td>
+                            @foreach ($user->exams as $exam)
+                                <td>{{ $exam->or }}</td>
+                                <td>{{ $exam->anticoagulant }}</td>
+                                <td>{{ $exam->external_code }}</td>
+
+                                <td>
+                                    @php
+                                        $typeExams = unserialize($exam->type_exam);
+                                    @endphp
+                                    @foreach ($typeExams as $type_examO)
+                                        <li>{{ $type_examO }}</li>
+                                    @endforeach
+                                </td>
+                                <td>{{ $exam->sample_type }}</td>
+                                <td>{{ $exam->exam_date }}</td>
+                                <td>{{ $exam->exam_hour }}</td>
+                                <td>{{ $exam->sample_receipt_date }}</td>
+                                <td>{{ $exam->sample_receipt_hour }}</td>
+                                <td>{{ $exam->patient_temperature }}</td>
+                                <td>{{ $exam->diagnostic }}</td>
+                                <td>{{ $exam->deliver_date }}</td>
+                                <td>{{ $exam->birth_date }}</td>
+                                <td>{{ $exam->origin_sample }}</td>
+                                <td>{{ $exam->taking_days }}</td>
+                                <td class="document_actions">
+                                    <a href="{{ route('dashboardCompany.exams.supports', ['id' => $exam->id]) }}" target="_blank">
+                                        <button class="small-btn">
+                                            Ver Soporte
+                                        </button>
+                                    </a>
+                                </td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                    {{-- @foreach ($exams as $exam)
                         <tr>
                             <td>{{ $exam->or }}</td>
                             <td>{{ $exam->anticoagulant }}</td>
@@ -62,15 +100,15 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 @else
                     <p>No hay examenes registrados.</p>
-                @endif --}}
-                <a href="{{ route('dashboardCompany.exams.supports', ['id' => '2']) }}" target="_blank">
+                @endif
+                {{-- <a href="{{ route('dashboardCompany.exams.supports', ['id' => '2']) }}" target="_blank">
                     <button class="small-btn">
                         Ver Soporte
                     </button>
-                </a>
+                </a> --}}
             </tbody>
         </table>
     </div>

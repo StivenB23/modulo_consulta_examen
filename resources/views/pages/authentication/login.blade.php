@@ -37,7 +37,7 @@
 
     {{-- COMPANY FORM --}}
     {{-- TODO: pending error for this part of app --}}
-    <form action="{{ route('login') }}" method="POST"method="post" id="company_form" class="form_tab">
+    <form action="{{ route('loginCompany') }}" method="POST"method="post" id="company_form" class="form_tab">
         @if ($errors->has('email'))
             <div class="error_message">
                 {{ $errors->first('email') }}

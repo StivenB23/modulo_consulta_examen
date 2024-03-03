@@ -11,7 +11,7 @@
 
 
     <div class="details">
-        {{-- <p>
+        <p>
             <span> Codigo externo: {{ $exam->external_code }}</span>
         </p>
         <p>
@@ -47,6 +47,6 @@
             @endforeach
 
         </ol>
-        </p> --}}
+        </p>
     </div>
 @endsection

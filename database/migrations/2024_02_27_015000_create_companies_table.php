@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("nit")->nullable();
             $table->string("name");
             $table->string("email")->nullable();
+            $table->string("password");
             $table->string("alternative_email")->nullable();
             $table->boolean('confirm_company_status')->default(false);
             $table->boolean('status')->default(true);

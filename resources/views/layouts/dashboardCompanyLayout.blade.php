@@ -58,7 +58,7 @@
         <div class="container">
             <div class="header">
                 <h3 class="name">
-                    {{ Auth::user()->email }} <span>(COMPENSAR)</span>
+                    {{ session('company')->email }} <span>({{ session('company')->name }})</span>
                 </h3>
             </div>
 

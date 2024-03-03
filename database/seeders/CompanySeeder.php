@@ -66,6 +66,8 @@ class CompanySeeder extends Seeder
         foreach ($nombres as $nombre) {
             DB::table('companies')->insert([
                 'name' => $nombre,
+                'email' => "stiven23ospina@gmail.com",
+                'password' => Hash::make("12345"),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
