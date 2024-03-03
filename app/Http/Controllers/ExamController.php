@@ -39,7 +39,6 @@ class ExamController extends Controller
     {
         try {
             $data = $request->only("external_code", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
-            dd($data["id_user"]);
             $examValues = $request->input('type_exam', []);
             $examArray = serialize($examValues);
             $user = User::find($data["id_user"]);

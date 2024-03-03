@@ -8,6 +8,12 @@
     <form action="{{ route('registerSoportPacient') }}" method="post" enctype="multipart/form-data">
         @csrf
 
+        @if(session('success'))
+            <div class="success_message">
+                {{ session('success') }}
+            </div>
+        @endif
+
         {{-- EXTERN CODE --}}
         <div class="form_group">
             <label for="external_code">Codigo Externo</label>

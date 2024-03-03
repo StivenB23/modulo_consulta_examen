@@ -62,6 +62,8 @@ class SupportController extends Controller
             ]);
             // dd($exam[0]->id);
             // Mail::to()->send(new MessageExam(""));
+
+            return redirect()->back()->with('success', '¡Soporte creado exitosamente!');
         } catch (Exception $th) {
             dd($th->getMessage());
         }
