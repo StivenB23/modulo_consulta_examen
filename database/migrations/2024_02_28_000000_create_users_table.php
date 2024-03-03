@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('role');
             $table->boolean('status')->default(true);
             $table->string('password');
-            $table->unsignedBigInteger('company_id')->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
         });
     }

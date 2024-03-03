@@ -18,7 +18,7 @@
                         <li data-value="{{ $patient->id }}">{{ $patient->name }} {{ $patient->lastname }}</li>
                     @endforeach
                 </ul>
-                <input type="hidden" id="id_user" name="id_user" value="">
+                <input type="hidden" id="id_user" name="id_user" value="{{ old('id_user') }}">
             </div>
         </div>
 
@@ -474,6 +474,7 @@
         <div class="form_group">
             <label for="sample_type">Tipo De Muestra</label>
             <select name="sample_type" id="sample_type">
+                <option disabled selected>Seleccionar</option>
                 <option value="SP">SP</option>
                 <option value="MO">MO</option>
                 <option value="SALIVA">SALIVA</option>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string("external_code");
-            $table->string("type_exam");
+            $table->text("type_exam");
             $table->string("anticoagulant");
             $table->string("or");
             $table->string("sample_type");
@@ -24,10 +24,9 @@ return new class extends Migration
             $table->time("sample_receipt_hour");
             $table->string("patient_temperature");
             $table->text("diagnostic");
+            $table->string("origin_sample");
             $table->text("deliver_date");
             $table->date("birth_date");
-            $table->text("origin_sample");
-            $table->string("document");
             $table->text("taking_days");
             $table->timestamps();
         });

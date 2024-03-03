@@ -5,7 +5,7 @@
 @section('content')
     <h2>Agregar soporte</h2>
 
-    <form action="{{ route('saveExam') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('registerSoportPacient') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         {{-- EXTERN CODE --}}

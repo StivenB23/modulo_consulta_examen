@@ -82,9 +82,9 @@
             data-aos="zoom-in" data-aos-duration="700">
 
         <h1 class="title">
-            Bienvenido a Citogen {{ $name }}
+            Bienvenido al sistema de Descarga de resultados del laboratorio de genetica
         </h1>
-        <p>Tu cuenta ha sido creada con éxito. A continuación, encontrarás tus credenciales de inicio de sesión:</p>
+        <p>{{ $name }}, tu cuenta ha sido creada con éxito. A continuación, encontrarás tus credenciales de inicio de sesión:</p>
         <p><b>Correo: {{ $email }}</b></p>
         <p><b>Contraseña: {{ $password }}</b></p>
         <p>

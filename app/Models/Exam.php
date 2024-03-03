@@ -21,7 +21,6 @@ class Exam extends Model
         'deliver_date',
         'birth_date',
         'origin_sample',
-        'document',
         'or',
         'anticoagulant',
         'taking_days',
@@ -29,5 +28,10 @@ class Exam extends Model
     public function patients()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function supports()
+    {
+        return $this->hasMany(Support::class);
     }
 }

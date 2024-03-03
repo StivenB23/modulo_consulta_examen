@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\SupportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,9 +102,13 @@ Route::get('/dashboard/support/create', function () {
     return view('pages.dashboard.supports.create-support');
 })->name("dashboard.support-create")->middleware("auth");
 
-Route::get('/dashboard/supports/details/{examId}', function () {
-    return view('pages.dashboard.supports.details-support');
-})->name("dashboard.support.details")->middleware("auth");
+// Route::get('/dashboard/supports/details/{examId}', function () {
+//     return view('pages.dashboard.supports.details-support');
+// })->name("dashboard.support.details")->middleware("auth");
+
+Route::get('/dashboard/supports/details/{id}', [SupportController::class, 'getExamSupport'])->name("dashboard.support.details")->middleware("auth");
+
+Route::post('registerSoportPacient', [SupportController::class, 'store'])->name("registerSoportPacient");
 
 // AUTH
 

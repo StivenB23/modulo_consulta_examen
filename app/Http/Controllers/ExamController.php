@@ -38,36 +38,19 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         try {
-            $examValues = $request->input('type_exam', []);
-            dd($examValues);
-            return;
             $data = $request->only("external_code", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
-            // $name = $request->file("document")->getClientOriginalName();
-            // $request->file('document')->storeAs('public/',$name);
-            // Generar un nombre único para el archivo
-            $uniqueName = Str::uuid()->toString();
-
-            // Obtener el nombre original del archivo
-            $name = $request->file("document")->getClientOriginalName();
-
-            // Obtener la extensión del archivo original
-            $extension = $request->file("document")->getClientOriginalExtension();
-
-            // Combinar el nombre único con la extensión original para formar el nuevo nombre del archivo
-            $newName = $uniqueName . '.' . $extension;
-
-            // Guardar el archivo con el nuevo nombre
-            $request->file('document')->storeAs('public/', $newName);
-            // dd($data["id_user"]);
+            dd($data["id_user"]);
+            $examValues = $request->input('type_exam', []);
+            $examArray = serialize($examValues);
             $user = User::find($data["id_user"]);
             // dd($user);
             $exam = Exam::create([
                 'external_code' => $data["external_code"],
-                'type_exam' => $data["type_exam"],
                 'anticoagulant' => $data["anticoagulant"] ?? "HEP",
                 'or' => $data["or"],
                 'sample_type' => $data["sample_type"],
                 'exam_date' => $data["exam_date"],
+                'type_exam' => $examArray,
                 'exam_hour' => $data["exam_hour"],
                 'sample_receipt_date' => $data["sample_receipt_date"],
                 'sample_receipt_hour' => $data["sample_receipt_hour"],
@@ -76,11 +59,10 @@ class ExamController extends Controller
                 'deliver_date' => $data["deliver_date"],
                 'birth_date' => $data["birth_date"],
                 'origin_sample' => $data["origin_sample"],
-                'document' => $newName,
                 'taking_days' => $data["taking_days"],
             ]);
             $user->exams()->attach($exam);
-            Mail::to($user->email)->send(new MessageExam($user->name));
+            // Mail::to($user->email)->send(new MessageExam($user->name));
             return redirect()->route("dashboard.exams");
         } catch (Exception $th) {
             dd($th->getMessage());

@@ -3,32 +3,37 @@
 @section('title', 'Dashboard | Sopoerte del examen')
 
 @section('content')
-<a href="{{ route('dashboard.patients.my-exams') }}" class="back">
-    Volver    
-</a>
+    <a href="{{ route('dashboard.patients.my-exams') }}" class="back">
+        Volver
+    </a>
 
-<h2>Soporte del examen</h2>
+    <h2>Soporte del examen</h2>
 
 
-<div class="details">
-    <p>
-        <span>Codigo externo:</span> 2000001
-    </p>
-    <p>
-        <span>Examenes Tomados:</span>
+    <div class="details">
+        <p>
+            <span> Codigo externo: {{ $exam->external_code }}</span>
+        </p>
+        <p>
+            <span>Examenes Tomados:</span>
         <ol>
-            <li>Examen 1</li>
-            <li>Examen 2</li>
-            <li>Examen 3</li>
+            @foreach ($exam->supports as $support)
+                @php
+                    $typeExams = unserialize($support->type_exam);
+                @endphp
+                @foreach ($typeExams as $type)
+                    <li>{{ $type }}</li>
+                @endforeach
+            @endforeach
         </ol>
-    </p>
+        </p>
 
-    <p>
-        <span>
-            Documentos de examenes
-        </span>
+        <p>
+            <span>
+                Documentos de examenes
+            </span>
         <ol class="buttons-documents">
-            <li>
+            {{-- <li>
                 <a target="_blank" class="small-btn">
                     Documento 1
                 </a>
@@ -37,13 +42,21 @@
                 <a target="_blank" class="small-btn">
                     Documento 2
                 </a>
-            </li>
-            {{-- <li>
-                <a href="{{ asset('storage/' . 'document3.pdf') }}" target="_blank">
-                    Documento 3
-                </a>
             </li> --}}
+            @foreach ($exam->supports as $support)
+                @php
+                    $listDocuments = unserialize($support->documents);
+                @endphp
+                @foreach ($listDocuments as $document)
+                    <li>
+                        <a class="small-btn" href="{{ asset('storage/' . $document) }}" target="_blank">
+                            Documento 3
+                        </a>
+                    </li>
+                @endforeach
+            @endforeach
+
         </ol>
-    </p>
-</div>
+        </p>
+    </div>
 @endsection

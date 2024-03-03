@@ -31,6 +31,7 @@
         <div class="form_group" >
             <label for="type">Tipo</label>
             <select name="type_document" id="type_document">
+                <option disabled selected>Seleccionar</option>
                 <option value="RC">Registro Civil</option>
                 <option value="TI">Tarjeta de identidad.</option>
                 <option value="CC">Cédula de Ciudadanía</option>
@@ -59,6 +60,7 @@
         <div class="form_group" >
             <label for="sex">Tipo</label>
             <select name="sex" id="sex">
+                <option disabled selected>Seleccionar</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
             </select>
@@ -83,6 +85,7 @@
         <div class="form_group" >
             <label for="company_id">Entidad</label>
             <select name="company_id" id="company_id">
+                <option disabled selected>Seleccionar</option>
                 @foreach ($companies as $company)
                     <option value="{{ $company->id }}">{{ $company->name }}</option>
                 @endforeach
@@ -108,6 +111,7 @@
         <div class="form_group" >
             <label for="type">Tipo</label>
             <select name="type_document" id="type_document">
+                <option disabled selected>Seleccionar</option>
                 <option value="RC">Registro Civil</option>
                 <option value="TI">Tarjeta de identidad.</option>
                 <option value="CC">Cédula de Ciudadanía</option>
@@ -136,6 +140,7 @@
         <div class="form_group" >
             <label for="sex">Sexo</label>
             <select name="sex" id="sex">
+                <option disabled selected>Seleccionar</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
             </select>
