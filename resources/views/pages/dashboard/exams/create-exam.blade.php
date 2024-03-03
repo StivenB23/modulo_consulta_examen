@@ -3,6 +3,15 @@
 @section('title', 'Dashboard | Examenes')
 
 @section('content')
+
+    <script>
+        //  var successMessage = "{{ session('success') }}";
+    
+        // if (successMessage) {
+        //     // Restablece el valor del campo de entrada
+        //     document.getElementById('searchInput').value = "";
+        // }
+    </script>
     <h2>Crear Examen</h2>
 
     <form action="{{ route('saveExam') }}" method="post" enctype="multipart/form-data">
@@ -12,13 +21,13 @@
         <div class="form_group">
             <label for="patient">Paciente</label>
             <div class="custom-select">
-                <input type="text" id="searchInput" name="selectedPatient" placeholder="Buscar...">
-                <ul id="patientOptions">
+                <input type="text" id="searchInput" name="selectedPatient" placeholder="Buscar..." readonly required>
+                <ul id="patientOptions" onclick="selectPatient(event)">
                     @foreach ($patients as $patient)
                         <li data-value="{{ $patient->id }}">{{ $patient->name }} {{ $patient->lastname }}</li>
                     @endforeach
                 </ul>
-                <input type="hidden" id="id_user" name="id_user" value="{{ old('id_user') }}">
+                <input type="hidden" id="id_user" name="id_user" value="{{ old('id_user') }}" required>
             </div>
         </div>
 
