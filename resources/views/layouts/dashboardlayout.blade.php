@@ -19,6 +19,12 @@
 </head>
 <body>
     <main class="container_dashboard">
+        @if($errors->has('token_error'))
+            <div class="error_message" data-aos="fade-left" data-aos-duration="700">
+                {{ $errors->first('token_error') }}
+            </div>
+        @endif
+
         <div class="sidebar">
             <img
                 src="{{ asset('img/logo-citogen.png') }}"
