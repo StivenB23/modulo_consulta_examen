@@ -132,3 +132,17 @@ Route::put("/updateCompany/{id}", [CompanyController::class, "update"])->name("u
 Route::put("/deactivateCompany/{id}", [CompanyController::class, "deactivate"])->name("deactivateCompany");
 
 Route::get("/getExamsUser/{id}", [ExamController::class, "getExamUser"])->name("getExamsUser");
+
+
+// EXAMS BY COMPANY
+Route::get("/dashboardCompany", function () {
+    return view('pages.dashboardCompany.dashboard');
+})->name("dashboardCompany")->middleware("auth");
+
+Route::get('/dashboardCompany/exams', function () {
+    return view('pages.dashboardCompany.exams.list-exams-company');
+})->name("dashboardCompany.exams")->middleware("auth");
+
+Route::get('/dashboardCompany/exams/supports/{id}', function () {
+    return view('pages.dashboardCompany.exams.supports.details-support');
+})->name("dashboardCompany.exams.supports")->middleware("auth");
