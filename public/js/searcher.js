@@ -38,3 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+function selectPatient(event) {
+    if (event.target.tagName === 'LI') {
+        const selectedValue = event.target.getAttribute('data-value');
+        const selectedText = event.target.innerText;
+
+        document.getElementById('searchInput').value = selectedText;
+        document.getElementById('id_user').value = selectedValue;
+    }
+}
