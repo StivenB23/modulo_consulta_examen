@@ -72,7 +72,7 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
 Route::get('/olvidecontrasena', function ()  {
     return view("pages.authentication.forgowPassword");
 });
-Route::post('/olvidecontrasena', [AuthController::class, "emailPassword"]);
+Route::post('/olvidecontrasena', [AuthController::class, "emailPassword"])->name("olvidecontrasena");
 
 // PATIENTS
 

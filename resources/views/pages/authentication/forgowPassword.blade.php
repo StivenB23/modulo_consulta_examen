@@ -3,7 +3,7 @@
 @section('title', 'Iniciar Sesión')
 
 @section('content')
-    <form action="{{ route('login') }}" method="POST" id="client_form" class="form_tab active client_form">
+    <form action="{{ route('olvidecontrasena') }}" method="POST" id="client_form" class="form_tab active client_form">
         @if ($errors->has('email'))
             <div class="error_message">
                 {{ $errors->first('email') }}
