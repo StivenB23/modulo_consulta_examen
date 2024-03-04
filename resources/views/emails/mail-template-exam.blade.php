@@ -93,8 +93,7 @@
 
         <h1 class="title">Examen y Resultados laboratorio</h1>
         <p>
-            {{ $name }}, tu examen fue creado de forma exitosa esta al pendiente de nuestra plataforma para
-            cuenado el/los especialista/s cargue/n los resultados de tus examenes.
+            {{ $name }}, tu examen ha sido creado con éxito y han cargado resultados de los laboratorios.
         </p>
         <p>
             Puedes reviarlo haciendo clic en el siguiente enlace

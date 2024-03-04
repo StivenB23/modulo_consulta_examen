@@ -31,7 +31,7 @@ class MessageWelcome extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Bienvenido a Citogen ',
+            subject: 'Bienvenido al sistema de Descarga de resultados del laboratorio de Genética',
         );
     }
 

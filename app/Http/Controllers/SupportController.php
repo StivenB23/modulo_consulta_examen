@@ -37,33 +37,40 @@ class SupportController extends Controller
     {
         try {
             $data = $request->only("external_code", "fileUpload", "type_exam");
-            $typesExams = serialize($data["type_exam"]);
-            $filesUpload = $data["fileUpload"];
-            $fileNames = [];
-            $filesNamesSerialize = "";
-            foreach ($filesUpload as $file) {
-                $uniqueName = Str::uuid()->toString();
-                // // Obtener la extensión del archivo original
-                $extension = $file->getClientOriginalExtension();
-                // // Combinar el nombre único con la extensión original para formar el nuevo nombre del archivo
-                $newName = $uniqueName . '.' . $extension;
-                $file->storeAs('public/', $newName);
-                array_push($fileNames, $newName);
-            }
-            $filesNamesSerialize = serialize($fileNames);
+            // $typesExams = serialize($data["type_exam"]);
+            // $filesUpload = $data["fileUpload"];
+            // $fileNames = [];
+            // $filesNamesSerialize = "";
+            // foreach ($filesUpload as $file) {
+            //     $uniqueName = Str::uuid()->toString();
+            //     // // Obtener la extensión del archivo original
+            //     $extension = $file->getClientOriginalExtension();
+            //     // // Combinar el nombre único con la extensión original para formar el nuevo nombre del archivo
+            //     $newName = $uniqueName . '.' . $extension;
+            //     $file->storeAs('public/', $newName);
+            //     array_push($fileNames, $newName);
+            // }
+            // $filesNamesSerialize = serialize($fileNames);
             // dd($filesNamesSerialize);
             // // $exam =  Exam::find($data["external_code"]);
             // // dd($data["external_code"]);
             $r = $data["external_code"];
-            $exam = Exam::where('external_code',$r)->get();
-            $Support = Support::create([
-                'external_code' => $data["external_code"],
-                'type_exam' => $typesExams,
-                'documents' => $filesNamesSerialize,
-                'exam_id' => $exam[0]->id,
-            ]);
-            // dd($exam[0]->id);
-            // Mail::to()->send(new MessageExam(""));
+            $exams = Exam::where('external_code',$r)->get();
+            // $Support = Support::create([
+            //     'external_code' => $data["external_code"],
+            //     'type_exam' => $typesExams,
+            //     'documents' => $filesNamesSerialize,
+            //     'exam_id' => $exam[0]->id,
+            // ]);
+            foreach ($exams as $exam) {
+                $users = $exam->patients;
+                foreach ($users as $user) {
+                    // dd($user->name);
+                    Mail::to($user->email)->send(new MessageExam($user->name));
+                }
+                // Do something with $users
+            }
+            // dd($user);
 
             return redirect()->back()->with('success', '¡Soporte creado exitosamente!');
         } catch (Exception $th) {

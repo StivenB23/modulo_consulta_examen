@@ -28,7 +28,7 @@ class MessageExam extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Un nuevo examen ha sido cargado',
+            subject: 'Un nuevo resultado ha sido cargado',
         );
     }
 
