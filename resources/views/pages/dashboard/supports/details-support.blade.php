@@ -7,12 +7,12 @@
         Volver
     </a>
 
-    <h2>Soporte del examen</h2>
+    <h2>Resultados del examen</h2>
 
 
     <div class="details">
         <p>
-            <span> Codigo externo: {{ $exam->external_code }}</span>
+            <span>Código externo: {{ $exam->external_code }}</span>
         </p>
         <p>
             <span>Examenes Tomados:</span>

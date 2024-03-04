@@ -61,7 +61,7 @@
                                     <a href="{{ route('dashboardCompany.exams.supports', ['id' => $exam->id]) }}"
                                         target="_blank">
                                         <button class="small-btn">
-                                            Ver Soporte
+                                            Ver Resultados
                                         </button>
                                     </a>
                                 </td>

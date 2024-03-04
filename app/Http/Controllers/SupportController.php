@@ -26,6 +26,8 @@ class SupportController extends Controller
      */
     public function create()
     {
+        $exams = Exam::all();
+        return view('pages.dashboard.supports.create-support')->with("exams",$exams);
     }
 
     /**

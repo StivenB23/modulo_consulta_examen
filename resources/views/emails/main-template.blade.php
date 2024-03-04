@@ -26,6 +26,15 @@
             padding: 1rem;
         }
 
+        a{
+            color: #fff;
+        }
+
+        .contactEmail{
+
+            color: #fff;
+        }
+
         .mail h1 {
             font-size: 2rem;
             margin-bottom: 1rem;
@@ -42,7 +51,7 @@
             color: #2F2105;
         }
 
-        .footer-mail {
+        .footer-mail.footer-mail {
             margin-top: 1rem;
             text-align: center;
             background-color: #008ECF;
@@ -82,13 +91,13 @@
             data-aos="zoom-in" data-aos-duration="700">
 
         <h1 class="title">
-            Bienvenido al sistema de Descarga de resultados del laboratorio de genetica
+            Bienvenido al sistema de Descarga de resultados del laboratorio de Genética
         </h1>
         <p>{{ $name }}, tu cuenta ha sido creada con éxito. A continuación, encontrarás tus credenciales de inicio de sesión:</p>
         <p><b>Correo: {{ $email }}</b></p>
         <p><b>Contraseña: {{ $password }}</b></p>
         <p>
-            Gracias por registrarte en Citogen. Ahora podrás disfrutar de todos los beneficios que te ofrecemos.
+            Ahora podrás disfrutar de todos los beneficios que te ofrecemos.
         </p>
         <div class="link">
             <a href="http://127.0.0.1:8000/login">Iniciar Sesión</a>
@@ -97,10 +106,15 @@
     </div>
 
     <div class="footer-mail">
+        <p><b>Contactanos</b></p>
+        <p style="color: #fff"><b>Correo:</b> <span class="contactEmail" style="color: #fff">mercadeo@genetica.com.co</span></p>
+        <p><b>Teléfono:</b> (601) 8052971 y (601) 8052969 </p>
+        <p style="color: #fff"><b>Sitio web:</b> <a style="color: #fff;font-weight:bold" href="https://genetica.com.co/contactanos/">Laboratorio de Genética</a> </p>
+        <br><br>
         <p><small><i><b>¡Estamos emocionados de tenerte con nosotros! Si tienes alguna pregunta o necesitas ayuda, no
                         dudes en contactarnos. ¡Que tengas una experiencia increíble!</b></i></small></p>
         <h4>
-            Citogen
+            Laboratorio de Genética
         </h4>
     </div>
 </body>

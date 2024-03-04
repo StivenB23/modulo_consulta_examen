@@ -1,14 +1,14 @@
 @extends('layouts.dashboardlayout')
 
-@section('title', 'Dashboard | Soporte')
+@section('title', 'Dashboard | Resultados')
 
 @section('content')
-    <h2>Agregar soporte</h2>
+    <h2>Agregar Resultado</h2>
 
     <form action="{{ route('registerSoportPacient') }}" method="post" enctype="multipart/form-data">
         @csrf
 
-        @if(session('success'))
+        @if (session('success'))
             <div class="success_message">
                 {{ session('success') }}
             </div>
@@ -16,9 +16,16 @@
 
         {{-- EXTERN CODE --}}
         <div class="form_group">
-            <label for="external_code">Codigo Externo</label>
-            <input type="text" id="external_code" name="external_code" placeholder="Digite el codigo externo del examen"
-                value="{{ old('external_code') }}">
+            <label for="external_code">Código Externo</label>
+            <select name="external_code" id="">
+                <option value="" selected disabled>Seleccionar</option>
+                @foreach ($exams as $exam)
+                    @foreach ($exam->patients as $user)
+                        <option value="{{ $exam->external_code }}">{{ $exam->external_code }}-{{ $user->name }}
+                            {{ $user->lastname }}</option>
+                    @endforeach
+                @endforeach
+            </select>
             <p class="error">{{ $errors->first('external_code') }}</p>
         </div>
 
@@ -38,8 +45,7 @@
 
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="CBG" name="type_exam[]"
-                            value="CBG: Cariotipo Bandeo G">
+                        <input type="checkbox" id="CBG" name="type_exam[]" value="CBG: Cariotipo Bandeo G">
                     </div>
                     <div class="second">
                         <label for="CBG">CBG: Cariotipo Bandeo G</label>
@@ -47,8 +53,7 @@
                 </div>
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="CBC" name="type_exam[]"
-                            value="CBC: Cariotipo Bandeo C">
+                        <input type="checkbox" id="CBC" name="type_exam[]" value="CBC: Cariotipo Bandeo C">
                     </div>
                     <div class="second">
 
@@ -59,8 +64,7 @@
                 <div class="element">
                     <div class="first">
 
-                        <input type="checkbox" id="CBQ" name="type_exam[]"
-                            value="CBQ: Cariotipo Bandeo Q.">
+                        <input type="checkbox" id="CBQ" name="type_exam[]" value="CBQ: Cariotipo Bandeo Q.">
                     </div>
                     <div class="second">
 
@@ -71,8 +75,7 @@
                 </div>
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="CBR"
-                            name="CBR: Cariotipo Bandeo R."value="type_exam[]">
+                        <input type="checkbox" id="CBR" name="CBR: Cariotipo Bandeo R."value="type_exam[]">
                     </div>
                     <div class="second">
                         <label for="CBR">CBR: Cariotipo Bandeo R.</label>
@@ -80,8 +83,7 @@
                 </div>
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="CBRT" name="type_exam[]"
-                            value="CBRT: Cariotipo Bandeo RT.">
+                        <input type="checkbox" id="CBRT" name="type_exam[]" value="CBRT: Cariotipo Bandeo RT.">
                     </div>
                     <div class="second">
 
@@ -91,8 +93,7 @@
                 </div>
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="CLA" name="type_exam[]"
-                            value="CLA: Cariotipo Liquido Amniótico.">
+                        <input type="checkbox" id="CLA" name="type_exam[]" value="CLA: Cariotipo Liquido Amniótico.">
                     </div>
                     <div class="second">
 
@@ -102,8 +103,7 @@
                 </div>
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="CRF" name="type_exam[]"
-                            value="CRF: Cariotipo restos fetales.">
+                        <input type="checkbox" id="CRF" name="type_exam[]" value="CRF: Cariotipo restos fetales.">
                     </div>
                     <div class="second">
 
@@ -113,8 +113,7 @@
                 </div>
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="CEL" name="type_exam[]"
-                            value="CEL: Cariotipo Estados Leucémicos.">
+                        <input type="checkbox" id="CEL" name="type_exam[]" value="CEL: Cariotipo Estados Leucémicos.">
                     </div>
                     <div class="second">
 
@@ -125,8 +124,7 @@
                 <div class="element">
                     <div class="first">
 
-                        <input type="checkbox" id="CXF" name="type_exam[]"
-                            value="CXF: Cariotipo X Fragil">
+                        <input type="checkbox" id="CXF" name="type_exam[]" value="CXF: Cariotipo X Fragil">
                     </div>
                     <div class="second">
 
@@ -196,8 +194,7 @@
                 <div class="element">
                     <div class="first">
 
-                        <input type="checkbox" id="FPW" name="type_exam[]"
-                            value="FPW: Fish Prader Willi.">
+                        <input type="checkbox" id="FPW" name="type_exam[]" value="FPW: Fish Prader Willi.">
                     </div>
                     <div class="second">
 
@@ -265,8 +262,7 @@
                 <div class="element">
                     <div class="first">
 
-                        <input type="checkbox" id="HLA/COMP" name="type_exam[]"
-                            value="HLA/COMP: HLA Completo.">
+                        <input type="checkbox" id="HLA/COMP" name="type_exam[]" value="HLA/COMP: HLA Completo.">
                     </div>
                     <div class="second">
 
@@ -353,8 +349,7 @@
                 </div>
                 <div class="element">
                     <div class="first">
-                        <input type="checkbox" id="AC" name="type_exam[]"
-                            value="AC: Anticuerpos Citotoxicos">
+                        <input type="checkbox" id="AC" name="type_exam[]" value="AC: Anticuerpos Citotoxicos">
                     </div>
                     <div class="second">
 
@@ -365,8 +360,7 @@
                 <div class="element">
                     <div class="first">
 
-                        <input type="checkbox" id="AB" name="type_exam[]"
-                            value="AB: Anticuerpos Bloqueadores">
+                        <input type="checkbox" id="AB" name="type_exam[]" value="AB: Anticuerpos Bloqueadores">
                     </div>
                     <div class="second">
 

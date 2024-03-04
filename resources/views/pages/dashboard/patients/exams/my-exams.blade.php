@@ -68,7 +68,7 @@
                             </a> --}}
                                 <a href="{{ route('dashboard.support.details', ['id' => $exam->id]) }}" target="_blank">
                                     <button class="small-btn">
-                                        Ver Soporte
+                                        Ver Resultados
                                     </button>
                                 </a>
                             </td>

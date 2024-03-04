@@ -97,10 +97,9 @@ Route::get('/dashboard/exams/patient/{id}', [ExamController::class, "getExamUser
     ->name("dashboard.exams.patient")
     ->middleware("auth");
 
+
 // SUPPORT
-Route::get('/dashboard/support/create', function () {
-    return view('pages.dashboard.supports.create-support');
-})->name("dashboard.support-create")->middleware("auth");
+Route::get('/dashboard/support/create', [SupportController::class, "create"])->name("dashboard.support-create")->middleware("auth");
 
 // Route::get('/dashboard/supports/details/{examId}', function () {
 //     return view('pages.dashboard.supports.details-support');

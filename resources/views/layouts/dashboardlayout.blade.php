@@ -58,7 +58,7 @@
                             Pacientes
                         </p>
                     </a>
-                    
+
                     <a href="{{ route('dashboard.exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
                         <i class="bi bi-file-earmark-spreadsheet"></i>
                         <p>
@@ -73,10 +73,10 @@
                     <a href="{{ route('dashboard.support-create') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
                         <i class="bi bi-archive"></i>
                         <p>
-                            Soportes
+                            Resultados
                         </p>
                     </a>
-                    
+
                     {{-- <a href="{{ route('dashboard.exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
                         <i class="bi bi-file-earmark-spreadsheet"></i>
                         <p>
@@ -148,8 +148,8 @@
     </script>
 
     <script>
-        var datat=document.querySelector("#datat"); 
-        var dataTable=new DataTable("#datat",{ 
+        var datat=document.querySelector("#datat");
+        var dataTable=new DataTable("#datat",{
           perPage:20,
           labels: {
               placeholder: "Busca por un campo...",
