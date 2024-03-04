@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/email', function () {
     return view('emails.main-template');
 });
-Route::get("/",[UserController::class, "testUser"]);
+Route::get("/", [UserController::class, "testUser"]);
 
 Route::get('/', function () {
     return view('pages.authentication.login');
@@ -65,6 +65,15 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
     ->name("dashboard.companies.edit")
     ->middleware("auth");
 
+Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
+    ->name("dashboard.companies.edit")
+    ->middleware("auth");
+
+Route::get('/olvidecontrasena', function ()  {
+    return view("pages.authentication.forgowPassword");
+});
+Route::post('/olvidecontrasena', [AuthController::class, "emailPassword"]);
+
 // PATIENTS
 
 Route::get('/dashboard/patients', [UserController::class, "indexPatients"])
@@ -80,8 +89,8 @@ Route::get('/dashboard/patients/edit/{id}', [UserController::class, "editPatient
     ->middleware("auth");
 
 Route::get('/dashboard/patients/exams', [ExamController::class, "getMyExams"])
-->name("dashboard.patients.my-exams")
-->middleware("auth");
+    ->name("dashboard.patients.my-exams")
+    ->middleware("auth");
 
 // EXAMS
 
@@ -139,6 +148,6 @@ Route::get("/dashboardCompany", function () {
     return view('pages.dashboardCompany.dashboard');
 })->name("dashboardCompany");
 
-Route::get('/dashboardCompany/exams', [CompanyController::class,"examsCompany"])->name("dashboardCompany.exams");
+Route::get('/dashboardCompany/exams', [CompanyController::class, "examsCompany"])->name("dashboardCompany.exams");
 
-Route::get('/dashboardCompany/exams/supports/{id}',[CompanyController::class,"supportCompanyExam"])->name("dashboardCompany.exams.supports")->middleware("auth");
+Route::get('/dashboardCompany/exams/supports/{id}', [CompanyController::class, "supportCompanyExam"])->name("dashboardCompany.exams.supports")->middleware("auth");
