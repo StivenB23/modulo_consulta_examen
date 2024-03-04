@@ -31,9 +31,9 @@
             <tbody>
                 @if (count($usersCompany) > 0)
                     @foreach ($usersCompany as $user)
-                        <tr>
-                            <td>{{ $user->name }} {{ $user->lastname }}</td>
-                            @foreach ($user->exams as $exam)
+                        @foreach ($user->exams as $exam)
+                            <tr>
+                                <td>{{ $user->name }} {{ $user->lastname }}</td>
                                 <td>{{ $exam->or }}</td>
                                 <td>{{ $exam->anticoagulant }}</td>
                                 <td>{{ $exam->external_code }}</td>
@@ -58,14 +58,15 @@
                                 <td>{{ $exam->origin_sample }}</td>
                                 <td>{{ $exam->taking_days }}</td>
                                 <td class="document_actions">
-                                    <a href="{{ route('dashboardCompany.exams.supports', ['id' => $exam->id]) }}" target="_blank">
+                                    <a href="{{ route('dashboardCompany.exams.supports', ['id' => $exam->id]) }}"
+                                        target="_blank">
                                         <button class="small-btn">
                                             Ver Soporte
                                         </button>
                                     </a>
                                 </td>
-                            @endforeach
-                        </tr>
+                            </tr>
+                        @endforeach
                     @endforeach
                     {{-- @foreach ($exams as $exam)
                         <tr>
