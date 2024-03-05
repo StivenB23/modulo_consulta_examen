@@ -28,7 +28,7 @@
 
     <div class="form_group">
         <label for="alternative_email">Correo Electrónico Alternativo</label>
-        <input type="email" id="alternative_email" name="alternative_email" required placeholder="Ingrese su Correo Alternativo (Opcional)" value="{{ old('alternative_email') }}">
+        <input type="email" id="alternative_email" name="alternative_email" placeholder="Ingrese su Correo Alternativo (Opcional)" value="{{ old('alternative_email') }}">
         <p class="error">{{ $errors->first('alternative_email') }}</p>
     </div>
 

@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Mail\MessageWelcome;
 use App\Models\User;
 use App\Services\RandomKeyService;
+use Illuminate\Support\Facades\Validator;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -85,7 +86,36 @@ class UserController extends Controller
     public function storeSpecialist(Request $request)
     {
         try {
-            $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email", "role");
+            // $rules = [
+            //     'name' => 'required',
+            //     'lastname' => 'required',
+            //     'type_document' => 'required',
+            //     'document' => 'required',
+            //     'problema' => 'required',
+            //     'age' => 'required',
+            //     'sex' => 'required',
+            //     'age' => 'required',
+            //     'email' => 'required'
+            // ];
+            // $message = [
+            //     'name.required' => 'El nombre del paciente es requerido',
+            //     'lastname.required' => 'El apellido del paciente es requerido',
+            //     'type_document.required' => 'El apellido del paciente es requerido',
+            //     'document.required' => 'El documento del paciente es requerido',
+            //     'age.required' => 'La edad del paciente es requerido',
+            //     'sex.required' => 'El sexo del paciente es requerido',
+            //     'email.required' => 'El sexo del paciente es requerido'
+            // ];
+            // $validate = Validator::make(
+            //     $request->all(),
+            //     $rules,
+            //     $message
+            // );
+
+            // if ($validate->fails()) {
+            //     return back()->withErrors($validate->errors());
+            // }
+            $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email");
             $password = $this->randomKeyService->generateKey(12);
             $passwordEncrypt = $this->randomKeyService->encryptText($password);
             $user = new User();
@@ -101,8 +131,9 @@ class UserController extends Controller
             $user->save();
             Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
             return redirect()->route("dashboard.specialists");
+            
         } catch (Exception $th) {
-            dd($th->getMessage());
+            return redirect()->back()->withErrors(['error' => 'El correo ingresado ya existe']);
         }
     }
 
