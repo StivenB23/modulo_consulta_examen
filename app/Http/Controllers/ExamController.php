@@ -73,7 +73,7 @@ class ExamController extends Controller
        $userId = Auth::id();
        $user = User::find($userId);
        $exams = $user->exams;
-       return view('pages.dashboard.patients.exams.my-exams', compact('exams'));
+       return view('pages.dashboard.patients.exams.my-exams', compact('exams', 'user'));
     }
 
 
