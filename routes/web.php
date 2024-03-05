@@ -69,10 +69,20 @@ Route::get('/dashboard/companies/edit/{id}', [CompanyController::class, "edit"])
     ->name("dashboard.companies.edit")
     ->middleware("auth");
 
+Route::get('/dashboard/changePassword', function (){
+    return view("pages.forgot-password");
+})->name("dashboard.changePassword");
+Route::get('/dashboard/company/changePassword', function (){
+    return view("pages.forgot-password-company");
+})->name("dashboard.company.changePassword");
+
+Route::post('changePassword', [UserController::class, "changePassword"])->name("changePassword");
+Route::post('changePasswordCompany', [UserController::class, "changePasswordCompany"])->name("changePasswordCompany");
+
 Route::get('/olvidecontrasena', function ()  {
     return view("pages.authentication.forgowPassword");
 });
-Route::post('/olvidecontrasena', [AuthController::class, "emailPassword"])->name("olvidecontrasena");
+Route::post('/olvidecontrasena', [UserController::class, "emailPassword"])->name("olvidecontrasena");
 
 // PATIENTS
 

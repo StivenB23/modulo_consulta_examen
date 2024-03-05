@@ -33,7 +33,7 @@
 
         {{-- EXTERN CODE --}}
         <div class="form_group">
-            <label for="external_code">Codigo Externo</label>
+            <label for="external_code">Código Externo</label>
             <input type="text" id="external_code" name="external_code" placeholder="Codigo Externo"
                 value="{{ old('external_code') }}">
             <p class="error">{{ $errors->first('external_code') }}</p>

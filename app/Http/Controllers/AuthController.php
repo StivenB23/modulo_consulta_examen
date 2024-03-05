@@ -55,7 +55,4 @@ class AuthController extends Controller
         return redirect()->to('/');
     }
 
-    function emailPassword(Request $request){
-        dd("fogot password");
-    }
 }

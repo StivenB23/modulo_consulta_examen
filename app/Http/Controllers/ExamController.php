@@ -63,7 +63,7 @@ class ExamController extends Controller
             ]);
             $user->exams()->attach($exam);
             // Mail::to($user->email)->send(new MessageExam($user->name));
-            return redirect()->route("dashboard.exams");
+            return redirect()->route("dashboard.exams")->with('success', 'Examen creado de forma exitosa');
         } catch (Exception $th) {
             dd($th->getMessage());
         }

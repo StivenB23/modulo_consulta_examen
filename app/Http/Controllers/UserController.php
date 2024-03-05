@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageForgotPassword;
 use App\Models\Company;
 use App\Mail\MessageWelcome;
 use App\Models\User;
@@ -9,20 +10,21 @@ use App\Services\RandomKeyService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
 
     protected $randomKeyService;
-    
+
     public function __construct(RandomKeyService $randomKeyService)
     {
         $this->randomKeyService = $randomKeyService;
     }
-    
-    public function testUser (){
 
+    public function testUser()
+    {
     }
     /**
      * Display a listing of the resource.
@@ -73,7 +75,7 @@ class UserController extends Controller
             $user->role = $data["role"];
             $user->password = $passwordEncrypt;
             $user->save();
-            Mail::to($data["email"])->send(new MessageWelcome($data["name"],$data["email"],$password));
+            Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
             dd("Registrado de forma exitosa");
         } catch (Exception $th) {
             dd($th->getMessage());
@@ -97,7 +99,7 @@ class UserController extends Controller
             $user->role = "especialista";
             $user->password = $passwordEncrypt;
             $user->save();
-            Mail::to($data["email"])->send(new MessageWelcome($data["name"],$data["email"],$password));
+            Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
             return redirect()->route("dashboard.specialists");
         } catch (Exception $th) {
             dd($th->getMessage());
@@ -122,15 +124,15 @@ class UserController extends Controller
             $user->role = "cliente";
             $user->password = $passwordEncrypt;
             $user->save();
-            
-            Mail::to($data["email"])->send(new MessageWelcome($data["name"],$data["email"],$password));
+
+            Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
             return redirect()->route("dashboard.patients");
         } catch (Exception $th) {
             dd($th->getMessage());
         }
     }
 
-    
+
 
     /**
      * Display the specified resource.
@@ -202,14 +204,87 @@ class UserController extends Controller
     public function deactivate(string $id, string $origin)
     {
         $userDeactivated = DB::table('users')
-              ->where('id', $id)
-              ->update(['status' => 0]);
+            ->where('id', $id)
+            ->update(['status' => 0]);
 
         if ($origin == "specialists") {
             return redirect()->route("dashboard.specialists");
-        } 
+        }
         if ($origin == "patients") {
             return redirect()->route("dashboard.patients");
+        }
+    }
+
+    function emailPassword(Request $request)
+    {
+        $data = $request->only("email");
+        $user = User::where('email', $data["email"])->first();
+        if ($user) {
+            $password = $this->randomKeyService->generateKey(12);
+            $passwordEncrypt = $this->randomKeyService->encryptText($password);
+            $user->password = $passwordEncrypt;
+            $user->save();
+            Mail::to($user->email)->send(new MessageForgotPassword($user->name, $password));
+            return redirect()->route("login")->with('success', 'Correo de recuperación enviado');
+        }
+
+        return redirect()->back()->withErrors(['email' => 'El correo no es correcto o no se encuentra en el sistema']);
+    }
+
+    function changePassword(Request $request)
+    {
+        $data = $request->only("id_user", "passwordActual", "passwordNew");
+
+        // Buscar el usuario por su ID
+        $user = User::find($data["id_user"]);
+
+        if ($user) {
+            // Verificar si la contraseña actual proporcionada coincide con la contraseña almacenada en la base de datos
+            if (Hash::check($data["passwordActual"], $user->password)) {
+                // La contraseña actual es válida, actualizar la contraseña del usuario
+                $user->password = Hash::make($data["passwordNew"]);
+                $user->save();
+
+                // La contraseña se ha cambiado exitosamente
+                // Puedes devolver una respuesta adecuada, redirigir al usuario, etc.
+                return redirect()->back()->with('success', 'Contraseña Cambiada de forma exitosa');
+            } else {
+                // La contraseña actual proporcionada no coincide con la contraseña almacenada en la base de datos
+                // Puedes devolver un mensaje de error o realizar otra acción apropiada
+                return redirect()->back()->withErrors(['passwordActual' => 'La contraseña actual no es correcta']);
+            }
+        } else {
+            // No se encontró un usuario con el ID proporcionado
+            // Puedes devolver un mensaje de error o realizar otra acción apropiada
+            return redirect()->back()->withErrors(['passwordActual' => 'La contraseña actual no es correcta, error user']);
+        }
+    }
+    function changePasswordCompany(Request $request)
+    {
+        $data = $request->only("id_company", "passwordActual", "passwordNew");
+
+        // Buscar el usuario por su ID
+        $company = Company::find($data["id_company"]);
+
+        if ($company) {
+            // Verificar si la contraseña actual proporcionada coincide con la contraseña almacenada en la base de datos
+            if (Hash::check($data["passwordActual"], $company->password)) {
+                // La contraseña actual es válida, actualizar la contraseña del usuario
+                $company->password = Hash::make($data["passwordNew"]);
+                $company->save();
+
+                // La contraseña se ha cambiado exitosamente
+                // Puedes devolver una respuesta adecuada, redirigir al usuario, etc.
+                return redirect()->back()->with('success', 'Contraseña Cambiada de forma exitosa');
+            } else {
+                // La contraseña actual proporcionada no coincide con la contraseña almacenada en la base de datos
+                // Puedes devolver un mensaje de error o realizar otra acción apropiada
+                return redirect()->back()->withErrors(['passwordActual' => 'La contraseña actual no es correcta']);
+            }
+        } else {
+            // No se encontró un usuario con el ID proporcionado
+            // Puedes devolver un mensaje de error o realizar otra acción apropiada
+            return redirect()->back()->withErrors(['passwordActual' => 'La contraseña actual no es correcta, error user']);
         }
     }
 }

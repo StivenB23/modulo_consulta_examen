@@ -4,6 +4,7 @@
 
 @section('content')
     <form action="{{ route('olvidecontrasena') }}" method="POST" id="client_form" class="form_tab active client_form">
+        <a href="{{ route('login') }}">login</a>
         @if ($errors->has('email'))
             <div class="error_message">
                 {{ $errors->first('email') }}

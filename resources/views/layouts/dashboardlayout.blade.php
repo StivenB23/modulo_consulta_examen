@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,38 +14,38 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
     {{-- DATATABLES --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     {{-- SELECT --}}
 </head>
+
 <body>
     <main class="container_dashboard">
-        @if($errors->has('token_error'))
+        @if ($errors->has('token_error'))
             <div class="error_message" data-aos="fade-left" data-aos-duration="700">
                 {{ $errors->first('token_error') }}
             </div>
         @endif
 
         <div class="sidebar">
-            <img
-                src="{{ asset('img/logo-citogen.png') }}"
-                alt="Logo de Citogen"
-                class="logo"
-                data-aos="zoom-in"
-                data-aos-duration="700"
-            >
+            <img src="{{ asset('img/logo-citogen.png') }}" alt="Logo de Citogen" class="logo" data-aos="zoom-in"
+                data-aos-duration="700">
 
             {{-- ADMIN --}}
             @if (Auth::user()->role == 'administrador')
                 <div class="items">
-                    <a href="{{ route('dashboard.specialists') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/specialists') ? 'active item' : 'item' }}">
+                    <a href="{{ route('dashboard.specialists') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/specialists') ? 'active item' : 'item' }}">
                         <i class="bi bi-person-arms-up"></i>
                         <p>
                             Especialistas
                         </p>
                     </a>
 
-                    <a href="{{ route('dashboard.companies') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/companies') ? 'active item' : 'item' }}">
+                    <a href="{{ route('dashboard.companies') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/companies') ? 'active item' : 'item' }}">
                         <i class="bi bi-building"></i>
 
                         <p>
@@ -52,17 +53,26 @@
                         </p>
                     </a>
 
-                    <a href="{{ route('dashboard.patients') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/patients') ? 'active item' : 'item' }}">
+                    <a href="{{ route('dashboard.patients') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/patients') ? 'active item' : 'item' }}">
                         <i class="bi bi-bandaid"></i>
                         <p>
                             Pacientes
                         </p>
                     </a>
 
-                    <a href="{{ route('dashboard.exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
+                    <a href="{{ route('dashboard.exams') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/exams') ? 'active item' : 'item' }}">
                         <i class="bi bi-file-earmark-spreadsheet"></i>
                         <p>
                             Examenes
+                        </p>
+                    </a>
+                    <a href="{{ route('dashboard.changePassword') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
+                        <i class="bi bi-key-fill"></i>
+                        <p>
+                            Cambiar Contraseña
                         </p>
                     </a>
                 </div>
@@ -70,10 +80,18 @@
             {{-- SPECIALIST --}}
             @if (Auth::user()->role == 'especialista')
                 <div class="items">
-                    <a href="{{ route('dashboard.support-create') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
+                    <a href="{{ route('dashboard.support-create') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
                         <i class="bi bi-archive"></i>
                         <p>
                             Resultados
+                        </p>
+                    </a>
+                    <a href="{{ route('dashboard.changePassword') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
+                        <i class="bi bi-key-fill"></i>
+                        <p>
+                            Cambiar Contraseña
                         </p>
                     </a>
 
@@ -89,16 +107,25 @@
             {{-- Patient --}}
             @if (Auth::user()->role == 'cliente')
                 <div class="items">
-                    <a href="{{ route('dashboard') }}" class="{{ request()->path() === 'dashboard' ? 'active item' : 'item' }}">
+                    <a href="{{ route('dashboard') }}"
+                        class="{{ request()->path() === 'dashboard' ? 'active item' : 'item' }}">
                         <i class="bi bi-clipboard2-data"></i>
                         <p>
                             Mi Información
                         </p>
                     </a>
-                    <a href="{{ route('dashboard.patients.my-exams') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/patients/exams') ? 'active item' : 'item' }}">
+                    <a href="{{ route('dashboard.patients.my-exams') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/patients/exams') ? 'active item' : 'item' }}">
                         <i class="bi bi-activity"></i>
                         <p>
                             Mis Examenes
+                        </p>
+                    </a>
+                    <a href="{{ route('dashboard.changePassword') }}"
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
+                        <i class="bi bi-key-fill"></i>
+                        <p>
+                            Cambiar Contraseña
                         </p>
                     </a>
                 </div>
@@ -148,16 +175,17 @@
     </script>
 
     <script>
-        var datat=document.querySelector("#datat");
-        var dataTable=new DataTable("#datat",{
-          perPage:20,
-          labels: {
-              placeholder: "Busca por un campo...",
-              perPage: "{select} registros por página",
-              noRows: "No se encontraron registros",
-              info: "Mostrando {start} a {end} de {rows} registros",
-          }
-        } ) ;
+        var datat = document.querySelector("#datat");
+        var dataTable = new DataTable("#datat", {
+            perPage: 20,
+            labels: {
+                placeholder: "Busca por un campo...",
+                perPage: "{select} registros por página",
+                noRows: "No se encontraron registros",
+                info: "Mostrando {start} a {end} de {rows} registros",
+            }
+        });
     </script>
 </body>
+
 </html>

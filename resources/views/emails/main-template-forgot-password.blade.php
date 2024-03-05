@@ -91,13 +91,12 @@
             data-aos="zoom-in" data-aos-duration="700">
 
         <h1 class="title">
-            Bienvenido al sistema de Descarga de resultados del laboratorio de Genética
+           Recuperar Contraseña Laboratorio Genética
         </h1>
-        <p>{{ $name }}, tu cuenta ha sido creada con éxito. A continuación, encontrarás tus credenciales de inicio de sesión:</p>
-        <p><b>Correo: {{ $email }}</b></p>
+        <p>{{ $name }}, haz solicitado un cambio de contraseña para acceder al aplicativo, intenta con esta clave temporal. Y no olvides cambiarla estando adentro para mayor seguridad:</p>
         <p><b>Contraseña: {{ $password }}</b></p>
         <p>
-            Ahora podrás disfrutar de todos los beneficios que te ofrecemos.
+           Puedes ingresar al sistema dando clic en:
         </p>
         <div class="link">
             <a href="http://127.0.0.1:8000/login">Iniciar Sesión</a>

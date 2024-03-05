@@ -4,6 +4,11 @@
 
 @section('content')
     <form action="{{ route('login') }}" method="POST" id="client_form" class="form_tab active client_form">
+        @if (session('success'))
+            <div class="success_message">
+                {{ session('success') }}
+            </div>
+        @endif
         @if ($errors->has('email'))
             <div class="error_message">
                 {{ $errors->first('email') }}
@@ -25,6 +30,7 @@
                 </i>
             </div>
         </div>
+        <a href="{{ route('olvidecontrasena') }}">Olvide mi contraseña</a>
         <p class="error">{{ $errors->first('email') }}</p>
 
         <button type="submit">Iniciar Sesión</button>

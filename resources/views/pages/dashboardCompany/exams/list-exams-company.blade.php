@@ -20,9 +20,9 @@
                     <th>Fecha de recepción</th>
                     <th>Hora de recepción</th>
                     <th>Temp de ingreso</th>
-                    <th>Diagnostico</th>
+                    {{-- <th>Diagnostico</th> --}}
                     <th>Fecha de entrega</th>
-                    <th>Fecha de nacimiento</th>
+                    {{-- <th>Fecha de nacimiento</th> --}}
                     <th>Procedencia de muestra</th>
                     <th>Dias de toma</th>
                     <th>Acciones</th>
@@ -52,9 +52,9 @@
                                 <td>{{ $exam->sample_receipt_date }}</td>
                                 <td>{{ $exam->sample_receipt_hour }}</td>
                                 <td>{{ $exam->patient_temperature }}</td>
-                                <td>{{ $exam->diagnostic }}</td>
+                                {{-- <td>{{ $exam->diagnostic }}</td> --}}
                                 <td>{{ $exam->deliver_date }}</td>
-                                <td>{{ $exam->birth_date }}</td>
+                                {{-- <td>{{ $exam->birth_date }}</td> --}}
                                 <td>{{ $exam->origin_sample }}</td>
                                 <td>{{ $exam->taking_days }}</td>
                                 <td class="document_actions">
