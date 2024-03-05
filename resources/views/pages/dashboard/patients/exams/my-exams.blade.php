@@ -24,7 +24,7 @@
                     @foreach ($exams as $exam)
                         <tr>
                             <td>
-                                {{ $user->name }}
+                                {{ $user->name }} {{ $user->lastname }}
                             </td>
                             <td>
                                 {{ $user->document }}

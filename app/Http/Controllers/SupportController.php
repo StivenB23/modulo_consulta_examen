@@ -36,7 +36,10 @@ class SupportController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $request->only("external_code", "fileUpload", "type_exam");
+            $data = $request->only("or", "fileUpload", "type_exam");
+            $selectedOr = $data["or"];
+            $or = explode("-", $selectedOr)[0];
+            // the or selected is contained in $or variable
             $typesExams = serialize($data["type_exam"]);
             $filesUpload = $data["fileUpload"];
             $fileNames = [];

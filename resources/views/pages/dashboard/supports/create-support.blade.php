@@ -29,19 +29,19 @@
             <p class="error">{{ $errors->first('external_code') }}</p>
         </div> --}}
         <div class="form_group">
-            <label for="external_code">Código Externo</label>
+            <label for="or">OR</label>
             <div class="custom-select">
-                <input type="text" id="searchInput" name="selectedExternalCode" placeholder="Buscar..." required>
+                <input type="text" id="searchInput" name="or" placeholder="Buscar..." required>
                 <ul id="externalCodeOptions">
                     @foreach ($exams as $exam)
                         @foreach ($exam->patients as $user)
-                            <li data-value="{{ $exam->external_code }}">{{ $exam->external_code }}-{{ $user->name }}
+                            <li data-value="{{ $exam->or }}">{{ $exam->or }}-{{ $user->name }}
                                 {{ $user->lastname }}</li>
                         @endforeach
                     @endforeach
                 </ul>
-                <input type="hidden" id="selectedExternalCode" name="external_code"
-                    value="{{ old('selectedExternalCode') }}" required>
+                <input type="hidden" id="selectedOr" name="selectedOr"
+                    value="{{ old('selectedOr') }}" required>
             </div>
         </div>
 
