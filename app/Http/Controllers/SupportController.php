@@ -52,7 +52,8 @@ class SupportController extends Controller
             }
             $filesNamesSerialize = serialize($fileNames);
             // dd($filesNamesSerialize);
-            $exam =  Exam::find($data["external_code"]);
+            // $exam =  Exam::find($data["external_code"]);
+            // dd($exam);
             // dd($data["external_code"]);
             $r = $data["external_code"];
             $exams = Exam::where('external_code',$r)->get();
@@ -60,13 +61,18 @@ class SupportController extends Controller
                 'external_code' => $data["external_code"],
                 'type_exam' => $typesExams,
                 'documents' => $filesNamesSerialize,
-                'exam_id' => $exam[0]->id,
+                'exam_id' => $exams[0]->id,
             ]);
             foreach ($exams as $exam) {
                 $users = $exam->patients;
                 foreach ($users as $user) {
-                    // dd($user->name);
-                    Mail::to($user->email)->send(new MessageExam($user->name));
+                    // dd($user->company);
+                    if ($user->company_id == null || $user->company_id == "") {
+                        Mail::to($user->email)->send(new MessageExam($user->name));
+                    }else{
+                        $company = $user->company;
+                        Mail::to($company->email)->send(new MessageExam($user->name));
+                    }
                 }
                 // Do something with $users
             }

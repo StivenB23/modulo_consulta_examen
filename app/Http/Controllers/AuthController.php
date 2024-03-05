@@ -29,7 +29,7 @@ class AuthController extends Controller
             // Buscar el usuario en la tabla companies
         $company = Company::where('email', $credentials['email'])->first();
         // Verificar si el usuario existe y la contraseña es correcta
-        if ($company && password_verify($credentials['password'], $company->password)) {
+        if ($company && password_verify($credentials['password'], $company->password) && $company->status == 1) {
             // Autenticación exitosa
             // Iniciar sesión manualmente
             Auth::login($company);

@@ -15,7 +15,7 @@
         @endif
 
         {{-- EXTERN CODE --}}
-        <div class="form_group">
+        {{-- <div class="form_group">
             <label for="external_code">Código Externo</label>
             <select name="external_code" id="">
                 <option value="" selected disabled>Seleccionar</option>
@@ -27,6 +27,22 @@
                 @endforeach
             </select>
             <p class="error">{{ $errors->first('external_code') }}</p>
+        </div> --}}
+        <div class="form_group">
+            <label for="external_code">Código Externo</label>
+            <div class="custom-select">
+                <input type="text" id="searchInput" name="selectedExternalCode" placeholder="Buscar..." required>
+                <ul id="externalCodeOptions">
+                    @foreach ($exams as $exam)
+                        @foreach ($exam->patients as $user)
+                            <li data-value="{{ $exam->external_code }}">{{ $exam->external_code }}-{{ $user->name }}
+                                {{ $user->lastname }}</li>
+                        @endforeach
+                    @endforeach
+                </ul>
+                <input type="hidden" id="selectedExternalCode" name="external_code"
+                    value="{{ old('selectedExternalCode') }}" required>
+            </div>
         </div>
 
         {{-- DOCUMENT TYPES --}}
@@ -410,4 +426,45 @@
 
         <button type="submit">Guardar</button>
     </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const selectedExternalCodeInput = document.getElementById('selectedExternalCode');
+            const externalCodeOptions = document.getElementById('externalCodeOptions');
+
+            searchInput.addEventListener('focus', function() {
+                externalCodeOptions.style.display = 'block';
+            });
+
+            searchInput.addEventListener('blur', function() {
+                setTimeout(function() {
+                    externalCodeOptions.style.display = 'none';
+                }, 200);
+            });
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const options = externalCodeOptions.getElementsByTagName('li');
+
+                for (let i = 0; i < options.length; i++) {
+                    const option = options[i];
+                    const optionText = option.innerText.toLowerCase();
+
+                    if (optionText.includes(searchTerm)) {
+                        option.style.display = 'block';
+                    } else {
+                        option.style.display = 'none';
+                    }
+                }
+            });
+
+            externalCodeOptions.addEventListener('click', function(event) {
+                if (event.target.tagName === 'LI') {
+                    searchInput.value = event.target.innerText;
+                    selectedExternalCodeInput.value = event.target.getAttribute('data-value');
+                    externalCodeOptions.style.display = 'none';
+                }
+            });
+        });
+    </script>
 @endsection

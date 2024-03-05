@@ -257,6 +257,17 @@ class UserController extends Controller
             $user->save();
             Mail::to($user->email)->send(new MessageForgotPassword($user->name, $password));
             return redirect()->route("login")->with('success', 'Correo de recuperación enviado');
+        }else{
+            $company = Company::where('email', $data['email'])->first();
+            if ($company) {
+                # code...
+                $password = $this->randomKeyService->generateKey(12);
+                $passwordEncrypt = $this->randomKeyService->encryptText($password);
+                $company->password = $passwordEncrypt;
+                $company->save();
+                Mail::to($company->email)->send(new MessageForgotPassword($company->name, $password));
+                return redirect()->route("login")->with('success', 'Correo de recuperación enviado');
+            }
         }
 
         return redirect()->back()->withErrors(['email' => 'El correo no es correcto o no se encuentra en el sistema']);

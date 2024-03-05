@@ -33,7 +33,20 @@ html, body {
     z-index: 100;
     font-size: .9rem;
 }
-
+#externalCodeOptions{
+    list-style: none;
+    padding: 5px;
+    margin: 5px 0 0 0;
+    display: none;
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: rgb(255, 255, 255);
+}
+#externalCodeOptions li {
+    padding: 8px;
+    cursor: pointer;
+}
 .success_message {
     position: fixed;
     top: 1rem;

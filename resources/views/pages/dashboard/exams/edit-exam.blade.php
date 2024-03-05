@@ -10,7 +10,7 @@
 
     {{-- EXTERN CODE --}}
     <div class="form_group">
-        <label for="extern_code">Codigo Externo</label>
+        <label for="extern_code">Código Externo</label>
         <input type="text" id="extern_code" name="extern_code" placeholder="Codigo Externo" value="{{ $exam->extern_code }}">
         <p class="error">{{ $errors->first('extern_code') }}</p>
     </div>

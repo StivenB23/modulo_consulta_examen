@@ -22,7 +22,7 @@
         @csrf
 
         {{-- PATIENT --}}
-        <div class="form_group">
+        {{-- <div class="form_group">
             <label for="patient">Paciente</label>
             <div class="custom-select">
                 <input type="text" id="searchInput" name="selectedPatient" placeholder="Buscar..." readonly required>
@@ -33,8 +33,19 @@
                 </ul>
                 <input type="hidden" id="id_user" name="id_user" value="{{ old('id_user') }}" required>
             </div>
+        </div> --}}
+        <div class="form_group">
+            <label for="patient">Paciente</label>
+            <div class="custom-select">
+                <input type="text" id="searchInput" name="selectedPatient" placeholder="Buscar..." required>
+                <ul id="patientOptions">
+                    @foreach ($patients as $patient)
+                        <li data-value="{{ $patient->id }}">{{ $patient->name }} {{ $patient->lastname }}</li>
+                    @endforeach
+                </ul>
+                <input type="hidden" id="id_user" name="id_user" value="{{ old('id_user') }}" required>
+            </div>
         </div>
-
         {{-- EXTERN CODE --}}
         <div class="form_group">
             <label for="external_code">Código Externo</label>
@@ -526,8 +537,8 @@
 
         {{-- Diagnostic --}}
         <div class="form_group">
-            <label for="diagnostic">Diagnostico</label>
-            <input type="text" id="diagnostic" name="diagnostic" placeholder="Diagnostico"
+            <label for="diagnostic">Diagnóstico</label>
+            <input type="text" id="diagnostic" name="diagnostic" placeholder="Diagnóstico"
                 value="{{ old('diagnostic') }}">
             <p class="error">{{ $errors->first('diagnostic') }}</p>
         </div>
@@ -575,4 +586,27 @@
 
         <button type="submit">Guardar</button>
     </form>
+    {{-- <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            var filter = this.value.toUpperCase();
+            var options = document.getElementById("patientOptions").getElementsByTagName('li');
+            for (var i = 0; i < options.length; i++) {
+                var txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        });
+
+        document.getElementById('patientOptions').addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                var selectedPatient = event.target.textContent.trim();
+                document.getElementById('searchInput').value = selectedPatient;
+                document.getElementById('id_user').value = event.target.getAttribute('data-value');
+                // Aquí puedes agregar cualquier otra acción que desees realizar al seleccionar un paciente
+            }
+        });
+    </script> --}}
 @endsection

@@ -11,7 +11,7 @@
             <tr>
                 <th>OR</th>
                 <th>Anticoagulante</th>
-                <th>Codigo externo</th>
+                <th>Código externo</th>
                 <th>Tipo de examen</th>
                 <th>Tipo de muestra</th>
                 <th>Fecha de toma de muestra</th>
@@ -19,11 +19,11 @@
                 <th>Fecha de recepción</th>
                 <th>Hora de recepción</th>
                 <th>Temp de ingreso</th>
-                <th>Diagnostico</th>
+                <th>Diagnóstico</th>
                 <th>Fecha de entrega</th>
                 <th>Fecha de nacimiento</th>
                 <th>Procedencia de muestra</th>
-                <th>Dias de toma</th>
+                <th>Días de toma</th>
                 {{-- <th>Acciones</th> --}}
             </tr>
         </thead>

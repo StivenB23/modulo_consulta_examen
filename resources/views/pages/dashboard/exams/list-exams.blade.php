@@ -16,7 +16,7 @@
             <thead>
                 <tr>
                     <th>OR</th>
-                    <th>Codigo Externo</th>
+                    <th>Código Externo</th>
                     <th>Anticoagulante</th>
                     <th>Tipos de Examen</th>
                     <th>Tipo Muestra</th>
@@ -29,7 +29,7 @@
                     <th>Fecha Entrega</th>
                     {{-- <th>Fecha Nacimiento</th> --}}
                     <th>Procedencia Muestra</th>
-                    <th>Dias Toma</th>
+                    <th>Días Toma</th>
                     {{-- <th>Archivo</th> --}}
                     <th>Paciente</th>
                 </tr>

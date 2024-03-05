@@ -160,4 +160,4 @@ Route::get("/dashboardCompany", function () {
 
 Route::get('/dashboardCompany/exams', [CompanyController::class, "examsCompany"])->name("dashboardCompany.exams");
 
-Route::get('/dashboardCompany/exams/supports/{id}', [CompanyController::class, "supportCompanyExam"])->name("dashboardCompany.exams.supports")->middleware("auth");
+Route::get('/dashboardCompany/exams/supports/{id}', [CompanyController::class, "supportCompanyExam"])->name("dashboardCompany.exams.supports");

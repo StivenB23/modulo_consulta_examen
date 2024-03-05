@@ -1,0 +1,14 @@
+laboratoriogeneticaapp@gmail.com
+umyp jvds awjc mboc
+
+85.31.233.90
+usuario: admin
+
+
+85.31.233.90
+root
+Millo$13
+
+
+MYSQL: root
+clave: [genetica]

@@ -25,8 +25,9 @@
 
     {{-- type of document --}}
     <div class="form_group" >
-        <label for="type">Tipo</label>
+        <label for="type">Tipo de documento</label>
         <select name="type_document" id="type_document">
+            <option value="" selected disabled>Seleccionar</option>
             <option value="RC">Registro Civil</option>
             <option value="TI">Tarjeta de identidad.</option>
             <option value="CC">Cédula de Ciudadanía</option>
@@ -40,7 +41,7 @@
     {{-- document number --}}
     <div class="form_group">
         <label for="document">Número de Documento</label>
-        <input type="text" id="document" name="document" required placeholder="Ingrese Número de Documento" value="{{ old('document') }}">
+        <input type="number" id="document" name="document" required placeholder="Ingrese Número de Documento" value="{{ old('document') }}">
         <p class="error">{{ $errors->first('document') }}</p>
     </div>
 
@@ -54,6 +55,7 @@
     <div class="form_group" >
         <label for="sex">Sexo</label>
         <select name="sex" id="sex">
+            <option value="" selected disabled>Seleccionar</option>
             <option value="M">Masculino</option>
             <option value="F">Femenino</option>
         </select>

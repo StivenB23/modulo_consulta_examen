@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Apellido:</strong> ${user.lastname}</p>
                 <p><strong>Correo:</strong> ${user.email}</p>
                 <p><strong>Edad:</strong> ${user.age}</p>
-                <p><strong>Sexo:</strong ${user.sex}</p>
                 <p><strong>Tipo de documento:</strong> ${user.type_document}</p>
                 <p><strong>Número de documento:</strong> ${user.document}</p>
             </div>
