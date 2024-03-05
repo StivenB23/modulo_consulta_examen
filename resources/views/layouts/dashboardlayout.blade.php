@@ -122,7 +122,7 @@
                         </p>
                     </a>
                     <a href="{{ route('dashboard.changePassword') }}"
-                        class="{{ Str::startsWith(request()->path(), 'dashboard/support') ? 'active item' : 'item' }}">
+                        class="{{ Str::startsWith(request()->path(), 'dashboard/changePassword') ? 'active item' : 'item' }}">
                         <i class="bi bi-key-fill"></i>
                         <p>
                             Cambiar Contraseña
