@@ -41,7 +41,7 @@
                         Examenes de mi empresa
                     </p>
                 </a>
-                <a href="{{ route('dashboard.company.changePassword') }}" class="{{ Str::startsWith(request()->path(), 'dashboardCompany/exams') ? 'active item' : 'item' }}">
+                <a href="{{ route('dashboard.company.changePassword') }}" class="{{ Str::startsWith(request()->path(), 'dashboard/company/changePassword') ? 'active item' : 'item' }}">
                     <i class="bi bi-key-fill"></i>
                     <p>
                         Cambiar contraeña

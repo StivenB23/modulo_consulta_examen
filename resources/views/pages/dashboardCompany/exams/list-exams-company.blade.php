@@ -9,22 +9,25 @@
         <table id="datat">
             <thead>
                 <tr>
+                    <th>Código interno</th>
                     <th>Nombre</th>
-                    <th>OR</th>
-                    <th>Anticoagulante</th>
-                    <th>Codigo externo</th>
-                    <th>Tipo de examen</th>
-                    <th>Tipo de muestra</th>
-                    <th>Fecha de toma de muestra</th>
-                    <th>Hora de toma de muestra</th>
-                    <th>Fecha de recepción</th>
-                    <th>Hora de recepción</th>
-                    <th>Temp de ingreso</th>
+                    <th>Tipo Documento</th>
+                    <th>Documento</th>
+                    <th>Empresa</th>
+                    {{-- <th>Anticoagulante</th> --}}
+                    {{-- <th>Codigo externo</th> --}}
+                    {{-- <th>Tipo de examen</th> --}}
+                    {{-- <th>Tipo de muestra</th> --}}
+                    {{-- <th>Fecha de toma de muestra</th> --}}
+                    {{-- <th>Hora de toma de muestra</th> --}}
+                    {{-- <th>Fecha de recepción</th> --}}
+                    {{-- <th>Hora de recepción</th> --}}
+                    {{-- <th>Temp de ingreso</th> --}}
                     {{-- <th>Diagnostico</th> --}}
-                    <th>Fecha de entrega</th>
+                    {{-- <th>Fecha de entrega</th> --}}
                     {{-- <th>Fecha de nacimiento</th> --}}
-                    <th>Procedencia de muestra</th>
-                    <th>Dias de toma</th>
+                    {{-- <th>Procedencia de muestra</th> --}}
+                    {{-- <th>Dias de toma</th> --}}
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -33,9 +36,12 @@
                     @foreach ($usersCompany as $user)
                         @foreach ($user->exams as $exam)
                             <tr>
-                                <td>{{ $user->name }} {{ $user->lastname }}</td>
                                 <td>{{ $exam->or }}</td>
-                                <td>{{ $exam->anticoagulant }}</td>
+                                <td>{{ $user->name }} {{ $user->lastname }}</td>
+                                <td>{{ $user->type_document }}</td>
+                                <td>{{ $user->document }}</td>
+                                <td>{{ $user->company->name ?? '' }}</td>
+                                {{-- <td>{{ $exam->anticoagulant }}</td>
                                 <td>{{ $exam->external_code }}</td>
 
                                 <td>
@@ -51,12 +57,12 @@
                                 <td>{{ $exam->exam_hour }}</td>
                                 <td>{{ $exam->sample_receipt_date }}</td>
                                 <td>{{ $exam->sample_receipt_hour }}</td>
-                                <td>{{ $exam->patient_temperature }}</td>
+                                <td>{{ $exam->patient_temperature }}</td> --}}
                                 {{-- <td>{{ $exam->diagnostic }}</td> --}}
-                                <td>{{ $exam->deliver_date }}</td>
+                                {{-- <td>{{ $exam->deliver_date }}</td> --}}
                                 {{-- <td>{{ $exam->birth_date }}</td> --}}
-                                <td>{{ $exam->origin_sample }}</td>
-                                <td>{{ $exam->taking_days }}</td>
+                                {{-- <td>{{ $exam->origin_sample }}</td>
+                                <td>{{ $exam->taking_days }}</td> --}}
                                 <td class="document_actions">
                                     <a href="{{ route('dashboardCompany.exams.supports', ['id' => $exam->id]) }}"
                                         target="_blank">
