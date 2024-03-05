@@ -9,13 +9,11 @@
         <table id="datat">
             <thead>
                 <tr>
+                    <th>Código interno</th>
                     <th>Nombre</th>
+                    <th>Tipo Documento</th>
                     <th>Documento</th>
-                    <th>Tipo de examen</th>
-                    <th>Fecha de toma de muestra</th>
-                    <th>Hora de toma de muestra</th>
-                    <th>Diagnostico</th>
-                    <th>Fecha de entrega</th>
+                    <th>Empresa</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -24,23 +22,20 @@
                     @foreach ($exams as $exam)
                         <tr>
                             <td>
+                                {{ $exam->or }}
+                            </td>
+                            <td>
                                 {{ $user->name }} {{ $user->lastname }}
+                            </td>
+                            <td>
+                                {{ $user->type_document }}
                             </td>
                             <td>
                                 {{ $user->document }}
                             </td>
                             <td>
-                                @php
-                                    $typeExams = unserialize($exam->type_exam);
-                                @endphp
-                                @foreach ($typeExams as $type_examO)
-                                    <li>{{ $type_examO }}</li>
-                                @endforeach
+                                {{ $user->company->name ?? '' }}
                             </td>
-                            <td>{{ $exam->exam_date }}</td>
-                            <td>{{ $exam->exam_hour }}</td>
-                            <td>{{ $exam->diagnostic }}</td>
-                            <td>{{ $exam->deliver_date }}</td>
                             <td class="document_actions">
                                 {{-- <a href="{{ asset('storage/' . $exam->document) }}" target="_blank">
                                 <button class="small-btn">

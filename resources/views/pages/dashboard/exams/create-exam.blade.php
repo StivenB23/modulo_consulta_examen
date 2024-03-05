@@ -55,8 +55,8 @@
         </div>
         {{-- OR --}}
         <div class="form_group">
-            <label for="exam_date">Consecutivo Or</label>
-            <input type="text" id="or" name="or" placeholder="Codigo Externo" value="{{ old('or') }}">
+            <label for="exam_date">Código Interno</label>
+            <input type="text" id="or" name="or" placeholder="Código Interno" value="{{ old('or') }}">
             <p class="error">{{ $errors->first('or') }}</p>
         </div>
 

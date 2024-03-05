@@ -29,7 +29,7 @@
             <p class="error">{{ $errors->first('external_code') }}</p>
         </div> --}}
         <div class="form_group">
-            <label for="or">OR</label>
+            <label for="or">Código Interno</label>
             <div class="custom-select">
                 <input type="text" id="searchInput" name="or" placeholder="Buscar..." required>
                 <ul id="externalCodeOptions">

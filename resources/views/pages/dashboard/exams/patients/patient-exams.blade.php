@@ -9,7 +9,7 @@
     <table id="datat">
         <thead>
             <tr>
-                <th>OR</th>
+                <th>Código Interno</th>
                 <th>Anticoagulante</th>
                 <th>Código externo</th>
                 <th>Tipo de examen</th>
