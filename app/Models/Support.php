@@ -12,6 +12,7 @@ class Support extends Model
     protected $fillable = [
         'type_exam',
         'documents',
+        'observation',
         'exam_id'];
 
     public function exam()  {

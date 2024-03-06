@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text("type_exam");
             $table->text("documents");
+            $table->text("observation")->nullable();
             $table->unsignedBigInteger('exam_id')->nullable();
             $table->timestamps();
             $table->foreign('exam_id')->references('id')->on('exams');

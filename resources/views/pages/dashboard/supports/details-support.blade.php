@@ -12,8 +12,9 @@
 
     <div class="details">
         <p>
-            <span>Código externo: {{ $exam->external_code }}</span>
+            <span>Código interno: {{ $exam->or }}</span>
         </p>
+        
         <p>
             <span>Examenes Tomados:</span>
         <ol>
@@ -24,6 +25,10 @@
                 @foreach ($typeExams as $type)
                     <li>{{ $type }}</li>
                 @endforeach
+                @if ($support->observation != null)
+                    <h3>Observación</h3>
+                    <p>{{$support->observation}}</p>
+                @endif
             @endforeach
         </ol>
         </p>

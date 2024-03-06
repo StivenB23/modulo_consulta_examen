@@ -418,6 +418,11 @@
             </div>
         </div>
 
+        <div class="form_group">
+            <label for="documents">Observación(Opcional)</label>
+            <textarea name="observation" class="form-control" id="" cols="90" rows="10"></textarea>
+        </div>
+
         {{-- File --}}
         <div class="form_group">
             <label for="documents">Archivos</label>

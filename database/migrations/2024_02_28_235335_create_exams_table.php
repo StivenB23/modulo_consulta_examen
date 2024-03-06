@@ -14,20 +14,20 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string("external_code");
-            $table->text("type_exam");
-            $table->string("anticoagulant");
+            $table->text("type_exam")->nullable();
+            $table->string("anticoagulant")->nullable();
             $table->string("or");
-            $table->string("sample_type");
-            $table->date("exam_date");
-            $table->time("exam_hour");
-            $table->date("sample_receipt_date");
-            $table->time("sample_receipt_hour");
-            $table->string("patient_temperature");
-            $table->text("diagnostic");
-            $table->string("origin_sample");
-            $table->text("deliver_date");
-            $table->date("birth_date");
-            $table->text("taking_days");
+            $table->string("sample_type")->nullable();
+            $table->date("exam_date")->nullable();
+            $table->time("exam_hour")->nullable();
+            $table->date("deliver_date")->nullable();
+            $table->date("sample_receipt_date")->nullable();
+            $table->time("sample_receipt_hour")->nullable();
+            $table->string("patient_temperature")->nullable();
+            $table->text("diagnostic")->nullable();
+            $table->string("origin_sample")->nullable();
+            $table->date("birth_date")->nullable();
+            $table->text("taking_days")->nullable();
             $table->timestamps();
         });
     }

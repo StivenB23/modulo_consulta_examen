@@ -36,7 +36,7 @@ class SupportController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $request->only("or", "fileUpload", "type_exam");
+            $data = $request->only("or", "observation","fileUpload", "type_exam");
             $selectedOr = $data["or"];
             $or = explode("-", $selectedOr)[0];
             // the or selected is contained in $or variable
@@ -52,18 +52,18 @@ class SupportController extends Controller
                 $newName = $uniqueName . '.' . $extension;
                 $file->storeAs('public/', $newName);
                 array_push($fileNames, $newName);
-            }
+            } 
             $filesNamesSerialize = serialize($fileNames);
             // dd($filesNamesSerialize);
             // $exam =  Exam::find($data["external_code"]);
             // dd($exam);
             // dd($data["external_code"]);
-            $r = $data["external_code"];
-            $exams = Exam::where('external_code',$r)->get();
+            $r = $data["or"];
+            $exams = Exam::where('or',$or)->get();
             $Support = Support::create([
-                'external_code' => $data["external_code"],
                 'type_exam' => $typesExams,
                 'documents' => $filesNamesSerialize,
+                'observation' => $data["observation"],
                 'exam_id' => $exams[0]->id,
             ]);
             foreach ($exams as $exam) {
