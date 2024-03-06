@@ -8,6 +8,7 @@ use App\Models\Support;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class SupportController extends Controller
@@ -27,7 +28,7 @@ class SupportController extends Controller
     public function create()
     {
         $exams = Exam::all();
-        return view('pages.dashboard.supports.create-support')->with("exams",$exams);
+        return view('pages.dashboard.supports.create-support')->with("exams", $exams);
     }
 
     /**
@@ -36,7 +37,14 @@ class SupportController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $request->only("or", "observation","fileUpload", "type_exam");
+            $data = $request->only("or", "observation", "fileUpload", "type_exam");
+            $validator = Validator::make($request->all(), [
+                'type_exam' => 'required|array',
+            ]);
+            if ($validator->fails()) {
+                // Devuelve un mensaje de error personalizado para el campo 'type_exam'
+                return redirect()->back()->withErrors(['type_exams' => 'Debes seleccionar al menos un tipo de examen']);
+            }
             $selectedOr = $data["or"];
             $or = explode("-", $selectedOr)[0];
             // the or selected is contained in $or variable
@@ -52,14 +60,14 @@ class SupportController extends Controller
                 $newName = $uniqueName . '.' . $extension;
                 $file->storeAs('public/', $newName);
                 array_push($fileNames, $newName);
-            } 
+            }
             $filesNamesSerialize = serialize($fileNames);
             // dd($filesNamesSerialize);
             // $exam =  Exam::find($data["external_code"]);
             // dd($exam);
             // dd($data["external_code"]);
             $r = $data["or"];
-            $exams = Exam::where('or',$or)->get();
+            $exams = Exam::where('or', $or)->get();
             $Support = Support::create([
                 'type_exam' => $typesExams,
                 'documents' => $filesNamesSerialize,
@@ -72,7 +80,7 @@ class SupportController extends Controller
                     // dd($user->company);
                     if ($user->company_id == null || $user->company_id == "") {
                         Mail::to($user->email)->send(new MessageExam($user->name));
-                    }else{
+                    } else {
                         $company = $user->company;
                         Mail::to($company->email)->send(new MessageExam($user->name));
                     }
@@ -109,7 +117,8 @@ class SupportController extends Controller
     {
     }
 
-    function getExamSupport(string $id) {
+    function getExamSupport(string $id)
+    {
         $exam = Exam::find($id);
         // dd($exam);
         return view('pages.dashboard.supports.details-support', compact('exam'));

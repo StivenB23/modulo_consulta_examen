@@ -54,31 +54,31 @@ class UserSeeder extends Seeder
         //     'created_at' => Carbon::now(),
         //     'updated_at' => Carbon::now(),
         // ]);
-        // DB::table('users')->insert([
-        //     'name' => "John",
-        //     'lastname' => "Doe",
-        //     'type_document' => "CC",
-        //     'document' => "56554684",
-        //     'age' => "19",
-        //     'sex' => "H",
-        //     'email' => "stiven24ospina@gmail.com",
-        //     'password' => Hash::make("12345"),
-        //     'role' => "especialista",
-        //     'created_at' => Carbon::now(),
-        //     'updated_at' => Carbon::now(),
-        // ]);
-        // DB::table('users')->insert([
-        //     'name' => "Andres",
-        //     'lastname' => "Meza",
-        //     'type_document' => "CC",
-        //     'document' => "1254774125",
-        //     'age' => "19",
-        //     'sex' => "H",
-        //     'email' => "stiven25ospina@gmail.com",
-        //     'password' => Hash::make("12345"),
-        //     'role' => "cliente",
-        //     'created_at' => Carbon::now(),
-        //     'updated_at' => Carbon::now(),
-        // ]);
+        DB::table('users')->insert([
+            'name' => "John",
+            'lastname' => "Doe",
+            'type_document' => "CC",
+            'document' => "56554684",
+            'age' => "19",
+            'sex' => "H",
+            'email' => "stiven24ospina@gmail.com",
+            'password' => Hash::make("12345"),
+            'role' => "especialista",
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => "Andres",
+            'lastname' => "Meza",
+            'type_document' => "CC",
+            'document' => "1254774125",
+            'age' => "19",
+            'sex' => "H",
+            'email' => "stiven25ospina@gmail.com",
+            'password' => Hash::make("12345"),
+            'role' => "cliente",
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }
