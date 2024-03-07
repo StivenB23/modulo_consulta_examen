@@ -11,6 +11,29 @@
         </a>
     </div>
 
+    <form class="container-elements-flex" action="{{ route('exams.export') }}" method="post">
+        @csrf
+        <div class="form_group" >
+            <label for="type">Filtro de fecha</label>
+            <select name="filter_Data" required id="type_document">
+                <option value="exam_date" selected>Fecha Toma de Muestra</option>
+                <option value="sample_receipt_date">Fecha recepción de muestra</option>
+                <option value="deliver_date">Fecha entrega</option>
+
+            </select>
+            <p class="error">{{ $errors->first('type_document') }}</p>
+        </div>
+        <div class="form_group">
+            <label for="start_date">Fecha de inicio:</label>
+            <input type="date" name="start_date" required>
+        </div>
+        <div class="form_group">
+            <label for="start_date">Fecha de Final:</label>
+            <input type="date" name="end_date" required>
+        </div>
+        <button class="btn-small" type="submit">Exportar a Excel</button>
+    </form>
+
     <div class="table small">
         <table id="datat">
             <thead>

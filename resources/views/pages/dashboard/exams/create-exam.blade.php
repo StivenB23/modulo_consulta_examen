@@ -4,20 +4,15 @@
 
 @section('content')
 
-    <script>
-        //  var successMessage = "{{ session('success') }}";
 
-        // if (successMessage) {
-        //     // Restablece el valor del campo de entrada
-        //     document.getElementById('searchInput').value = "";
-        // }
-    </script>
+
     <h2>Crear Examen</h2>
     @if (session('success'))
         <div class="success_message">
             {{ session('success') }}
         </div>
     @endif
+
     <form action="{{ route('saveExam') }}" method="post" enctype="multipart/form-data">
         @csrf
 

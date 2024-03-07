@@ -109,6 +109,20 @@ form .form_group input {
     height: 100vh;
 }
 
+.container-elements-flex{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 10px;
+}
+
+.container-elements-flex .btn-small{
+    width: 150px;
+    padding: 10px;
+    height: 50px;
+    background-color: rgb(75, 151, 75);
+}
+
 .container_404 h1 {
     font-size: 3rem;
     font-weight: bold;

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExportExcelController;
 use App\Http\Controllers\SupportController;
 use Illuminate\Support\Facades\Route;
 
@@ -161,3 +162,7 @@ Route::get("/dashboardCompany", function () {
 Route::get('/dashboardCompany/exams', [CompanyController::class, "examsCompany"])->name("dashboardCompany.exams");
 
 Route::get('/dashboardCompany/exams/supports/{id}', [CompanyController::class, "supportCompanyExam"])->name("dashboardCompany.exams.supports");
+
+
+// Exportar en excel
+Route::post("/exams/export",[ExportExcelController::class,"export"])->name("exams.export");
