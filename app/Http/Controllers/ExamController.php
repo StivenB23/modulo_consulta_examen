@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MessageExam;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+
 class ExamController extends Controller
 {
     /**
@@ -38,14 +39,21 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $request->only("external_code", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or","document", "taking_days");
+            $validator = Validator::make($request->all(), [
+                'type_exam' => 'required|array',
+            ]);
+            if ($validator->fails()) {
+                // Devuelve un mensaje de error personalizado para el campo 'type_exam'
+                return redirect()->back()->withErrors(['type_exams' => 'Debes seleccionar al menos un tipo de examen']);
+            }
+            $data = $request->only("external_code", "type_exam", "sample_type", "exam_date", "exam_hour", "sample_receipt_date", "sample_receipt_hour", "patient_temperature", "id_user", "diagnostic", "deliver_date", "birth_date", "origin_sample", "or", "document", "taking_days");
             $examValues = $request->input('type_exam', []);
             $examArray = serialize($examValues);
             // dd("d");
             $user = User::find($data["id_user"]);
             // dd($user);
             $exam = Exam::create([
-                'external_code' => $data["external_code"],
+                'external_code' => $data["external_code"]??"",
                 'anticoagulant' => $data["anticoagulant"] ?? "HEP",
                 'or' => $data["or"],
                 'sample_type' => $data["sample_type"],
@@ -65,25 +73,28 @@ class ExamController extends Controller
             // Mail::to($user->email)->send(new MessageExam($user->name));
             return redirect()->route("dashboard.exams")->with('success', 'Examen creado de forma exitosa');
         } catch (Exception $th) {
-            dd($th->getMessage());
+            return redirect()->back()->withErrors(['type_exams' => $th->getMessage()]);
         }
     }
 
-    public function getMyExams() {
-       $userId = Auth::id();
-       $user = User::find($userId);
-       $exams = $user->exams;
-       return view('pages.dashboard.patients.exams.my-exams', compact('exams', 'user'));
+    public function getMyExams()
+    {
+        $userId = Auth::id();
+        $user = User::find($userId);
+        $exams = $user->exams;
+        return view('pages.dashboard.patients.exams.my-exams', compact('exams', 'user'));
     }
 
 
-    public function getExamUser(string $id) {
+    public function getExamUser(string $id)
+    {
         $user = User::find($id);
         $exams = $user->exams;
         return view('pages.dashboard.exams.patients.patient-exams', compact('exams', 'user'));
     }
 
-    public function getPatientDetails(string $id) {
+    public function getPatientDetails(string $id)
+    {
         $user = User::find($id);
         return response()->json($user);
     }

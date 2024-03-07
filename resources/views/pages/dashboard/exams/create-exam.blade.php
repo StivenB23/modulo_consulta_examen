@@ -111,7 +111,7 @@
 
         <div class="form_group">
             <label for="type_exam" class="label">Seleccione todos los tipos de examen</label>
-
+            <p class="error">{{ $errors->first('type_exams') }}</p>
             <div class="checkbox_group">
                 <div class="element">
                     <div class="first">

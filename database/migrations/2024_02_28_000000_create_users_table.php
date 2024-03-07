@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('document')->unique();
             $table->string('age');
             $table->string('sex');
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('role');
             $table->boolean('status')->default(true);
             $table->string('password');

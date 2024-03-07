@@ -10,7 +10,7 @@
 
     <div class="form_group">
         <label for="nit">Nit</label>
-        <input type="text" id="nit" name="nit" required placeholder="Nit de entidad" value="{{ old('nit') }}">
+        <input type="text" id="nit" name="nit" placeholder="Nit de entidad" value="{{ old('nit') }}">
         <p class="error">{{ $errors->first('nit') }}</p>
     </div>
 
