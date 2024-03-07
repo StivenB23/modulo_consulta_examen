@@ -59,7 +59,8 @@ class CompanyController extends Controller
             Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
             return redirect()->route('dashboard.companies');
         } catch (Exception $th) {
-            dd($th->getMessage());
+            // dd($th->getMessage());
+            return redirect()->back()->withErrors(['email' => 'Correo o contraseña incorrectos']);
         }
     }
 
@@ -103,7 +104,8 @@ class CompanyController extends Controller
 
             return redirect()->route('dashboard.companies');
         } catch (Exception $th) {
-            dd($th->getMessage());
+
+            return redirect()->back()->withErrors(['email' => 'Correo o contraseña incorrectos']);
         }
     }
 

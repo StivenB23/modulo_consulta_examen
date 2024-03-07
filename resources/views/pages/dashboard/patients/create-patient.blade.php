@@ -16,21 +16,21 @@
         {{-- NAME --}}
         <div class="form_group">
             <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Ingrese Nombre" value="{{ old('name') }}">
+            <input type="text" id="name" required name="name" placeholder="Ingrese Nombre" value="{{ old('name') }}">
             <p class="error">{{ $errors->first('name') }}</p>
         </div>
 
         {{-- LASTNAME --}}
         <div class="form_group">
             <label for="lastname">Apellido</label>
-            <input type="text" id="lastname" name="lastname" placeholder="Ingrese Apellido" value="{{ old('lastname') }}">
+            <input type="text" id="lastname" required name="lastname" placeholder="Ingrese Apellido" value="{{ old('lastname') }}">
             <p class="error">{{ $errors->first('lastname') }}</p>
         </div>
 
         {{-- TYPE --}}
         <div class="form_group" >
             <label for="type">Tipo</label>
-            <select name="type_document" id="type_document">
+            <select name="type_document" required id="type_document">
                 <option disabled selected>Seleccionar</option>
                 <option value="RC">Registro Civil</option>
                 <option value="TI">Tarjeta de identidad.</option>
@@ -45,21 +45,21 @@
         {{-- IDENTIFICATION --}}
         <div class="form_group">
             <label for="document">Identificación</label>
-            <input type="text" id="document" name="document" placeholder="Ingrese identificación" value="{{ old('document') }}">
+            <input type="text" id="document" name="document" required placeholder="Ingrese identificación" value="{{ old('document') }}">
             <p class="error">{{ $errors->first('document') }}</p>
         </div>
 
         {{-- AGE --}}
         <div class="form_group">
             <label for="age">Edad</label>
-            <input type="text" id="age" name="age" placeholder="Ingrese Edad" value="{{ old('age') }}">
+            <input type="text" id="age" name="age" required placeholder="Ingrese Edad" value="{{ old('age') }}">
             <p class="error">{{ $errors->first('age') }}</p>
         </div>
 
         {{-- SEX --}}
         <div class="form_group" >
             <label for="sex">Tipo</label>
-            <select name="sex" id="sex">
+            <select name="sex" required id="sex">
                 <option disabled selected>Seleccionar</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
@@ -70,7 +70,7 @@
         {{-- EMAIL --}}
         <div class="form_group">
             <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" name="email" placeholder="Ingrese su Correo" value="{{ old('email') }}">
+            <input type="email" id="email" name="email" required placeholder="Ingrese su Correo" value="{{ old('email') }}">
             <p class="error">{{ $errors->first('email') }}</p>
         </div>
 
@@ -96,21 +96,21 @@
         {{-- NAME --}}
         <div class="form_group">
             <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Ingrese Nombre" value="{{ old('name') }}">
+            <input type="text" id="name" name="name" placeholder="Ingrese Nombre" required value="{{ old('name') }}">
             <p class="error">{{ $errors->first('name') }}</p>
         </div>
 
         {{-- LASTNAME --}}
         <div class="form_group">
             <label for="lastname">Apellido</label>
-            <input type="text" id="lastname" name="lastname" placeholder="Ingrese Apellido" value="{{ old('lastname') }}">
+            <input type="text" id="lastname" name="lastname" placeholder="Ingrese Apellido" required value="{{ old('lastname') }}">
             <p class="error">{{ $errors->first('lastname') }}</p>
         </div>
 
         {{-- TYPE --}}
         <div class="form_group" >
             <label for="type">Tipo</label>
-            <select name="type_document" id="type_document">
+            <select name="type_document" required id="type_document">
                 <option disabled selected>Seleccionar</option>
                 <option value="RC">Registro Civil</option>
                 <option value="TI">Tarjeta de identidad.</option>
@@ -125,21 +125,21 @@
         {{-- IDENTIFICATION --}}
         <div class="form_group">
             <label for="document">Identificación</label>
-            <input type="text" id="document" name="document" placeholder="Ingrese identificación" value="{{ old('document') }}">
+            <input type="text" id="document" name="document" required placeholder="Ingrese identificación" value="{{ old('document') }}">
             <p class="error">{{ $errors->first('document') }}</p>
         </div>
 
         {{-- AGE --}}
         <div class="form_group">
             <label for="age">Edad</label>
-            <input type="text" id="age" name="age" placeholder="Ingrese Edad" value="{{ old('age') }}">
+            <input type="number" id="age" name="age" required placeholder="Ingrese Edad" value="{{ old('age') }}">
             <p class="error">{{ $errors->first('age') }}</p>
         </div>
 
         {{-- SEX --}}
         <div class="form_group" >
             <label for="sex">Sexo</label>
-            <select name="sex" id="sex">
+            <select name="sex" required id="sex">
                 <option disabled selected>Seleccionar</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
-            $table->string("external_code");
+            $table->string("external_code")->nullable();
             $table->text("type_exam")->nullable();
             $table->string("anticoagulant")->nullable();
             $table->string("or");

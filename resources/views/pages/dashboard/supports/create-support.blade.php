@@ -426,7 +426,7 @@
         {{-- File --}}
         <div class="form_group">
             <label for="documents">Archivos</label>
-            <input class="file-input" type="file" name="fileUpload[]" multiple />
+            <input class="file-input" type="file" required name="fileUpload[]" multiple />
         </div>
 
         <button type="submit">Guardar</button>

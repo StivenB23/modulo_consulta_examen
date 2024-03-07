@@ -141,6 +141,7 @@ class UserController extends Controller
     {
         try {
             $data = $request->only("name", "lastname", "type_document", "document", "age", "sex", "email", "company_id");
+            $data["email"] = $data["email"] ?? "";
             $password = $this->randomKeyService->generateKey(12);
             $passwordEncrypt = $this->randomKeyService->encryptText($password);
             $user = new User();
@@ -155,11 +156,13 @@ class UserController extends Controller
             $user->role = "cliente";
             $user->password = $passwordEncrypt;
             $user->save();
-
-            Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
+            if ($data["email"] != null) {
+                Mail::to($data["email"])->send(new MessageWelcome($data["name"], $data["email"], $password));
+            }
             return redirect()->route("dashboard.patients");
         } catch (Exception $th) {
-            dd($th->getMessage());
+            dd($th);
+            // return redirect()->back()->withErrors(['type_document' => "El número de documento ya existe"]);
         }
     }
 
@@ -226,6 +229,7 @@ class UserController extends Controller
             }
         } catch (Exception $th) {
             dd($th->getMessage());
+            return redirect()->back()->withErrors(['type_exams' => 'Debes seleccionar al menos un tipo de examen']);
         }
     }
 
@@ -234,6 +238,7 @@ class UserController extends Controller
      */
     public function deactivate(string $id, string $origin)
     {
+
         $userDeactivated = DB::table('users')
             ->where('id', $id)
             ->update(['status' => 0]);
