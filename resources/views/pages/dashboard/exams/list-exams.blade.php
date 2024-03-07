@@ -26,10 +26,12 @@
         <div class="form_group">
             <label for="start_date">Fecha de inicio:</label>
             <input type="date" name="start_date" required>
+            <p class="error">{{ $errors->first('start_date') }}</p>
         </div>
         <div class="form_group">
             <label for="start_date">Fecha de Final:</label>
             <input type="date" name="end_date" required>
+            <p class="error">{{ $errors->first('end_date') }}</p>
         </div>
         <button class="btn-small" type="submit">Exportar a Excel</button>
     </form>
